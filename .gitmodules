@@ -1,0 +1,6 @@
+[submodule "SNRHUDKit"]
+	path = SNRHUDKit
+	url = git://github.com/indragiek/SNRHUDKit.git
+[submodule "JUInspectorView"]
+	path = JUInspectorView
+	url = git://github.com/JustSid/JUInspectorView.git

@@ -14,6 +14,19 @@
 		DE332C8D15FD17CA00096FF5 /* SQUDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C8C15FD17CA00096FF5 /* SQUDocument.m */; };
 		DE332C9015FD17CA00096FF5 /* SQUDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE332C8E15FD17CA00096FF5 /* SQUDocument.xib */; };
 		DE332C9315FD17CB00096FF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE332C9115FD17CB00096FF5 /* MainMenu.xib */; };
+		DE332CA215FD1C9500096FF5 /* JUInspectorBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C9B15FD1C9500096FF5 /* JUInspectorBaseView.m */; };
+		DE332CA315FD1C9500096FF5 /* JUInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C9D15FD1C9500096FF5 /* JUInspectorView.m */; };
+		DE332CA415FD1C9500096FF5 /* JUInspectorViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C9F15FD1C9500096FF5 /* JUInspectorViewContainer.m */; };
+		DE332CA515FD1C9500096FF5 /* JUInspectorViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CA115FD1C9500096FF5 /* JUInspectorViewHeader.m */; };
+		DE332CB815FD1DD400096FF5 /* NSBezierPath+MCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CA815FD1DD400096FF5 /* NSBezierPath+MCAdditions.m */; };
+		DE332CB915FD1DD400096FF5 /* SNRHUDButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CAB15FD1DD400096FF5 /* SNRHUDButtonCell.m */; };
+		DE332CBA15FD1DD400096FF5 /* SNRHUDImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CAD15FD1DD400096FF5 /* SNRHUDImageCell.m */; };
+		DE332CBB15FD1DD400096FF5 /* SNRHUDScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CAF15FD1DD400096FF5 /* SNRHUDScrollView.m */; };
+		DE332CBC15FD1DD400096FF5 /* SNRHUDSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CB115FD1DD400096FF5 /* SNRHUDSegmentedCell.m */; };
+		DE332CBD15FD1DD400096FF5 /* SNRHUDTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CB315FD1DD400096FF5 /* SNRHUDTextFieldCell.m */; };
+		DE332CBE15FD1DD400096FF5 /* SNRHUDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CB515FD1DD400096FF5 /* SNRHUDTextView.m */; };
+		DE332CBF15FD1DD400096FF5 /* SNRHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CB715FD1DD400096FF5 /* SNRHUDWindow.m */; };
+		DE332CC315FD2CD700096FF5 /* SQUHexadecimalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +44,32 @@
 		DE332C8C15FD17CA00096FF5 /* SQUDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQUDocument.m; sourceTree = "<group>"; };
 		DE332C8F15FD17CA00096FF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SQUDocument.xib; sourceTree = "<group>"; };
 		DE332C9215FD17CB00096FF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DE332C9A15FD1C9500096FF5 /* JUInspectorBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorBaseView.h; sourceTree = "<group>"; };
+		DE332C9B15FD1C9500096FF5 /* JUInspectorBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorBaseView.m; sourceTree = "<group>"; };
+		DE332C9C15FD1C9500096FF5 /* JUInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorView.h; sourceTree = "<group>"; };
+		DE332C9D15FD1C9500096FF5 /* JUInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorView.m; sourceTree = "<group>"; };
+		DE332C9E15FD1C9500096FF5 /* JUInspectorViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorViewContainer.h; sourceTree = "<group>"; };
+		DE332C9F15FD1C9500096FF5 /* JUInspectorViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorViewContainer.m; sourceTree = "<group>"; };
+		DE332CA015FD1C9500096FF5 /* JUInspectorViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorViewHeader.h; sourceTree = "<group>"; };
+		DE332CA115FD1C9500096FF5 /* JUInspectorViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorViewHeader.m; sourceTree = "<group>"; };
+		DE332CA715FD1DD400096FF5 /* NSBezierPath+MCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+MCAdditions.h"; sourceTree = "<group>"; };
+		DE332CA815FD1DD400096FF5 /* NSBezierPath+MCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+MCAdditions.m"; sourceTree = "<group>"; };
+		DE332CAA15FD1DD400096FF5 /* SNRHUDButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRHUDButtonCell.h; sourceTree = "<group>"; };
+		DE332CAB15FD1DD400096FF5 /* SNRHUDButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRHUDButtonCell.m; sourceTree = "<group>"; };
+		DE332CAC15FD1DD400096FF5 /* SNRHUDImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRHUDImageCell.h; sourceTree = "<group>"; };
+		DE332CAD15FD1DD400096FF5 /* SNRHUDImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRHUDImageCell.m; sourceTree = "<group>"; };
+		DE332CAE15FD1DD400096FF5 /* SNRHUDScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRHUDScrollView.h; sourceTree = "<group>"; };
+		DE332CAF15FD1DD400096FF5 /* SNRHUDScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRHUDScrollView.m; sourceTree = "<group>"; };
+		DE332CB015FD1DD400096FF5 /* SNRHUDSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRHUDSegmentedCell.h; sourceTree = "<group>"; };
+		DE332CB115FD1DD400096FF5 /* SNRHUDSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRHUDSegmentedCell.m; sourceTree = "<group>"; };
+		DE332CB215FD1DD400096FF5 /* SNRHUDTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRHUDTextFieldCell.h; sourceTree = "<group>"; };
+		DE332CB315FD1DD400096FF5 /* SNRHUDTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRHUDTextFieldCell.m; sourceTree = "<group>"; };
+		DE332CB415FD1DD400096FF5 /* SNRHUDTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRHUDTextView.h; sourceTree = "<group>"; };
+		DE332CB515FD1DD400096FF5 /* SNRHUDTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRHUDTextView.m; sourceTree = "<group>"; };
+		DE332CB615FD1DD400096FF5 /* SNRHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRHUDWindow.h; sourceTree = "<group>"; };
+		DE332CB715FD1DD400096FF5 /* SNRHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRHUDWindow.m; sourceTree = "<group>"; };
+		DE332CC115FD2CD700096FF5 /* SQUHexadecimalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUHexadecimalFormatter.h; sourceTree = "<group>"; };
+		DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUHexadecimalFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +123,10 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
+				DE332CC015FD1DD800096FF5 /* SNRHUDKit */,
+				DE332C9915FD1C9500096FF5 /* JUInspectorView */,
+				DE332CC115FD2CD700096FF5 /* SQUHexadecimalFormatter.h */,
+				DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */,
 				DE332C8B15FD17CA00096FF5 /* SQUDocument.h */,
 				DE332C8C15FD17CA00096FF5 /* SQUDocument.m */,
 				DE332C8E15FD17CA00096FF5 /* SQUDocument.xib */,
@@ -103,6 +146,63 @@
 				DE332C8815FD17CA00096FF5 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE332C9915FD1C9500096FF5 /* JUInspectorView */ = {
+			isa = PBXGroup;
+			children = (
+				DE332C9A15FD1C9500096FF5 /* JUInspectorBaseView.h */,
+				DE332C9B15FD1C9500096FF5 /* JUInspectorBaseView.m */,
+				DE332C9C15FD1C9500096FF5 /* JUInspectorView.h */,
+				DE332C9D15FD1C9500096FF5 /* JUInspectorView.m */,
+				DE332C9E15FD1C9500096FF5 /* JUInspectorViewContainer.h */,
+				DE332C9F15FD1C9500096FF5 /* JUInspectorViewContainer.m */,
+				DE332CA015FD1C9500096FF5 /* JUInspectorViewHeader.h */,
+				DE332CA115FD1C9500096FF5 /* JUInspectorViewHeader.m */,
+			);
+			name = JUInspectorView;
+			path = JUInspectorView/Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		DE332CA615FD1DD400096FF5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DE332CA715FD1DD400096FF5 /* NSBezierPath+MCAdditions.h */,
+				DE332CA815FD1DD400096FF5 /* NSBezierPath+MCAdditions.m */,
+			);
+			name = Categories;
+			path = SNRHUDKit/SNRHUDKit/Categories;
+			sourceTree = SOURCE_ROOT;
+		};
+		DE332CA915FD1DD400096FF5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DE332CAA15FD1DD400096FF5 /* SNRHUDButtonCell.h */,
+				DE332CAB15FD1DD400096FF5 /* SNRHUDButtonCell.m */,
+				DE332CAC15FD1DD400096FF5 /* SNRHUDImageCell.h */,
+				DE332CAD15FD1DD400096FF5 /* SNRHUDImageCell.m */,
+				DE332CAE15FD1DD400096FF5 /* SNRHUDScrollView.h */,
+				DE332CAF15FD1DD400096FF5 /* SNRHUDScrollView.m */,
+				DE332CB015FD1DD400096FF5 /* SNRHUDSegmentedCell.h */,
+				DE332CB115FD1DD400096FF5 /* SNRHUDSegmentedCell.m */,
+				DE332CB215FD1DD400096FF5 /* SNRHUDTextFieldCell.h */,
+				DE332CB315FD1DD400096FF5 /* SNRHUDTextFieldCell.m */,
+				DE332CB415FD1DD400096FF5 /* SNRHUDTextView.h */,
+				DE332CB515FD1DD400096FF5 /* SNRHUDTextView.m */,
+				DE332CB615FD1DD400096FF5 /* SNRHUDWindow.h */,
+				DE332CB715FD1DD400096FF5 /* SNRHUDWindow.m */,
+			);
+			name = Classes;
+			path = SNRHUDKit/SNRHUDKit/Classes;
+			sourceTree = SOURCE_ROOT;
+		};
+		DE332CC015FD1DD800096FF5 /* SNRHUDKit */ = {
+			isa = PBXGroup;
+			children = (
+				DE332CA615FD1DD400096FF5 /* Categories */,
+				DE332CA915FD1DD400096FF5 /* Classes */,
+			);
+			name = SNRHUDKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +273,19 @@
 			files = (
 				DE332C8615FD17CA00096FF5 /* main.m in Sources */,
 				DE332C8D15FD17CA00096FF5 /* SQUDocument.m in Sources */,
+				DE332CA215FD1C9500096FF5 /* JUInspectorBaseView.m in Sources */,
+				DE332CA315FD1C9500096FF5 /* JUInspectorView.m in Sources */,
+				DE332CA415FD1C9500096FF5 /* JUInspectorViewContainer.m in Sources */,
+				DE332CA515FD1C9500096FF5 /* JUInspectorViewHeader.m in Sources */,
+				DE332CB815FD1DD400096FF5 /* NSBezierPath+MCAdditions.m in Sources */,
+				DE332CB915FD1DD400096FF5 /* SNRHUDButtonCell.m in Sources */,
+				DE332CBA15FD1DD400096FF5 /* SNRHUDImageCell.m in Sources */,
+				DE332CBB15FD1DD400096FF5 /* SNRHUDScrollView.m in Sources */,
+				DE332CBC15FD1DD400096FF5 /* SNRHUDSegmentedCell.m in Sources */,
+				DE332CBD15FD1DD400096FF5 /* SNRHUDTextFieldCell.m in Sources */,
+				DE332CBE15FD1DD400096FF5 /* SNRHUDTextView.m in Sources */,
+				DE332CBF15FD1DD400096FF5 /* SNRHUDWindow.m in Sources */,
+				DE332CC315FD2CD700096FF5 /* SQUHexadecimalFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,11 +377,14 @@
 		DE332C9715FD17CB00096FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -276,11 +392,14 @@
 		DE332C9815FD17CB00096FF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
