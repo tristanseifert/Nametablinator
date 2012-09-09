@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE332C7A15FD17CA00096FF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE332C7915FD17CA00096FF5 /* Cocoa.framework */; };
+		DE332C8415FD17CA00096FF5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE332C8215FD17CA00096FF5 /* InfoPlist.strings */; };
+		DE332C8615FD17CA00096FF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C8515FD17CA00096FF5 /* main.m */; };
+		DE332C8A15FD17CA00096FF5 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DE332C8815FD17CA00096FF5 /* Credits.rtf */; };
+		DE332C8D15FD17CA00096FF5 /* SQUDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C8C15FD17CA00096FF5 /* SQUDocument.m */; };
+		DE332C9015FD17CA00096FF5 /* SQUDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE332C8E15FD17CA00096FF5 /* SQUDocument.xib */; };
+		DE332C9315FD17CB00096FF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE332C9115FD17CB00096FF5 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DE332C7515FD17CA00096FF5 /* Nametablinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nametablinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE332C7915FD17CA00096FF5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DE332C7C15FD17CA00096FF5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DE332C7D15FD17CA00096FF5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DE332C7E15FD17CA00096FF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DE332C8115FD17CA00096FF5 /* Nametablinator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Nametablinator-Info.plist"; sourceTree = "<group>"; };
+		DE332C8315FD17CA00096FF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE332C8515FD17CA00096FF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE332C8715FD17CA00096FF5 /* Nametablinator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nametablinator-Prefix.pch"; sourceTree = "<group>"; };
+		DE332C8915FD17CA00096FF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		DE332C8B15FD17CA00096FF5 /* SQUDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQUDocument.h; sourceTree = "<group>"; };
+		DE332C8C15FD17CA00096FF5 /* SQUDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQUDocument.m; sourceTree = "<group>"; };
+		DE332C8F15FD17CA00096FF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SQUDocument.xib; sourceTree = "<group>"; };
+		DE332C9215FD17CB00096FF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE332C7215FD17CA00096FF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE332C7A15FD17CA00096FF5 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE332C6A15FD17CA00096FF5 = {
+			isa = PBXGroup;
+			children = (
+				DE332C7F15FD17CA00096FF5 /* Nametablinator */,
+				DE332C7815FD17CA00096FF5 /* Frameworks */,
+				DE332C7615FD17CA00096FF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE332C7615FD17CA00096FF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE332C7515FD17CA00096FF5 /* Nametablinator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE332C7815FD17CA00096FF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE332C7915FD17CA00096FF5 /* Cocoa.framework */,
+				DE332C7B15FD17CA00096FF5 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE332C7B15FD17CA00096FF5 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE332C7C15FD17CA00096FF5 /* AppKit.framework */,
+				DE332C7D15FD17CA00096FF5 /* CoreData.framework */,
+				DE332C7E15FD17CA00096FF5 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
+			isa = PBXGroup;
+			children = (
+				DE332C8B15FD17CA00096FF5 /* SQUDocument.h */,
+				DE332C8C15FD17CA00096FF5 /* SQUDocument.m */,
+				DE332C8E15FD17CA00096FF5 /* SQUDocument.xib */,
+				DE332C9115FD17CB00096FF5 /* MainMenu.xib */,
+				DE332C8015FD17CA00096FF5 /* Supporting Files */,
+			);
+			path = Nametablinator;
+			sourceTree = "<group>";
+		};
+		DE332C8015FD17CA00096FF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DE332C8115FD17CA00096FF5 /* Nametablinator-Info.plist */,
+				DE332C8215FD17CA00096FF5 /* InfoPlist.strings */,
+				DE332C8515FD17CA00096FF5 /* main.m */,
+				DE332C8715FD17CA00096FF5 /* Nametablinator-Prefix.pch */,
+				DE332C8815FD17CA00096FF5 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE332C7415FD17CA00096FF5 /* Nametablinator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE332C9615FD17CB00096FF5 /* Build configuration list for PBXNativeTarget "Nametablinator" */;
+			buildPhases = (
+				DE332C7115FD17CA00096FF5 /* Sources */,
+				DE332C7215FD17CA00096FF5 /* Frameworks */,
+				DE332C7315FD17CA00096FF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nametablinator;
+			productName = Nametablinator;
+			productReference = DE332C7515FD17CA00096FF5 /* Nametablinator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE332C6C15FD17CA00096FF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SQU;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Tristan Seifert";
+			};
+			buildConfigurationList = DE332C6F15FD17CA00096FF5 /* Build configuration list for PBXProject "Nametablinator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DE332C6A15FD17CA00096FF5;
+			productRefGroup = DE332C7615FD17CA00096FF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE332C7415FD17CA00096FF5 /* Nametablinator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE332C7315FD17CA00096FF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE332C8415FD17CA00096FF5 /* InfoPlist.strings in Resources */,
+				DE332C8A15FD17CA00096FF5 /* Credits.rtf in Resources */,
+				DE332C9015FD17CA00096FF5 /* SQUDocument.xib in Resources */,
+				DE332C9315FD17CB00096FF5 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE332C7115FD17CA00096FF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE332C8615FD17CA00096FF5 /* main.m in Sources */,
+				DE332C8D15FD17CA00096FF5 /* SQUDocument.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE332C8215FD17CA00096FF5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE332C8315FD17CA00096FF5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DE332C8815FD17CA00096FF5 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE332C8915FD17CA00096FF5 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		DE332C8E15FD17CA00096FF5 /* SQUDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE332C8F15FD17CA00096FF5 /* en */,
+			);
+			name = SQUDocument.xib;
+			sourceTree = "<group>";
+		};
+		DE332C9115FD17CB00096FF5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE332C9215FD17CB00096FF5 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE332C9415FD17CB00096FF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DE332C9515FD17CB00096FF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DE332C9715FD17CB00096FF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
+				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DE332C9815FD17CB00096FF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
+				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE332C6F15FD17CA00096FF5 /* Build configuration list for PBXProject "Nametablinator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE332C9415FD17CB00096FF5 /* Debug */,
+				DE332C9515FD17CB00096FF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE332C9615FD17CB00096FF5 /* Build configuration list for PBXNativeTarget "Nametablinator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE332C9715FD17CB00096FF5 /* Debug */,
+				DE332C9815FD17CB00096FF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE332C6C15FD17CA00096FF5 /* Project object */;
+}
