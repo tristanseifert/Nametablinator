@@ -27,6 +27,10 @@
     
     IBOutlet SQUMDTileRenderView *mainView;
     IBOutlet SQUPaletteRenderView *palette;
+    
+    IBOutlet NSPopUpButton *palViewer_actionBtn;
 }
+
+- (IBAction) palViewer_shadowHighlight:(id) sender;
 
 @end

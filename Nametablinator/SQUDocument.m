@@ -56,4 +56,40 @@
     return YES;
 }
 
+- (IBAction) palViewer_shadowHighlight:(id) sender {
+    NSInteger selectedItem = [palViewer_actionBtn selectedItem].tag;
+    
+    switch (selectedItem) {
+        case 1:
+            [palette setPaletteState:kSQUMDShadow];
+            break;
+            
+        case 2:
+            [palette setPaletteState:kSQUMDNormal];
+            break;
+            
+        case 3:
+            [palette setPaletteState:kSQUMDHighlight];
+            break;
+            
+        case 10:
+            palette.paletteLine = 0;
+            break;
+        case 11:
+            palette.paletteLine = 1;            
+            break;
+        case 12:
+            palette.paletteLine = 2;            
+            break;
+        case 13:
+            palette.paletteLine = 3;
+            break;
+            
+        default:
+            break;
+    }
+    
+    [palette setNeedsDisplay:YES];
+}
+
 @end

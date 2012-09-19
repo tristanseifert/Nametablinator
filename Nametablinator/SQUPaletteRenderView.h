@@ -21,12 +21,14 @@ typedef enum {
 @interface SQUPaletteRenderView : NSView {
     NSData *paletteData;
     
-    NSUInteger numRows;
     SQUMDPaletteState paletteState;
+    
+    NSUInteger paletteLine;
 }
 
 @property (nonatomic, retain) NSData *paletteData;
-@property (nonatomic) NSUInteger numRows;
 @property (nonatomic) SQUMDPaletteState paletteState;
+
+@property (nonatomic) NSUInteger paletteLine;
 
 @end
