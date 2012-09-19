@@ -10,6 +10,9 @@
 #import "JUInspectorView.h"
 #import "SQUHexadecimalFormatter.h"
 
+#import "SQUMDTileRenderView.h"
+#import "SQUPaletteRenderView.h"
+
 @interface SQUDocument : NSDocument {
     IBOutlet JUInspectorViewContainer *inspectorContainer;
     IBOutlet JUInspectorView *sizeInspector;
@@ -21,6 +24,9 @@
     IBOutlet NSTextField *info_tileOffset;
     IBOutlet NSPopUpButton *info_palOffset;
     IBOutlet NSButton *info_priority;
+    
+    IBOutlet SQUMDTileRenderView *mainView;
+    IBOutlet SQUPaletteRenderView *palette;
 }
 
 @end

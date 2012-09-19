@@ -32,7 +32,7 @@
     [inspectorContainer addInspectorView:listOfTilesInspector expanded:YES];
     
     SQUHexadecimalFormatter *formatter = [[SQUHexadecimalFormatter alloc] init];
-    [info_offset setFormatter:formatter];
+    [info_tileOffset setFormatter:formatter];
 }
 
 + (BOOL)autosavesInPlace {
