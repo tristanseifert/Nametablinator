@@ -25,6 +25,7 @@
     IBOutlet NSPopUpButton *info_palOffset;
     IBOutlet NSButton *info_priority;
     
+    IBOutlet NSScrollView *mainScroller;
     IBOutlet SQUMDTileRenderView *mainView;
     IBOutlet SQUPaletteRenderView *palette;
     

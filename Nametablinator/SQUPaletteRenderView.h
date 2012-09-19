@@ -31,4 +31,7 @@ typedef enum {
 
 @property (nonatomic) NSUInteger paletteLine;
 
+- (NSColor *) colourForPaletteData:(const char*) data withState:(SQUMDPaletteState) state;
+- (NSColor *) transparentColourForCurrentPaletteLine;
+
 @end

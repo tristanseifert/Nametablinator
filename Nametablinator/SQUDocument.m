@@ -33,6 +33,8 @@
     
     SQUHexadecimalFormatter *formatter = [[SQUHexadecimalFormatter alloc] init];
     [info_tileOffset setFormatter:formatter];
+    
+    mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
 }
 
 + (BOOL)autosavesInPlace {
@@ -88,6 +90,8 @@
         default:
             break;
     }
+    
+    mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
     
     [palette setNeedsDisplay:YES];
 }

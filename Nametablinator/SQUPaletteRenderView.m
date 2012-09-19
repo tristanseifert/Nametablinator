@@ -51,7 +51,6 @@
         bytes = (const char *)[paletteData bytes];
         
         unsigned int palOffset = paletteLine * 0x20;
-        NSLog(@"Palette offset for line %X: %X", paletteLine, palOffset);
         
         if(palOffset >= paletteData.length) {
             palOffset = 0;
@@ -61,36 +60,61 @@
             bytes = (const char *)emptyPalette;
         }
         
-        unsigned int redComponent = bytes[palOffset + i*2 + 1] & 0x0F;
-        unsigned int greenComponent = (bytes[palOffset +  i*2 + 1] & 0xF0) >> 4;
-        unsigned int blueComponent = bytes[palOffset +  i*2 + 0] & 0x0F;
+        bytes += palOffset + i*2;
         
-        //NSLog(@"Colour data (rgb) before processing: 0x%X, 0x%X, 0x%0X", redComponent, greenComponent, blueComponent);
-        
-        if(self.paletteState == kSQUMDShadow) {
-            redComponent = redComponent >> 1;
-            greenComponent = greenComponent >> 1;
-            blueComponent = blueComponent >> 1;
-        } else if(self.paletteState == kSQUMDHighlight) {
-            redComponent = redComponent >> 1;
-            greenComponent = greenComponent >> 1;
-            blueComponent = blueComponent >> 1;
-            
-            redComponent += 0x7;
-            greenComponent += 0x7;
-            blueComponent += 0x7;
-        }
-        
-        NSUInteger redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
-        NSUInteger greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
-        NSUInteger blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
-        
-        //NSLog(@"Colour data (rgb) after processing: 0x%X, 0x%X, 0x%0X", redComponentProc, greenComponentProc, blueComponentProc);
-     
-        [[NSColor colorWithCalibratedRed:redComponentProc / 256.0f green:greenComponentProc / 256.0f blue:blueComponentProc / 256.0f alpha:1.0] set];
+        [[self colourForPaletteData:bytes withState:self.paletteState] set];
         
         NSRectFill(NSRectFromCGRect(CGRectMake(i*16+1, 1, 15, 16)));
     }
+}
+
+#pragma mark Actual conversion routines
+
+- (NSColor *) colourForPaletteData:(const char*) data withState:(SQUMDPaletteState) state {
+    unsigned int redComponent = data[1] & 0x0F;
+    unsigned int greenComponent = (data[1] & 0xF0) >> 4;
+    unsigned int blueComponent = data[0] & 0x0F;
+    
+    //NSLog(@"Colour data (rgb) before processing: 0x%X, 0x%X, 0x%0X", redComponent, greenComponent, blueComponent);
+    
+    if(self.paletteState == kSQUMDShadow) {
+        redComponent = redComponent >> 1;
+        greenComponent = greenComponent >> 1;
+        blueComponent = blueComponent >> 1;
+    } else if(self.paletteState == kSQUMDHighlight) {
+        redComponent = redComponent >> 1;
+        greenComponent = greenComponent >> 1;
+        blueComponent = blueComponent >> 1;
+        
+        redComponent += 0x7;
+        greenComponent += 0x7;
+        blueComponent += 0x7;
+    }
+    
+    NSUInteger redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
+    NSUInteger greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
+    NSUInteger blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
+    
+    //NSLog(@"Colour data (rgb) after processing: 0x%X, 0x%X, 0x%0X", redComponentProc, greenComponentProc, blueComponentProc);
+    
+    return [NSColor colorWithCalibratedRed:redComponentProc / 256.0f green:greenComponentProc / 256.0f blue:blueComponentProc / 256.0f alpha:1.0];
+}
+
+- (NSColor *) transparentColourForCurrentPaletteLine {
+    const char *bytes;
+    bytes = (const char *)[paletteData bytes];
+    
+    unsigned int palOffset = paletteLine * 0x20;
+    
+    if(palOffset >= paletteData.length) {
+        palOffset = 0;
+        
+        unsigned char emptyPalette[0x20] = {0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E};
+        
+        bytes = (const char *)emptyPalette;
+    }
+    
+    return [self colourForPaletteData:bytes withState:self.paletteState];
 }
 
 @end

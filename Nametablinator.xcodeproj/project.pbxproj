@@ -19,6 +19,7 @@
 		DE332CA415FD1C9500096FF5 /* JUInspectorViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C9F15FD1C9500096FF5 /* JUInspectorViewContainer.m */; };
 		DE332CA515FD1C9500096FF5 /* JUInspectorViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CA115FD1C9500096FF5 /* JUInspectorViewHeader.m */; };
 		DE332CC315FD2CD700096FF5 /* SQUHexadecimalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */; };
+		DE3F9653160974EE009005C4 /* NSColor_CheckerboardColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */; };
 		DE4A6401160900C700825929 /* SQUMDTileRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4A6400160900C700825929 /* SQUMDTileRenderView.m */; };
 		DE9D848316093931003BAD1E /* SQUPaletteRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848216093931003BAD1E /* SQUPaletteRenderView.m */; };
 		DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848516093ED4003BAD1E /* SQUGradientBar.m */; };
@@ -49,6 +50,8 @@
 		DE332CA115FD1C9500096FF5 /* JUInspectorViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorViewHeader.m; sourceTree = "<group>"; };
 		DE332CC115FD2CD700096FF5 /* SQUHexadecimalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUHexadecimalFormatter.h; sourceTree = "<group>"; };
 		DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUHexadecimalFormatter.m; sourceTree = "<group>"; };
+		DE3F9651160974EE009005C4 /* NSColor_CheckerboardColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColor_CheckerboardColor.h; sourceTree = "<group>"; };
+		DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColor_CheckerboardColor.m; sourceTree = "<group>"; };
 		DE4A63FF160900C700825929 /* SQUMDTileRenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMDTileRenderView.h; sourceTree = "<group>"; };
 		DE4A6400160900C700825929 /* SQUMDTileRenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMDTileRenderView.m; sourceTree = "<group>"; };
 		DE9D848116093930003BAD1E /* SQUPaletteRenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUPaletteRenderView.h; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
+				DE3F9651160974EE009005C4 /* NSColor_CheckerboardColor.h */,
+				DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */,
 				DE4A6403160900D500825929 /* MD Data Interpreters/Renderers */,
 				DE332C9915FD1C9500096FF5 /* JUInspectorView */,
 				DE332CC115FD2CD700096FF5 /* SQUHexadecimalFormatter.h */,
@@ -238,6 +243,7 @@
 				DE4A6401160900C700825929 /* SQUMDTileRenderView.m in Sources */,
 				DE9D848316093931003BAD1E /* SQUPaletteRenderView.m in Sources */,
 				DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */,
+				DE3F9653160974EE009005C4 /* NSColor_CheckerboardColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
