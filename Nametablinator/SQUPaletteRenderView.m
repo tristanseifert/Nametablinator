@@ -34,6 +34,8 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
+    [self removeAllToolTips];
+    
     [[NSColor colorWithDeviceWhite:0.25 alpha:1.0] set];
     [NSBezierPath setDefaultLineWidth:1.0];
     
@@ -65,6 +67,8 @@
         [[self colourForPaletteData:bytes withState:self.paletteState] set];
         
         NSRectFill(NSRectFromCGRect(CGRectMake(i*16+1, 1, 15, 16)));
+        
+        [self addToolTipRect:NSMakeRect(i*16+1, 1, 15, 16) owner:self userData:[[NSNumber numberWithInt:i] retain]];
     }
 }
 
@@ -115,6 +119,53 @@
     }
     
     return [self colourForPaletteData:bytes withState:self.paletteState];
+}
+
+#pragma mark Tooltip stuffsors
+
+- (NSString *)view:(NSView *)view stringForToolTip:(NSToolTipTag)tag point:(NSPoint)point userData:(void *)userData {
+    NSNumber *dasNumber = (NSNumber *) userData;
+    
+    const char *data;
+    data = (const char *)[paletteData bytes];
+    data += [dasNumber intValue] * 2;
+    
+    NSString *toolTip = @"";
+    toolTip = [toolTip stringByAppendingFormat:@"Palette Entry $%X\n\n", [dasNumber intValue]];
+    
+    unsigned int redComponent = data[1] & 0x0F;
+    unsigned int greenComponent = (data[1] & 0xF0) >> 4;
+    unsigned int blueComponent = data[0] & 0x0F;
+    
+    toolTip = [toolTip stringByAppendingFormat:@"Normal: $0%X%X%0X\n", redComponent, greenComponent, blueComponent];
+    
+    //NSLog(@"Colour data (rgb) before processing: 0x%X, 0x%X, 0x%0X", redComponent, greenComponent, blueComponent);
+    
+    redComponent = data[1] & 0x0F;
+    greenComponent = (data[1] & 0xF0) >> 4;
+    blueComponent = data[0] & 0x0F;
+    
+    redComponent = redComponent >> 1;
+    greenComponent = greenComponent >> 1;
+    blueComponent = blueComponent >> 1;
+    
+    toolTip = [toolTip stringByAppendingFormat:@"Shadowed: $0%X%X%0X\n", redComponent, greenComponent, blueComponent];
+    
+    redComponent = data[1] & 0x0F;
+    greenComponent = (data[1] & 0xF0) >> 4;
+    blueComponent = data[0] & 0x0F;
+    
+    redComponent = redComponent >> 1;
+    greenComponent = greenComponent >> 1;
+    blueComponent = blueComponent >> 1;
+    
+    redComponent += 0x7;
+    greenComponent += 0x7;
+    blueComponent += 0x7;
+    
+    toolTip = [toolTip stringByAppendingFormat:@"Highlighted: $0%X%X%0X", redComponent, greenComponent, blueComponent];
+    
+    return toolTip;
 }
 
 @end

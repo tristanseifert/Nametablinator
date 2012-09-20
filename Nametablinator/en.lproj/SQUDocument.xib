@@ -76,13 +76,13 @@
 														<object class="NSView" id="148092710">
 															<reference key="NSNextResponder" ref="273740432"/>
 															<int key="NSvFlags">274</int>
-															<string key="NSFrameSize">{403, 427}</string>
+															<string key="NSFrameSize">{418, 442}</string>
 															<reference key="NSSuperview" ref="273740432"/>
 															<reference key="NSWindow"/>
 															<reference key="NSNextKeyView" ref="209563037"/>
 														</object>
 													</array>
-													<string key="NSFrameSize">{418, 442}</string>
+													<string key="NSFrameSize">{433, 457}</string>
 													<reference key="NSSuperview" ref="58415617"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="148092710"/>
@@ -100,7 +100,7 @@
 												</object>
 												<object class="NSScroller" id="209563037">
 													<reference key="NSNextResponder" ref="58415617"/>
-													<int key="NSvFlags">256</int>
+													<int key="NSvFlags">-2147483392</int>
 													<string key="NSFrame">{{418, 0}, {15, 442}}</string>
 													<reference key="NSSuperview" ref="58415617"/>
 													<reference key="NSWindow"/>
@@ -112,7 +112,7 @@
 												</object>
 												<object class="NSScroller" id="870100520">
 													<reference key="NSNextResponder" ref="58415617"/>
-													<int key="NSvFlags">256</int>
+													<int key="NSvFlags">-2147483392</int>
 													<string key="NSFrame">{{0, 442}, {418, 15}}</string>
 													<reference key="NSSuperview" ref="58415617"/>
 													<reference key="NSWindow"/>
@@ -127,7 +127,7 @@
 											<reference key="NSSuperview" ref="132936513"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="273740432"/>
-											<int key="NSsFlags">48</int>
+											<int key="NSsFlags">560</int>
 											<reference key="NSVScroller" ref="209563037"/>
 											<reference key="NSHScroller" ref="870100520"/>
 											<reference key="NSContentView" ref="273740432"/>

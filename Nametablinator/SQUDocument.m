@@ -37,6 +37,14 @@
     mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
     
     [zoomSlider setIndicatorIndex:2];
+    
+    [mainScroller setHasHorizontalRuler:YES];
+    [mainScroller setHasVerticalRuler:YES];
+    
+    NSLog(@"%@", mainScroller.horizontalRulerView);
+    
+    NSPoint zero = [mainScroller.documentView convertPoint:[mainView bounds].origin fromView:mainView];
+    [mainScroller.horizontalRulerView setOriginOffset:zero.x - [mainScroller.documentView bounds].origin.x];
 }
 
 + (BOOL)autosavesInPlace {
