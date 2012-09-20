@@ -91,9 +91,38 @@
             break;
     }
     
+    mainView.paletteState = palette.paletteState;
+    
     mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
     
     [palette setNeedsDisplay:YES];
+    [mainView setNeedsDisplay:YES];
+    
+    [mainView renderImageForTile:0xB020]; // Tile 0x20, priority, palette 0x01, vertical flip
+}
+
+- (void) awakeFromNib {
+    mainView.tileData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachArt.bin"];
+    mainView.mappingData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachMap.bin"];
+    mainView.paletteData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachPal.bin"];
+    //mainView.tileData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/Test2_Art.bin"];
+//    mainView.mappingData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/Test2_Map.bin"];
+//    mainView.paletteData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/Test2_Pal.bin"];
+    
+    //unsigned char defaultPalette[0x20] = SQUDefaultMDPalette;
+    //mainView.paletteData = [[NSData dataWithBytes:defaultPalette length:0x20] retain];
+    
+    //mainView.height = 0x18;
+    //mainView.width = 0x20;
+//    mainView.tileOffset = 0x00ED;
+    
+    mainView.height = 28;
+    mainView.width = 64;
+    
+    palette.paletteData = [mainView.paletteData copy];
+    
+    [palette setNeedsDisplay:YES];
+    [mainView setNeedsDisplay:YES];
 }
 
 @end

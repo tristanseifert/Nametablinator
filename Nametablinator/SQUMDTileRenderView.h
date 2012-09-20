@@ -10,6 +10,8 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "SQUPaletteRenderView.h"
+
 @interface SQUMDTileRenderView : NSView {
     NSData *paletteData;
     NSData *tileData;
@@ -21,6 +23,13 @@
     
     BOOL markPriority;
     
+    SQUMDPaletteState paletteState;
+    
+    dispatch_queue_t drawingQueue;
+    
+    BOOL cacheValid;
+    void *bitmapContextData;
+    CGContextRef prevBitmapContext;
 }
 
 @property (nonatomic, retain, readwrite) NSData *paletteData;
@@ -32,5 +41,12 @@
 @property (nonatomic) NSUInteger height;
 
 @property (nonatomic) BOOL markPriority;
+
+@property (nonatomic) SQUMDPaletteState paletteState;
+
+
+- (NSImage *) renderImageForTile:(NSUInteger) tileIndex;
+- (void) drawTileData:(const char*) data atPoint:(CGPoint) point;
+- (void) purgeCache;
 
 @end
