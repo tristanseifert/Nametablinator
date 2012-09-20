@@ -17,6 +17,7 @@
         drawingQueue = dispatch_queue_create("co.squee.nametablinator.drawingqueue", NULL);
         paletteState = kSQUMDNormal;
         cacheValid = NO;
+        zoomFactor = 1.0f;
     }
     
     return self;
@@ -26,9 +27,10 @@
     drawingQueue = dispatch_queue_create("co.squee.nametablinator.drawingqueue", NULL);
     paletteState = kSQUMDNormal;
     cacheValid = NO;
+    zoomFactor = 1.0f;
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
+- (void)drawRect:(NSRect)dirtyRect {    
     if(!cacheValid) {
         if(prevBitmapContext != NULL) {
             CGContextRelease(prevBitmapContext); // free old bitmap context, as well as it's buffery thing
@@ -315,11 +317,44 @@
             }
         }
         
-        NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);
-        
         CGImageRef image = CGBitmapContextCreateImage(bitmapContext);
-        NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
-        [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
+        
+        if(zoomFactor == 1.0f) {
+            NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);
+        
+            NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
+            [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
+        } else {
+            if(prevScaledBitmapContext) {
+                CGContextRelease(prevScaledBitmapContext);
+            }
+            
+            prevScaledBitmapContext = CGBitmapContextCreate(NULL,
+                                                            (width * 8) * zoomFactor, // Changed this
+                                                            (height * 8) * zoomFactor, // Changed this
+                                                            8,
+                                                            4 * ((width * 8) * zoomFactor), // Changed this
+                                                            CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB),
+                                                            CGImageGetAlphaInfo(image));
+            
+            CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
+            CGContextSetShouldAntialias(prevScaledBitmapContext, false);
+            
+            CGContextDrawImage(prevScaledBitmapContext, CGContextGetClipBoundingBox(prevScaledBitmapContext), image);
+            CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
+            
+            NSRect imageRect = NSMakeRect(0, 0, (width * 8) * zoomFactor, (height * 8) * zoomFactor);        
+            
+            NSImage *nsimage = [[NSImage alloc] initWithCGImage:imgRef size:self.frame.size];
+            [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
+            
+            [nsimage release];
+            CGImageRelease(imgRef);
+            
+            scaledBitmapContextData = CGBitmapContextGetData(prevScaledBitmapContext);
+            
+            renderedZoomFactor = zoomFactor;
+        }
         
         cacheValid = YES;
     } else {        
