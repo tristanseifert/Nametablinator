@@ -323,15 +323,63 @@
         
         cacheValid = YES;
     } else {        
-        NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);        
-        
         CGContextRef bitmapContext = CGBitmapContextCreate(bitmapContextData, width * 8, height * 8, 8, (width * 8) * 4, CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB), kCGImageAlphaNoneSkipLast);
-        
         CGImageRef image = CGBitmapContextCreateImage(bitmapContext);
-        NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
-        [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
         
-        [nsimage release];
+        if(zoomFactor == 1.0f) {
+            NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);        
+            
+            NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
+            [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
+            
+            [nsimage release];
+        } else {
+            if(renderedZoomFactor != zoomFactor || !prevScaledBitmapContext) {
+                if(prevScaledBitmapContext) {
+                    CGContextRelease(prevScaledBitmapContext);
+                }
+            
+                prevScaledBitmapContext = CGBitmapContextCreate(NULL,
+                                                         (width * 8) * zoomFactor, // Changed this
+                                                         (height * 8) * zoomFactor, // Changed this
+                                                         8,
+                                                         4 * ((width * 8) * zoomFactor), // Changed this
+                                                         CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB),
+                                                         CGImageGetAlphaInfo(image));
+            
+                CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
+                CGContextSetShouldAntialias(prevScaledBitmapContext, false);
+                
+                CGContextDrawImage(prevScaledBitmapContext, CGContextGetClipBoundingBox(prevScaledBitmapContext), image);
+                CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
+            
+                NSRect imageRect = NSMakeRect(0, 0, (width * 8) * zoomFactor, (height * 8) * zoomFactor);        
+            
+                NSImage *nsimage = [[NSImage alloc] initWithCGImage:imgRef size:self.frame.size];
+                [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
+            
+                [nsimage release];
+                CGImageRelease(imgRef);
+            
+                scaledBitmapContextData = CGBitmapContextGetData(prevScaledBitmapContext);
+                
+                renderedZoomFactor = zoomFactor;
+            } else {
+                NSLog(@"Scaled image being drawn from cache.");
+                
+                CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
+                
+                NSRect imageRect = NSMakeRect(0, 0, (width * 8) * zoomFactor, (height * 8) * zoomFactor);        
+                
+                NSImage *nsimage = [[NSImage alloc] initWithCGImage:imgRef size:self.frame.size];
+                [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
+                
+                [nsimage release];
+                CGImageRelease(imgRef);             
+            }
+        }
+        
+        
         CGImageRelease(image);
     }
 }
@@ -354,6 +402,13 @@
 
 - (void) purgeCache {
     cacheValid = NO;
+    [self setNeedsDisplay:YES];
+}
+
+#pragma mark Zooming stuffs
+
+- (void) setZoomFactor:(float) factor {
+    zoomFactor = factor;
     [self setNeedsDisplay:YES];
 }
 

@@ -29,7 +29,12 @@
     
     BOOL cacheValid;
     void *bitmapContextData;
+    void *scaledBitmapContextData;
     CGContextRef prevBitmapContext;
+    CGContextRef prevScaledBitmapContext;
+    
+    float renderedZoomFactor;
+    float zoomFactor;
 }
 
 @property (nonatomic, retain, readwrite) NSData *paletteData;
@@ -48,5 +53,7 @@
 - (NSImage *) renderImageForTile:(NSUInteger) tileIndex;
 - (void) drawTileData:(const char*) data atPoint:(CGPoint) point;
 - (void) purgeCache;
+
+- (void) setZoomFactor:(float) factor;
 
 @end

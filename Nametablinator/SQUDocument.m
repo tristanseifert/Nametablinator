@@ -159,7 +159,9 @@
 #pragma mark Zoom support
 
 - (IBAction) doZoomSliderAction:(id) sender {
-    NSLog(@"Current zoom factor: %i", zoomSlider.intValue);
+    NSLog(@"Current zoom factor: %f", round(zoomSlider.floatValue));
+    
+    [mainView setZoomFactor:round(zoomSlider.floatValue)];
 }
 
 @end
