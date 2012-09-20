@@ -30,9 +30,8 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     if(!cacheValid) {
-        if(bitmapContextData != NULL) {
-            free(bitmapContextData); // free the old bitmap context data
-            CGContextRelease(prevBitmapContext); // free old bitmap context
+        if(prevBitmapContext != NULL) {
+            CGContextRelease(prevBitmapContext); // free old bitmap context, as well as it's buffery thing
         }
         
         unsigned int bytesPerRow = (width * 8) * 4;
@@ -74,6 +73,11 @@
         unsigned int currentPixelBitmapOffset;
         CGPoint point;
         
+        unsigned int actualTileCol;
+        unsigned int actualTileRow;
+        unsigned int isMirrored;
+        unsigned int isFlipped;
+        
         unsigned char *bitmapPointer;
         
         const char *paletteByteArr;
@@ -111,75 +115,221 @@
                 
                 point = CGPointMake(column << 3, row << 3);
                 
-                for (int tile_row = 0; tile_row < 8; tile_row++) {
-                    for (int tile_column = 0; tile_column < 8; tile_column++) {
-                        tileDataOffset = (((tile_row) << 0x02) + (tile_column >> 0x01));
-                        //NSLog(@"Tile offset for pixel at (%i, %i): 0x%X", tile_column, tile_row, tileDataOffset);
-                        
-                        if(tile_column % 2 == 0) {
-                            currentPixel = (currentTileData[tileDataOffset] & 0xF0) >> 4;
-                            //NSLog(@"Pixel data (even): 0x%X", currentPixel);
-                        } else {
-                            currentPixel = currentTileData[tileDataOffset] & 0x0F;
-                        }
-                        
-                        //currentPixel = (paletteLUT[currentPixel]) << 0x1;
-                        currentPixel = currentPixel << 0x1;
-                        
-                        if(currentPixel != 0x00) {
-                            //NSLog(@"Pixel's palette offset: 0x%X", currentPixel);
+                isMirrored = (currentTile & 0x800) >> 0xB;
+                isFlipped = (currentTile & 0x1000) >> 0xC;
+                
+                if(isMirrored == 0 && isFlipped == 0) {
+                    for (int tile_row = 0; tile_row < 8; tile_row++) {
+                        for (int tile_column = 0; tile_column < 8; tile_column++) {
+                            tileDataOffset = (((tile_row) << 0x02) + (tile_column >> 0x01));
                             
-                            redComponent = paletteByteArr[1 + palOffset + currentPixel] & 0x0F;
-                            greenComponent = (paletteByteArr[1 + palOffset + currentPixel] & 0xF0) >> 4;
-                            blueComponent = paletteByteArr[0 + palOffset + currentPixel] & 0x0F;
-                            
-                            if(self.paletteState == kSQUMDShadow) {
-                                redComponent = redComponent >> 1;
-                                greenComponent = greenComponent >> 1;
-                                blueComponent = blueComponent >> 1;
-                            } else if(self.paletteState == kSQUMDHighlight) {
-                                redComponent = redComponent >> 1;
-                                greenComponent = greenComponent >> 1;
-                                blueComponent = blueComponent >> 1;
-                                
-                                redComponent += 0x7;
-                                greenComponent += 0x7;
-                                blueComponent += 0x7;
+                            if(tile_column % 2 == 0) {
+                                currentPixel = (currentTileData[tileDataOffset] & 0xF0) >> 4;
+                            } else {
+                                currentPixel = currentTileData[tileDataOffset] & 0x0F;
                             }
+                            currentPixel = currentPixel << 0x1;
                             
-                            redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
-                            greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
-                            blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
-                            
-                            currentPixelBitmapOffset = ((point.y + tile_row) * bytesPerRow) + ((point.x + tile_column) * bytesPerPixel);
-                            
-                            bitmapPointer = bitmapContextData + currentPixelBitmapOffset;
-                            
-                            bitmapPointer[0] = redComponentProc;
-                            bitmapPointer[1] = greenComponentProc;
-                            bitmapPointer[2] = blueComponentProc;
-                            
-                            //[[NSColor colorWithCalibratedRed:redComponentProc / 256.0f green:greenComponentProc / 256.0f blue:blueComponentProc / 256.0f alpha:1.0] set];
-                            //NSRectFill(NSMakeRect(point.x + tile_column, point.y + tile_row, 1, 1));
-                            
-                            
+                            if(currentPixel != 0x00) {                            
+                                redComponent = paletteByteArr[1 + palOffset + currentPixel] & 0x0F;
+                                greenComponent = (paletteByteArr[1 + palOffset + currentPixel] & 0xF0) >> 4;
+                                blueComponent = paletteByteArr[0 + palOffset + currentPixel] & 0x0F;
+                                
+                                if(self.paletteState == kSQUMDShadow) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                } else if(self.paletteState == kSQUMDHighlight) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                    
+                                    redComponent += 0x7;
+                                    greenComponent += 0x7;
+                                    blueComponent += 0x7;
+                                }
+                                
+                                redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
+                                greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
+                                blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
+                                
+                                currentPixelBitmapOffset = ((point.y + tile_row) * bytesPerRow) + ((point.x + tile_column) * bytesPerPixel);
+                                bitmapPointer = bitmapContextData + currentPixelBitmapOffset;
+                                
+                                bitmapPointer[0] = redComponentProc;
+                                bitmapPointer[1] = greenComponentProc;
+                                bitmapPointer[2] = blueComponentProc;
+                            }
                         }
                     }
+                } else if(isMirrored == 1 && isFlipped == 0) {
+                    for (int tile_row = 0; tile_row < 8; tile_row++) {
+                        for (int tile_column = 7; tile_column >= 0; tile_column--) {
+                            tileDataOffset = (((tile_row) << 0x02) + (tile_column >> 0x01));
+                            
+                            if(tile_column % 2 == 0) {
+                                currentPixel = (currentTileData[tileDataOffset] & 0xF0) >> 4;
+                            } else {
+                                currentPixel = currentTileData[tileDataOffset] & 0x0F;
+                            }
+                            currentPixel = currentPixel << 0x1;
+                            
+                            if(currentPixel != 0x00) {                            
+                                redComponent = paletteByteArr[1 + palOffset + currentPixel] & 0x0F;
+                                greenComponent = (paletteByteArr[1 + palOffset + currentPixel] & 0xF0) >> 4;
+                                blueComponent = paletteByteArr[0 + palOffset + currentPixel] & 0x0F;
+                                
+                                if(self.paletteState == kSQUMDShadow) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                } else if(self.paletteState == kSQUMDHighlight) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                    
+                                    redComponent += 0x7;
+                                    greenComponent += 0x7;
+                                    blueComponent += 0x7;
+                                }
+                                
+                                redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
+                                greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
+                                blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
+                                
+                                currentPixelBitmapOffset = ((point.y + actualTileRow) * bytesPerRow) + ((point.x + actualTileCol) * bytesPerPixel);
+                                bitmapPointer = bitmapContextData + currentPixelBitmapOffset;
+                                
+                                bitmapPointer[0] = redComponentProc;
+                                bitmapPointer[1] = greenComponentProc;
+                                bitmapPointer[2] = blueComponentProc;
+                            }
+                            
+                            actualTileCol++;
+                        }
+                        
+                        actualTileCol = 0;
+                        actualTileRow++;
+                    }
+                } else if(isMirrored == 0 && isFlipped == 1) {
+                    for (int tile_row = 7; tile_row >= 0; tile_row--) {
+                        for (int tile_column = 0; tile_column < 8; tile_column++) {
+                            tileDataOffset = (((tile_row) << 0x02) + (tile_column >> 0x01));
+                            
+                            if(tile_column % 2 == 0) {
+                                currentPixel = (currentTileData[tileDataOffset] & 0xF0) >> 4;
+                            } else {
+                                currentPixel = currentTileData[tileDataOffset] & 0x0F;
+                            }
+                            currentPixel = currentPixel << 0x1;
+                            
+                            if(currentPixel != 0x00) {                            
+                                redComponent = paletteByteArr[1 + palOffset + currentPixel] & 0x0F;
+                                greenComponent = (paletteByteArr[1 + palOffset + currentPixel] & 0xF0) >> 4;
+                                blueComponent = paletteByteArr[0 + palOffset + currentPixel] & 0x0F;
+                                
+                                if(self.paletteState == kSQUMDShadow) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                } else if(self.paletteState == kSQUMDHighlight) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                    
+                                    redComponent += 0x7;
+                                    greenComponent += 0x7;
+                                    blueComponent += 0x7;
+                                }
+                                
+                                redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
+                                greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
+                                blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
+                                
+                                currentPixelBitmapOffset = ((point.y + actualTileRow) * bytesPerRow) + ((point.x + actualTileCol) * bytesPerPixel);
+                                bitmapPointer = bitmapContextData + currentPixelBitmapOffset;
+                                
+                                bitmapPointer[0] = redComponentProc;
+                                bitmapPointer[1] = greenComponentProc;
+                                bitmapPointer[2] = blueComponentProc;
+                            }
+                            
+                            actualTileCol++;
+                        }
+                        
+                        actualTileCol = 0;
+                        actualTileRow++;
+                    }
+                } else if(isMirrored == 1 && isFlipped == 1) {
+                    for (int tile_row = 7; tile_row >= 0; tile_row--) {
+                        for (int tile_column = 7; tile_column >= 0; tile_column--) {
+                            tileDataOffset = (((tile_row) << 0x02) + (tile_column >> 0x01));
+                            
+                            if(tile_column % 2 == 0) {
+                                currentPixel = (currentTileData[tileDataOffset] & 0xF0) >> 4;
+                            } else {
+                                currentPixel = currentTileData[tileDataOffset] & 0x0F;
+                            }
+                            currentPixel = currentPixel << 0x1;
+                            
+                            if(currentPixel != 0x00) {                            
+                                redComponent = paletteByteArr[1 + palOffset + currentPixel] & 0x0F;
+                                greenComponent = (paletteByteArr[1 + palOffset + currentPixel] & 0xF0) >> 4;
+                                blueComponent = paletteByteArr[0 + palOffset + currentPixel] & 0x0F;
+                                
+                                if(self.paletteState == kSQUMDShadow) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                } else if(self.paletteState == kSQUMDHighlight) {
+                                    redComponent = redComponent >> 1;
+                                    greenComponent = greenComponent >> 1;
+                                    blueComponent = blueComponent >> 1;
+                                    
+                                    redComponent += 0x7;
+                                    greenComponent += 0x7;
+                                    blueComponent += 0x7;
+                                }
+                                
+                                redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
+                                greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
+                                blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
+                                
+                                currentPixelBitmapOffset = ((point.y + actualTileRow) * bytesPerRow) + ((point.x + actualTileCol) * bytesPerPixel);
+                                bitmapPointer = bitmapContextData + currentPixelBitmapOffset;
+                                
+                                bitmapPointer[0] = redComponentProc;
+                                bitmapPointer[1] = greenComponentProc;
+                                bitmapPointer[2] = blueComponentProc;
+                            }
+                            
+                            actualTileCol++;
+                        }
+                        
+                        actualTileCol = 0;
+                        actualTileRow++;
+                    }
                 }
+                
+                actualTileRow = 0;                
             }
         }
         
+        NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);
+        
         CGImageRef image = CGBitmapContextCreateImage(bitmapContext);
         NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
-        [nsimage drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
+        [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
         
         cacheValid = YES;
     } else {        
+        NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);        
+        
         CGContextRef bitmapContext = CGBitmapContextCreate(bitmapContextData, width * 8, height * 8, 8, (width * 8) * 4, CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB), kCGImageAlphaNoneSkipLast);
         
         CGImageRef image = CGBitmapContextCreateImage(bitmapContext);
         NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
-        [nsimage drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
+        [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
         
         [nsimage release];
         CGImageRelease(image);
@@ -198,6 +348,13 @@
     NSLog(@"Rendering tile 0x%X (0x%X) as: Mirrored: 0x%X, Flipped: 0x%X, Palette Offset: 0x%X, Priority: 0x%X", tileIndex, theTile, isMirrored, isFlipped, palOffset, priority);
     
     return nil;
+}
+
+#pragma mark Miscellaneous convenience methods
+
+- (void) purgeCache {
+    cacheValid = NO;
+    [self setNeedsDisplay:YES];
 }
 
 @end

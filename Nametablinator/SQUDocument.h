@@ -8,12 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "JUInspectorView.h"
-#import "SQUHexadecimalFormatter.h"
+#import "BWTexturedSlider.h"
 
+#import "SQUHexadecimalFormatter.h"
 #import "SQUMDTileRenderView.h"
 #import "SQUPaletteRenderView.h"
 
-@interface SQUDocument : NSDocument {
+@interface SQUDocument : NSDocument <NSSplitViewDelegate> {
     IBOutlet JUInspectorViewContainer *inspectorContainer;
     IBOutlet JUInspectorView *sizeInspector;
     IBOutlet JUInspectorView *listOfTilesInspector;
@@ -30,8 +31,15 @@
     IBOutlet SQUPaletteRenderView *palette;
     
     IBOutlet NSPopUpButton *palViewer_actionBtn;
+    
+    IBOutlet BWTexturedSlider *zoomSlider;
 }
 
 - (IBAction) palViewer_shadowHighlight:(id) sender;
+
+- (IBAction) inspector_resize_reopenWSize:(id) sender;
+- (IBAction) inspector_resize_resizeMap:(id) sender;
+
+- (IBAction) doZoomSliderAction:(id) sender;
 
 @end

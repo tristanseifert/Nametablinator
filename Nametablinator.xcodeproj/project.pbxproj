@@ -20,9 +20,22 @@
 		DE332CA515FD1C9500096FF5 /* JUInspectorViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CA115FD1C9500096FF5 /* JUInspectorViewHeader.m */; };
 		DE332CC315FD2CD700096FF5 /* SQUHexadecimalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */; };
 		DE3F9653160974EE009005C4 /* NSColor_CheckerboardColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */; };
+		DE420F73160AB3AE00C010F8 /* BWTexturedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE420F70160AB3AE00C010F8 /* BWTexturedSlider.m */; };
+		DE420F74160AB3AE00C010F8 /* BWTexturedSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE420F72160AB3AE00C010F8 /* BWTexturedSliderCell.m */; };
+		DE420F7E160AB49300C010F8 /* TexturedSliderPhotoLarge.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */; };
+		DE420F7F160AB49300C010F8 /* TexturedSliderPhotoSmall.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE420F76160AB49300C010F8 /* TexturedSliderPhotoSmall.tif */; };
+		DE420F80160AB49300C010F8 /* TexturedSliderSpeakerLoud.png in Resources */ = {isa = PBXBuildFile; fileRef = DE420F77160AB49300C010F8 /* TexturedSliderSpeakerLoud.png */; };
+		DE420F81160AB49300C010F8 /* TexturedSliderSpeakerQuiet.png in Resources */ = {isa = PBXBuildFile; fileRef = DE420F78160AB49300C010F8 /* TexturedSliderSpeakerQuiet.png */; };
+		DE420F82160AB49300C010F8 /* TexturedSliderThumbN.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DE420F79160AB49300C010F8 /* TexturedSliderThumbN.tiff */; };
+		DE420F83160AB49300C010F8 /* TexturedSliderThumbP.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DE420F7A160AB49300C010F8 /* TexturedSliderThumbP.tiff */; };
+		DE420F84160AB49300C010F8 /* TexturedSliderTrackFill.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DE420F7B160AB49300C010F8 /* TexturedSliderTrackFill.tiff */; };
+		DE420F85160AB49300C010F8 /* TexturedSliderTrackLeft.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DE420F7C160AB49300C010F8 /* TexturedSliderTrackLeft.tiff */; };
+		DE420F86160AB49300C010F8 /* TexturedSliderTrackRight.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DE420F7D160AB49300C010F8 /* TexturedSliderTrackRight.tiff */; };
 		DE4A6401160900C700825929 /* SQUMDTileRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4A6400160900C700825929 /* SQUMDTileRenderView.m */; };
 		DE9D848316093931003BAD1E /* SQUPaletteRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848216093931003BAD1E /* SQUPaletteRenderView.m */; };
 		DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848516093ED4003BAD1E /* SQUGradientBar.m */; };
+		DEB6DE87160A9EEC00D75298 /* SQUMapResizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */; };
+		DEB6DE8B160A9F1600D75298 /* SQUMapResizeManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,12 +65,28 @@
 		DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUHexadecimalFormatter.m; sourceTree = "<group>"; };
 		DE3F9651160974EE009005C4 /* NSColor_CheckerboardColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColor_CheckerboardColor.h; sourceTree = "<group>"; };
 		DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColor_CheckerboardColor.m; sourceTree = "<group>"; };
+		DE420F6F160AB3AE00C010F8 /* BWTexturedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTexturedSlider.h; sourceTree = "<group>"; };
+		DE420F70160AB3AE00C010F8 /* BWTexturedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTexturedSlider.m; sourceTree = "<group>"; };
+		DE420F71160AB3AE00C010F8 /* BWTexturedSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTexturedSliderCell.h; sourceTree = "<group>"; };
+		DE420F72160AB3AE00C010F8 /* BWTexturedSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTexturedSliderCell.m; sourceTree = "<group>"; };
+		DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TexturedSliderPhotoLarge.tif; sourceTree = "<group>"; };
+		DE420F76160AB49300C010F8 /* TexturedSliderPhotoSmall.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TexturedSliderPhotoSmall.tif; sourceTree = "<group>"; };
+		DE420F77160AB49300C010F8 /* TexturedSliderSpeakerLoud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TexturedSliderSpeakerLoud.png; sourceTree = "<group>"; };
+		DE420F78160AB49300C010F8 /* TexturedSliderSpeakerQuiet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TexturedSliderSpeakerQuiet.png; sourceTree = "<group>"; };
+		DE420F79160AB49300C010F8 /* TexturedSliderThumbN.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TexturedSliderThumbN.tiff; sourceTree = "<group>"; };
+		DE420F7A160AB49300C010F8 /* TexturedSliderThumbP.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TexturedSliderThumbP.tiff; sourceTree = "<group>"; };
+		DE420F7B160AB49300C010F8 /* TexturedSliderTrackFill.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TexturedSliderTrackFill.tiff; sourceTree = "<group>"; };
+		DE420F7C160AB49300C010F8 /* TexturedSliderTrackLeft.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TexturedSliderTrackLeft.tiff; sourceTree = "<group>"; };
+		DE420F7D160AB49300C010F8 /* TexturedSliderTrackRight.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TexturedSliderTrackRight.tiff; sourceTree = "<group>"; };
 		DE4A63FF160900C700825929 /* SQUMDTileRenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMDTileRenderView.h; sourceTree = "<group>"; };
 		DE4A6400160900C700825929 /* SQUMDTileRenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMDTileRenderView.m; sourceTree = "<group>"; };
 		DE9D848116093930003BAD1E /* SQUPaletteRenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUPaletteRenderView.h; sourceTree = "<group>"; };
 		DE9D848216093931003BAD1E /* SQUPaletteRenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUPaletteRenderView.m; sourceTree = "<group>"; };
 		DE9D848416093ED4003BAD1E /* SQUGradientBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUGradientBar.h; sourceTree = "<group>"; };
 		DE9D848516093ED4003BAD1E /* SQUGradientBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUGradientBar.m; sourceTree = "<group>"; };
+		DEB6DE85160A9EEC00D75298 /* SQUMapResizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMapResizeManager.h; sourceTree = "<group>"; };
+		DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMapResizeManager.m; sourceTree = "<group>"; };
+		DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMapResizeManager.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +140,12 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
+				DE420F6D160AB3A500C010F8 /* BWToolkit */,
 				DE3F9651160974EE009005C4 /* NSColor_CheckerboardColor.h */,
 				DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */,
 				DE4A6403160900D500825929 /* MD Data Interpreters/Renderers */,
 				DE332C9915FD1C9500096FF5 /* JUInspectorView */,
+				DEB6DE89160A9EF500D75298 /* Resizing Manager */,
 				DE332CC115FD2CD700096FF5 /* SQUHexadecimalFormatter.h */,
 				DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */,
 				DE332C8B15FD17CA00096FF5 /* SQUDocument.h */,
@@ -129,6 +160,15 @@
 		DE332C8015FD17CA00096FF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */,
+				DE420F76160AB49300C010F8 /* TexturedSliderPhotoSmall.tif */,
+				DE420F77160AB49300C010F8 /* TexturedSliderSpeakerLoud.png */,
+				DE420F78160AB49300C010F8 /* TexturedSliderSpeakerQuiet.png */,
+				DE420F79160AB49300C010F8 /* TexturedSliderThumbN.tiff */,
+				DE420F7A160AB49300C010F8 /* TexturedSliderThumbP.tiff */,
+				DE420F7B160AB49300C010F8 /* TexturedSliderTrackFill.tiff */,
+				DE420F7C160AB49300C010F8 /* TexturedSliderTrackLeft.tiff */,
+				DE420F7D160AB49300C010F8 /* TexturedSliderTrackRight.tiff */,
 				DE332C8115FD17CA00096FF5 /* Nametablinator-Info.plist */,
 				DE332C8215FD17CA00096FF5 /* InfoPlist.strings */,
 				DE332C8515FD17CA00096FF5 /* main.m */,
@@ -154,6 +194,17 @@
 			path = JUInspectorView/Source;
 			sourceTree = SOURCE_ROOT;
 		};
+		DE420F6D160AB3A500C010F8 /* BWToolkit */ = {
+			isa = PBXGroup;
+			children = (
+				DE420F6F160AB3AE00C010F8 /* BWTexturedSlider.h */,
+				DE420F70160AB3AE00C010F8 /* BWTexturedSlider.m */,
+				DE420F71160AB3AE00C010F8 /* BWTexturedSliderCell.h */,
+				DE420F72160AB3AE00C010F8 /* BWTexturedSliderCell.m */,
+			);
+			name = BWToolkit;
+			sourceTree = "<group>";
+		};
 		DE4A6403160900D500825929 /* MD Data Interpreters/Renderers */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +216,16 @@
 				DE9D848516093ED4003BAD1E /* SQUGradientBar.m */,
 			);
 			name = "MD Data Interpreters/Renderers";
+			sourceTree = "<group>";
+		};
+		DEB6DE89160A9EF500D75298 /* Resizing Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DEB6DE85160A9EEC00D75298 /* SQUMapResizeManager.h */,
+				DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */,
+				DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */,
+			);
+			name = "Resizing Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +284,16 @@
 				DE332C8A15FD17CA00096FF5 /* Credits.rtf in Resources */,
 				DE332C9015FD17CA00096FF5 /* SQUDocument.xib in Resources */,
 				DE332C9315FD17CB00096FF5 /* MainMenu.xib in Resources */,
+				DEB6DE8B160A9F1600D75298 /* SQUMapResizeManager.xib in Resources */,
+				DE420F7E160AB49300C010F8 /* TexturedSliderPhotoLarge.tif in Resources */,
+				DE420F7F160AB49300C010F8 /* TexturedSliderPhotoSmall.tif in Resources */,
+				DE420F80160AB49300C010F8 /* TexturedSliderSpeakerLoud.png in Resources */,
+				DE420F81160AB49300C010F8 /* TexturedSliderSpeakerQuiet.png in Resources */,
+				DE420F82160AB49300C010F8 /* TexturedSliderThumbN.tiff in Resources */,
+				DE420F83160AB49300C010F8 /* TexturedSliderThumbP.tiff in Resources */,
+				DE420F84160AB49300C010F8 /* TexturedSliderTrackFill.tiff in Resources */,
+				DE420F85160AB49300C010F8 /* TexturedSliderTrackLeft.tiff in Resources */,
+				DE420F86160AB49300C010F8 /* TexturedSliderTrackRight.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +315,9 @@
 				DE9D848316093931003BAD1E /* SQUPaletteRenderView.m in Sources */,
 				DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */,
 				DE3F9653160974EE009005C4 /* NSColor_CheckerboardColor.m in Sources */,
+				DEB6DE87160A9EEC00D75298 /* SQUMapResizeManager.m in Sources */,
+				DE420F73160AB3AE00C010F8 /* BWTexturedSlider.m in Sources */,
+				DE420F74160AB3AE00C010F8 /* BWTexturedSliderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

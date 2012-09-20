@@ -24,7 +24,9 @@
 			<string>NSButton</string>
 			<string>NSView</string>
 			<string>NSButtonCell</string>
+			<string>NSSliderCell</string>
 			<string>NSTextFieldCell</string>
+			<string>NSSlider</string>
 			<string>NSPopUpButtonCell</string>
 			<string>NSSplitView</string>
 		</array>
@@ -45,12 +47,12 @@
 			<object class="NSWindowTemplate" id="275939982">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{133, 235}, {640, 480}}</string>
+				<string key="NSWindowRect">{{133, 235}, {640, 502}}</string>
 				<int key="NSWTFlags">1886912512</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<string key="NSViewClass">View</string>
-				<string key="NSWindowContentMinSize">{640, 480}</string>
+				<string key="NSWindowContentMinSize">{640, 502}</string>
 				<object class="NSView" key="NSWindowView" id="568628114">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -357,7 +359,7 @@
 													<string key="NSFrame">{{162, 0}, {15, 440}}</string>
 													<reference key="NSSuperview" ref="381711750"/>
 													<reference key="NSWindow"/>
-													<reference key="NSNextKeyView"/>
+													<reference key="NSNextKeyView" ref="63652025"/>
 													<reference key="NSTarget" ref="381711750"/>
 													<string key="NSAction">_doScroller:</string>
 													<double key="NSCurValue">1</double>
@@ -393,7 +395,7 @@
 									<string key="NSClassName">NSView</string>
 								</object>
 							</array>
-							<string key="NSFrameSize">{640, 480}</string>
+							<string key="NSFrame">{{0, 22}, {640, 480}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="132936513"/>
@@ -401,16 +403,41 @@
 							<int key="NSDividerStyle">2</int>
 							<string key="NSAutosaveName">mainSplit</string>
 						</object>
+						<object class="NSSlider" id="63652025">
+							<reference key="NSNextResponder" ref="568628114"/>
+							<int key="NSvFlags">292</int>
+							<string key="NSFrame">{{25, 3}, {125, 15}}</string>
+							<reference key="NSSuperview" ref="568628114"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSSliderCell" key="NSCell" id="572231205">
+								<int key="NSCellFlags">-2079981824</int>
+								<int key="NSCellFlags2">131072</int>
+								<string key="NSContents"/>
+								<reference key="NSControlView" ref="63652025"/>
+								<double key="NSMaxValue">800</double>
+								<double key="NSMinValue">25</double>
+								<double key="NSValue">100</double>
+								<double key="NSAltIncValue">0.0</double>
+								<int key="NSNumberOfTickMarks">0</int>
+								<int key="NSTickMarkPosition">1</int>
+								<bool key="NSAllowsTickMarkValuesOnly">NO</bool>
+								<bool key="NSVertical">NO</bool>
+							</object>
+						</object>
 					</array>
-					<string key="NSFrameSize">{640, 480}</string>
+					<string key="NSFrameSize">{640, 502}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="1057240236"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1400, 1028}}</string>
-				<string key="NSMinSize">{640, 502}</string>
+				<string key="NSMinSize">{640, 524}</string>
 				<string key="NSMaxSize">{1e+13, 1e+13}</string>
 				<string key="NSFrameAutosaveName">documentWindow</string>
+				<bool key="NSAutorecalculatesContentBorderThicknessMinY">NO</bool>
+				<double key="NSContentBorderThicknessMinY">22</double>
 			</object>
 			<object class="NSCustomObject" id="796877042">
 				<string key="NSClassName">NSApplication</string>
@@ -451,7 +478,7 @@
 					</object>
 					<object class="NSBox" id="748098804">
 						<reference key="NSNextResponder" ref="162084841"/>
-						<int key="NSvFlags">12</int>
+						<int key="NSvFlags">10</int>
 						<string key="NSFrame">{{11, 143}, {183, 5}}</string>
 						<reference key="NSSuperview" ref="162084841"/>
 						<reference key="NSNextKeyView" ref="729038383"/>
@@ -514,7 +541,7 @@
 				<string key="NSClassName">JUInspectorView</string>
 			</object>
 			<object class="NSCustomView" id="996663066">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">266</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="136789140">
@@ -522,6 +549,8 @@
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{15, 13}, {176, 28}}</string>
 						<reference key="NSSuperview" ref="996663066"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="442227428">
 							<int key="NSCellFlags">67108864</int>
@@ -542,6 +571,7 @@
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{15, 40}, {176, 28}}</string>
 						<reference key="NSSuperview" ref="996663066"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="136789140"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="578516139">
@@ -563,6 +593,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{89, 72}, {100, 17}}</string>
 						<reference key="NSSuperview" ref="996663066"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="476605223"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="543304718">
@@ -580,6 +611,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{89, 97}, {100, 17}}</string>
 						<reference key="NSSuperview" ref="996663066"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="157655373"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="423324322">
@@ -597,6 +629,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{17, 72}, {70, 17}}</string>
 						<reference key="NSSuperview" ref="996663066"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="693948110"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="537774625">
@@ -614,6 +647,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{17, 97}, {70, 17}}</string>
 						<reference key="NSSuperview" ref="996663066"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="851835844"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="652540899">
@@ -628,6 +662,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{206, 134}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="615726782"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -740,12 +776,52 @@
 					<int key="connectionID">100117</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">inspector_resize_resizeMap:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="136789140"/>
+					</object>
+					<int key="connectionID">100119</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">inspector_resize_reopenWSize:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="476605223"/>
+					</object>
+					<int key="connectionID">100120</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doZoomSliderAction:</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="63652025"/>
+					</object>
+					<int key="connectionID">100125</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">zoomSlider</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="63652025"/>
+					</object>
+					<int key="connectionID">100126</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="275939982"/>
 						<reference key="destination" ref="512844837"/>
 					</object>
 					<int key="connectionID">17</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="1057240236"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">100118</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -806,6 +882,7 @@
 						<reference key="object" ref="568628114"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="1057240236"/>
+							<reference ref="63652025"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -1141,6 +1218,19 @@
 						<reference key="object" ref="209563037"/>
 						<reference key="parent" ref="58415617"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100123</int>
+						<reference key="object" ref="63652025"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="572231205"/>
+						</array>
+						<reference key="parent" ref="568628114"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100124</int>
+						<reference key="object" ref="572231205"/>
+						<reference key="parent" ref="63652025"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1254,6 +1344,10 @@
 				<string key="100113.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100114.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100115.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100123.CustomClassName">BWTexturedSlider</string>
+				<string key="100123.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100124.CustomClassName">BWTexturedSliderCell</string>
+				<string key="100124.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBWindowTemplateEditedContentRect">{{133, 170}, {507, 413}}</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1262,10 +1356,26 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100117</int>
+			<int key="maxID">100126</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">BWTexturedSlider</string>
+					<string key="superclassName">NSSlider</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BWTexturedSlider.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">BWTexturedSliderCell</string>
+					<string key="superclassName">NSSliderCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BWTexturedSliderCell.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">JUInspectorBaseView</string>
 					<string key="superclassName">NSView</string>
@@ -1345,17 +1455,30 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SQUDocument</string>
 					<string key="superclassName">NSDocument</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">palViewer_shadowHighlight:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">palViewer_shadowHighlight:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="doZoomSliderAction:">id</string>
+						<string key="inspector_resize_reopenWSize:">id</string>
+						<string key="inspector_resize_resizeMap:">id</string>
+						<string key="palViewer_shadowHighlight:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="doZoomSliderAction:">
+							<string key="name">doZoomSliderAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="inspector_resize_reopenWSize:">
+							<string key="name">inspector_resize_reopenWSize:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="inspector_resize_resizeMap:">
+							<string key="name">inspector_resize_resizeMap:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="palViewer_shadowHighlight:">
 							<string key="name">palViewer_shadowHighlight:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="info_height">NSTextField</string>
 						<string key="info_palOffset">NSPopUpButton</string>
@@ -1370,6 +1493,7 @@
 						<string key="palViewer_actionBtn">NSPopUpButton</string>
 						<string key="palette">SQUPaletteRenderView</string>
 						<string key="sizeInspector">JUInspectorView</string>
+						<string key="zoomSlider">BWTexturedSlider</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="info_height">
@@ -1423,6 +1547,10 @@
 						<object class="IBToOneOutletInfo" key="sizeInspector">
 							<string key="name">sizeInspector</string>
 							<string key="candidateClassName">JUInspectorView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="zoomSlider">
+							<string key="name">zoomSlider</string>
+							<string key="candidateClassName">BWTexturedSlider</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

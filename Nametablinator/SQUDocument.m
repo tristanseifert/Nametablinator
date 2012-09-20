@@ -35,6 +35,8 @@
     [info_tileOffset setFormatter:formatter];
     
     mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
+    
+    [zoomSlider setIndicatorIndex:2];
 }
 
 + (BOOL)autosavesInPlace {
@@ -96,9 +98,9 @@
     mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
     
     [palette setNeedsDisplay:YES];
-    [mainView setNeedsDisplay:YES];
+    [mainView purgeCache];
     
-    [mainView renderImageForTile:0xB020]; // Tile 0x20, priority, palette 0x01, vertical flip
+//    [mainView renderImageForTile:0xB020]; // Tile 0x20, priority, palette 0x01, vertical flip
 }
 
 - (void) awakeFromNib {
@@ -116,13 +118,48 @@
     //mainView.width = 0x20;
 //    mainView.tileOffset = 0x00ED;
     
-    mainView.height = 28;
+    mainView.height = 22;
     mainView.width = 64;
     
     palette.paletteData = [mainView.paletteData copy];
     
     [palette setNeedsDisplay:YES];
     [mainView setNeedsDisplay:YES];
+}
+
+#pragma mark Resize inspector 
+- (IBAction) inspector_resize_reopenWSize:(id) sender {
+    
+}
+
+- (IBAction) inspector_resize_resizeMap:(id) sender {
+    
+}
+
+#pragma mark Split View delegate
+
+- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
+    NSView* rightView = [[splitView subviews] objectAtIndex:1];
+    return ([subview isEqual:rightView]);
+}
+
+- (BOOL)splitView:(NSSplitView *)splitView shouldCollapseSubview:(NSView *)subview forDoubleClickOnDividerAtIndex:(NSInteger)dividerIndex {
+    NSView* rightView = [[splitView subviews] objectAtIndex:1];
+    return ([subview isEqual:rightView]);
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)dividerIndex {
+    return self.windowForSheet.frame.size.width - 180;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)dividerIndex {
+    return self.windowForSheet.frame.size.width - 250;    
+}
+
+#pragma mark Zoom support
+
+- (IBAction) doZoomSliderAction:(id) sender {
+    NSLog(@"Current zoom factor: %i", zoomSlider.intValue);
 }
 
 @end
