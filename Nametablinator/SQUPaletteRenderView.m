@@ -20,6 +20,8 @@
         paletteData = [[NSData dataWithBytes:defaultPalette length:0x20] retain];
         paletteState = kSQUMDNormal;
         paletteLine = 0;
+        
+        [self setUpTooltips];
     }
     
     return self;
@@ -31,11 +33,17 @@
     paletteData = [[NSData dataWithBytes:defaultPalette length:0x20] retain];
     paletteState = kSQUMDNormal;
     paletteLine = 0;
+    
+    [self setUpTooltips];
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [self removeAllToolTips];
-    
+- (void) setUpTooltips {
+    for(int i = 0; i < 16; i++) {
+        [self addToolTipRect:NSMakeRect(i*16+1, 1, 15, 16) owner:self userData:[[NSNumber numberWithInt:i] retain]];
+    }
+}
+
+- (void)drawRect:(NSRect)dirtyRect {    
     [[NSColor colorWithDeviceWhite:0.25 alpha:1.0] set];
     [NSBezierPath setDefaultLineWidth:1.0];
     
@@ -67,8 +75,6 @@
         [[self colourForPaletteData:bytes withState:self.paletteState] set];
         
         NSRectFill(NSRectFromCGRect(CGRectMake(i*16+1, 1, 15, 16)));
-        
-        [self addToolTipRect:NSMakeRect(i*16+1, 1, 15, 16) owner:self userData:[[NSNumber numberWithInt:i] retain]];
     }
 }
 

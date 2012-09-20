@@ -34,4 +34,6 @@ typedef enum {
 - (NSColor *) colourForPaletteData:(const char*) data withState:(SQUMDPaletteState) state;
 - (NSColor *) transparentColourForCurrentPaletteLine;
 
+- (void) setUpTooltips;
+
 @end
