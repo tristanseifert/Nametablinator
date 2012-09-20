@@ -52,11 +52,11 @@
             return;
         }
         
-        const char *map;
-        const char *tileDatas;
-        const char *currentTileData;
-        map = (const char *)[mappingData bytes];
-        tileDatas = (const char *)[tileData bytes];
+        const unsigned char *map;
+        const unsigned char *tileDatas;
+        const unsigned char *currentTileData;
+        map = (const unsigned char *)[mappingData bytes];
+        tileDatas = (const unsigned char *)[tileData bytes];
         
         unsigned int currentTile;
         unsigned int tileIndex;
@@ -92,14 +92,15 @@
             
             unsigned char emptyPalette[0x20] = {0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E};
             
-            paletteByteArr = (const char *)emptyPalette;
+            paletteByteArr = (const unsigned char *)emptyPalette;
         }
         
         for (int row = 0; row < height; row++) {
             for(int column = 0; column < width; column++) {
                 mapOffset = (row * (width << 1)) + (column << 1);
                 
-                tileIndex = 0;
+                tileIndex = 0x00;
+                currentTile = 0x00000000;
                 currentTile = (map[mapOffset] << 0x08) + map[mapOffset + 1];
                 
                 //NSLog(@"Current tile offset for (0x%X, 0x%X) 0x%X. (Offset 0x%X)", column, row, currentTile, mapOffset);
@@ -107,7 +108,7 @@
                 tileIndex = currentTile & 0x7FF;
                 tileIndex -= tileOffset;
                 
-                palOffset = 0;
+                palOffset = 0x00;
                 //palOffset = ((currentTile & 0x6000) >> 0xD) << 0x05;
                 
                 currentTileData = tileDatas;
@@ -117,6 +118,9 @@
                     unsigned char arses[0x20] = {0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99, 0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99, 0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99, 0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99};
                     
                     currentTileData = arses;
+                    
+                    NSLog(@"Tile 0x%X is out of bounds (starting at 0x%X of 0x%X, map offset 0x%X, tile 0x%X)", tileIndex, (tileIndex << 5), tileData.length, mapOffset, currentTile);
+                    NSLog(@"It's map value is 0x%X %X", map[mapOffset], map[mapOffset+1]);
                 }
                 
                 //unsigned char currentTileData[0x20] = {0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99, 0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99, 0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99, 0x11, 0x11, 0x11, 0x11, 0x99, 0x99, 0x99, 0x99};
