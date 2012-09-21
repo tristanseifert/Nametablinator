@@ -7,18 +7,12 @@
 //
 
 #import "SQUNewProjectController.h"
+#import "NSWindow+NSWindow_SQUCGSPrivateEffects.h"
 
 @implementation SQUNewProjectController
 
 - (void) awakeFromNib {
     [magicalContainer setWantsLayer:YES];
-    
-    transition = [CATransition animation];
-    [transition setType:kCATransitionPush];
-    [transition setSubtype:kCATransitionFromLeft];
-    
-    NSDictionary *ani = [NSDictionary dictionaryWithObject:transition forKey:@"subviews"];
-    [magicalContainer setAnimations:ani];
 }
 
 - (void) openNewProjWindow {
@@ -34,17 +28,17 @@
 - (IBAction) nextView:(id)sender {
     if(currentView < 2) {
         currentView++;
+        [self updateView];
+        [window doCGAnimation:CGSCube andOption:0x01 withDuration:1.0 fullScreen:NO];
     }
-    
-    [self updateView];
 }
 
 - (IBAction) prevView:(id)sender {
     if(currentView != 0) {
         currentView--;
+        [self updateView];
+        [window doCGAnimation:CGSCube andOption:0x02 withDuration:1.0 fullScreen:NO];
     }
-    
-    [self updateView];
 }
 
 - (void) updateView {

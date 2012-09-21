@@ -9,11 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 #import "SQUNewProjectController.h"
+#import "SQUPreferenceController.h"
 
 @interface SQUMainMenuController : NSObject {
     SQUNewProjectController *newProjCtrlr;
+    SQUPreferenceController *prefCtrlr;
 }
 
-- (IBAction) createNewFile:(id)sender;
+- (IBAction) createNewFile:(id) sender;
+- (IBAction) showPrefCtrlr:(id) sender;
 
 @end

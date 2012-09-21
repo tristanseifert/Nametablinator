@@ -11,6 +11,7 @@
 
 #import "SQUPaletteRenderView.h"
 #import "SQUMDTileRenderView.h"
+#import "CGSPrivate.h"
 
 @interface SQUNewProjectController : NSObject {
     IBOutlet NSWindow *window;
