@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE08068C160CA02500013DED /* SQUNewProjectController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE08068B160CA02500013DED /* SQUNewProjectController.xib */; };
+		DE08068F160CA03400013DED /* SQUNewProjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE08068E160CA03400013DED /* SQUNewProjectController.m */; };
+		DE080691160CA13200013DED /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE080690160CA13200013DED /* QuartzCore.framework */; };
 		DE332C7A15FD17CA00096FF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE332C7915FD17CA00096FF5 /* Cocoa.framework */; };
 		DE332C8415FD17CA00096FF5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE332C8215FD17CA00096FF5 /* InfoPlist.strings */; };
 		DE332C8615FD17CA00096FF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332C8515FD17CA00096FF5 /* main.m */; };
@@ -39,19 +42,14 @@
 		DEE750C3160BE01100556DCE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C2160BE01000556DCE /* MAAttachedWindow.m */; };
 		DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */; };
 		DEE750C9160BEDAF00556DCE /* SQUMDColourPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */; };
-		DEE750CD160C1B5400556DCE /* BlueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE750CA160C1B5400556DCE /* BlueDot.png */; };
-		DEE750CE160C1B5400556DCE /* DisabledGrayDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE750CB160C1B5400556DCE /* DisabledGrayDot.png */; };
-		DEE750CF160C1B5400556DCE /* GrayDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE750CC160C1B5400556DCE /* GrayDot.png */; };
-		DEE750DD160C1B6000556DCE /* NSBundle+TEAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750D2160C1B5D00556DCE /* NSBundle+TEAdditions.m */; };
-		DEE750DE160C1B6000556DCE /* SetupAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750D3160C1B5D00556DCE /* SetupAssistant.xib */; };
-		DEE750DF160C1B6000556DCE /* SetupAssistantMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750D4160C1B5D00556DCE /* SetupAssistantMini.xib */; };
-		DEE750E0160C1B6000556DCE /* TEInstallStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750D6160C1B5E00556DCE /* TEInstallStepCell.m */; };
-		DEE750E1160C1B6000556DCE /* TEInstallStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750D8160C1B5F00556DCE /* TEInstallStepView.m */; };
-		DEE750E2160C1B6000556DCE /* TESetupAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750DA160C1B5F00556DCE /* TESetupAssistant.m */; };
-		DEE750E3160C1B6000556DCE /* TESetupAssistantBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750DC160C1B5F00556DCE /* TESetupAssistantBGView.m */; };
+		DEF1737C160C958500F9A413 /* SQUMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF1737B160C958500F9A413 /* SQUMainMenuController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE08068B160CA02500013DED /* SQUNewProjectController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUNewProjectController.xib; sourceTree = "<group>"; };
+		DE08068D160CA03400013DED /* SQUNewProjectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUNewProjectController.h; sourceTree = "<group>"; };
+		DE08068E160CA03400013DED /* SQUNewProjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUNewProjectController.m; sourceTree = "<group>"; };
+		DE080690160CA13200013DED /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE332C7515FD17CA00096FF5 /* Nametablinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nametablinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE332C7915FD17CA00096FF5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DE332C7C15FD17CA00096FF5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -105,22 +103,8 @@
 		DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMDColourPicker.xib; sourceTree = "<group>"; };
 		DEE750C7160BEDAE00556DCE /* SQUMDColourPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMDColourPicker.h; sourceTree = "<group>"; };
 		DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMDColourPicker.m; sourceTree = "<group>"; };
-		DEE750CA160C1B5400556DCE /* BlueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDot.png; path = TESetupAssistant/TESetupAssistant/BlueDot.png; sourceTree = SOURCE_ROOT; };
-		DEE750CB160C1B5400556DCE /* DisabledGrayDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DisabledGrayDot.png; path = TESetupAssistant/TESetupAssistant/DisabledGrayDot.png; sourceTree = SOURCE_ROOT; };
-		DEE750CC160C1B5400556DCE /* GrayDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GrayDot.png; path = TESetupAssistant/TESetupAssistant/GrayDot.png; sourceTree = SOURCE_ROOT; };
-		DEE750D0160C1B5C00556DCE /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = TESetupAssistant/TESetupAssistant/Common.h; sourceTree = SOURCE_ROOT; };
-		DEE750D1160C1B5D00556DCE /* NSBundle+TEAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+TEAdditions.h"; path = "TESetupAssistant/TESetupAssistant/NSBundle+TEAdditions.h"; sourceTree = SOURCE_ROOT; };
-		DEE750D2160C1B5D00556DCE /* NSBundle+TEAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+TEAdditions.m"; path = "TESetupAssistant/TESetupAssistant/NSBundle+TEAdditions.m"; sourceTree = SOURCE_ROOT; };
-		DEE750D3160C1B5D00556DCE /* SetupAssistant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupAssistant.xib; path = TESetupAssistant/TESetupAssistant/SetupAssistant.xib; sourceTree = SOURCE_ROOT; };
-		DEE750D4160C1B5D00556DCE /* SetupAssistantMini.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupAssistantMini.xib; path = TESetupAssistant/TESetupAssistant/SetupAssistantMini.xib; sourceTree = SOURCE_ROOT; };
-		DEE750D5160C1B5E00556DCE /* TEInstallStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEInstallStepCell.h; path = TESetupAssistant/TESetupAssistant/TEInstallStepCell.h; sourceTree = SOURCE_ROOT; };
-		DEE750D6160C1B5E00556DCE /* TEInstallStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEInstallStepCell.m; path = TESetupAssistant/TESetupAssistant/TEInstallStepCell.m; sourceTree = SOURCE_ROOT; };
-		DEE750D7160C1B5E00556DCE /* TEInstallStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEInstallStepView.h; path = TESetupAssistant/TESetupAssistant/TEInstallStepView.h; sourceTree = SOURCE_ROOT; };
-		DEE750D8160C1B5F00556DCE /* TEInstallStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEInstallStepView.m; path = TESetupAssistant/TESetupAssistant/TEInstallStepView.m; sourceTree = SOURCE_ROOT; };
-		DEE750D9160C1B5F00556DCE /* TESetupAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TESetupAssistant.h; path = TESetupAssistant/TESetupAssistant/TESetupAssistant.h; sourceTree = SOURCE_ROOT; };
-		DEE750DA160C1B5F00556DCE /* TESetupAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TESetupAssistant.m; path = TESetupAssistant/TESetupAssistant/TESetupAssistant.m; sourceTree = SOURCE_ROOT; };
-		DEE750DB160C1B5F00556DCE /* TESetupAssistantBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TESetupAssistantBGView.h; path = TESetupAssistant/TESetupAssistant/TESetupAssistantBGView.h; sourceTree = SOURCE_ROOT; };
-		DEE750DC160C1B5F00556DCE /* TESetupAssistantBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TESetupAssistantBGView.m; path = TESetupAssistant/TESetupAssistant/TESetupAssistantBGView.m; sourceTree = SOURCE_ROOT; };
+		DEF1737A160C958500F9A413 /* SQUMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMainMenuController.h; sourceTree = "<group>"; };
+		DEF1737B160C958500F9A413 /* SQUMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMainMenuController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE080691160CA13200013DED /* QuartzCore.framework in Frameworks */,
 				DE332C7A15FD17CA00096FF5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +123,7 @@
 		DE332C6A15FD17CA00096FF5 = {
 			isa = PBXGroup;
 			children = (
+				DE080690160CA13200013DED /* QuartzCore.framework */,
 				DE332C7F15FD17CA00096FF5 /* Nametablinator */,
 				DE332C7815FD17CA00096FF5 /* Frameworks */,
 				DE332C7615FD17CA00096FF5 /* Products */,
@@ -174,7 +160,7 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
-				DEE750E4160C1B7200556DCE /* TESetupAssistant */,
+				DEF17373160C925A00F9A413 /* New Project assistant */,
 				DEE750C1160BE01000556DCE /* MAAttachedWindow.h */,
 				DEE750C2160BE01000556DCE /* MAAttachedWindow.m */,
 				DE420F6D160AB3A500C010F8 /* BWToolkit */,
@@ -189,6 +175,8 @@
 				DE332C8C15FD17CA00096FF5 /* SQUDocument.m */,
 				DE332C8E15FD17CA00096FF5 /* SQUDocument.xib */,
 				DE332C9115FD17CB00096FF5 /* MainMenu.xib */,
+				DEF1737A160C958500F9A413 /* SQUMainMenuController.h */,
+				DEF1737B160C958500F9A413 /* SQUMainMenuController.m */,
 				DE332C8015FD17CA00096FF5 /* Supporting Files */,
 			);
 			path = Nametablinator;
@@ -197,9 +185,6 @@
 		DE332C8015FD17CA00096FF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DEE750CA160C1B5400556DCE /* BlueDot.png */,
-				DEE750CB160C1B5400556DCE /* DisabledGrayDot.png */,
-				DEE750CC160C1B5400556DCE /* GrayDot.png */,
 				DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */,
 				DE420F76160AB49300C010F8 /* TexturedSliderPhotoSmall.tif */,
 				DE420F77160AB49300C010F8 /* TexturedSliderSpeakerLoud.png */,
@@ -271,24 +256,14 @@
 			name = "Resizing Manager";
 			sourceTree = "<group>";
 		};
-		DEE750E4160C1B7200556DCE /* TESetupAssistant */ = {
+		DEF17373160C925A00F9A413 /* New Project assistant */ = {
 			isa = PBXGroup;
 			children = (
-				DEE750D0160C1B5C00556DCE /* Common.h */,
-				DEE750D1160C1B5D00556DCE /* NSBundle+TEAdditions.h */,
-				DEE750D2160C1B5D00556DCE /* NSBundle+TEAdditions.m */,
-				DEE750D3160C1B5D00556DCE /* SetupAssistant.xib */,
-				DEE750D4160C1B5D00556DCE /* SetupAssistantMini.xib */,
-				DEE750D5160C1B5E00556DCE /* TEInstallStepCell.h */,
-				DEE750D6160C1B5E00556DCE /* TEInstallStepCell.m */,
-				DEE750D7160C1B5E00556DCE /* TEInstallStepView.h */,
-				DEE750D8160C1B5F00556DCE /* TEInstallStepView.m */,
-				DEE750D9160C1B5F00556DCE /* TESetupAssistant.h */,
-				DEE750DA160C1B5F00556DCE /* TESetupAssistant.m */,
-				DEE750DB160C1B5F00556DCE /* TESetupAssistantBGView.h */,
-				DEE750DC160C1B5F00556DCE /* TESetupAssistantBGView.m */,
+				DE08068B160CA02500013DED /* SQUNewProjectController.xib */,
+				DE08068D160CA03400013DED /* SQUNewProjectController.h */,
+				DE08068E160CA03400013DED /* SQUNewProjectController.m */,
 			);
-			name = TESetupAssistant;
+			name = "New Project assistant";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,11 +333,7 @@
 				DE420F85160AB49300C010F8 /* TexturedSliderTrackLeft.tiff in Resources */,
 				DE420F86160AB49300C010F8 /* TexturedSliderTrackRight.tiff in Resources */,
 				DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */,
-				DEE750CD160C1B5400556DCE /* BlueDot.png in Resources */,
-				DEE750CE160C1B5400556DCE /* DisabledGrayDot.png in Resources */,
-				DEE750CF160C1B5400556DCE /* GrayDot.png in Resources */,
-				DEE750DE160C1B6000556DCE /* SetupAssistant.xib in Resources */,
-				DEE750DF160C1B6000556DCE /* SetupAssistantMini.xib in Resources */,
+				DE08068C160CA02500013DED /* SQUNewProjectController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,11 +360,8 @@
 				DE420F74160AB3AE00C010F8 /* BWTexturedSliderCell.m in Sources */,
 				DEE750C3160BE01100556DCE /* MAAttachedWindow.m in Sources */,
 				DEE750C9160BEDAF00556DCE /* SQUMDColourPicker.m in Sources */,
-				DEE750DD160C1B6000556DCE /* NSBundle+TEAdditions.m in Sources */,
-				DEE750E0160C1B6000556DCE /* TEInstallStepCell.m in Sources */,
-				DEE750E1160C1B6000556DCE /* TEInstallStepView.m in Sources */,
-				DEE750E2160C1B6000556DCE /* TESetupAssistant.m in Sources */,
-				DEE750E3160C1B6000556DCE /* TESetupAssistantBGView.m in Sources */,
+				DEF1737C160C958500F9A413 /* SQUMainMenuController.m in Sources */,
+				DE08068F160CA03400013DED /* SQUNewProjectController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

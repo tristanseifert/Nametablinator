@@ -30,11 +30,14 @@ typedef enum {
     
     MAAttachedWindow *colourPickerWindow;
     SQUMDColourPicker *mdColourPicker;
+    
+    BOOL newFileMode;
 }
 
 @property (nonatomic, retain) NSData *paletteData;
 @property (nonatomic) SQUMDPaletteState paletteState;
 
+@property (nonatomic) BOOL newFileMode;
 @property (nonatomic) NSUInteger paletteLine;
 
 - (NSColor *) colourForPaletteData:(const unsigned char*) data withState:(SQUMDPaletteState) state;

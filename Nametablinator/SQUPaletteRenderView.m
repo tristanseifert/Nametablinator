@@ -9,7 +9,7 @@
 #import "SQUPaletteRenderView.h"
 
 @implementation SQUPaletteRenderView
-@synthesize paletteData, paletteState, paletteLine;
+@synthesize paletteData, paletteState, paletteLine, newFileMode;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -22,6 +22,8 @@
         paletteLine = 0;
         
         [self setUpTooltips];
+        
+        newFileMode = NO;
     }
     
     return self;
@@ -35,6 +37,8 @@
     paletteLine = 0;
     
     [self setUpTooltips];
+    
+    newFileMode = NO;
 }
 
 - (void) setUpTooltips {
@@ -177,9 +181,15 @@
 #pragma mark Mouse/editing 
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    NSPoint curPoint = [theEvent locationInWindow];
-    curPoint.y = self.window.frame.size.height - 32;
-    curPoint.x = (ceil(curPoint.x / 16) * 16) - 3;
+    NSPoint curPoint;
+    
+    if(newFileMode) {
+        curPoint = [theEvent locationInWindow];
+        curPoint.y = self.window.frame.size.height - 32;
+        curPoint.x = (ceil(curPoint.x / 16) * 16) - 3;
+    } else {
+        curPoint = [theEvent locationInWindow];        
+    }
     
     NSLog(@"%@", NSStringFromPoint(curPoint));
     
