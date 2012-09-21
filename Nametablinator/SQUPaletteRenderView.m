@@ -57,8 +57,8 @@
     [NSBezierPath setDefaultLineWidth:0.0];
     
     for(int i = 0; i < 16; i++) {
-        const char *bytes;
-        bytes = (const char *)[paletteData bytes];
+        const unsigned char *bytes;
+        bytes = (const unsigned char *)[paletteData bytes];
         
         unsigned int palOffset = paletteLine * 0x20;
         
@@ -67,7 +67,7 @@
             
             unsigned char emptyPalette[0x20] = {0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E};
             
-            bytes = (const char *)emptyPalette;
+            bytes = (const unsigned char *)emptyPalette;
         }
         
         bytes += palOffset + i*2;
@@ -80,7 +80,7 @@
 
 #pragma mark Actual conversion routines
 
-- (NSColor *) colourForPaletteData:(const char*) data withState:(SQUMDPaletteState) state {
+- (NSColor *) colourForPaletteData:(const unsigned char*) data withState:(SQUMDPaletteState) state {
     unsigned int redComponent = data[1] & 0x0F;
     unsigned int greenComponent = (data[1] & 0xF0) >> 4;
     unsigned int blueComponent = data[0] & 0x0F;
@@ -111,8 +111,8 @@
 }
 
 - (NSColor *) transparentColourForCurrentPaletteLine {
-    const char *bytes;
-    bytes = (const char *)[paletteData bytes];
+    const unsigned char *bytes;
+    bytes = (const unsigned char *)[paletteData bytes];
     
     unsigned int palOffset = paletteLine * 0x20;
     
@@ -121,7 +121,7 @@
         
         unsigned char emptyPalette[0x20] = {0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E};
         
-        bytes = (const char *)emptyPalette;
+        bytes = (const unsigned char *)emptyPalette;
     }
     
     return [self colourForPaletteData:bytes withState:self.paletteState];
@@ -172,6 +172,38 @@
     toolTip = [toolTip stringByAppendingFormat:@"Highlighted: $0%X%X%0X", redComponent, greenComponent, blueComponent];
     
     return toolTip;
+}
+
+#pragma mark Mouse/editing 
+
+- (void)mouseDown:(NSEvent *)theEvent {
+    NSPoint curPoint = [theEvent locationInWindow];
+    curPoint.y = self.window.frame.size.height - 32;
+    curPoint.x = (ceil(curPoint.x / 16) * 16) - 3;
+    
+    NSLog(@"%@", NSStringFromPoint(curPoint));
+    
+    if(!mdColourPicker) {
+        mdColourPicker = [[[SQUMDColourPicker alloc] init] retain];
+        
+        if(![NSBundle loadNibNamed:@"SQUMDColourPicker" owner:mdColourPicker]) {
+            [[NSAlert alertWithMessageText:NSLocalizedString(@"Can't Load Colour Picker", nil) defaultButton:NSLocalizedString(@"OK", nil) alternateButton:nil otherButton:nil informativeTextWithFormat:NSLocalizedString(@"The NIB file could not be loaded for some reason. Please re-install the application.", nil)] runModal];
+            
+            [mdColourPicker release];
+            mdColourPicker = nil;
+            
+            return;
+        }
+    }
+    
+    if(colourPickerWindow) {
+        [colourPickerWindow orderOut:self];
+        [colourPickerWindow release];
+    }
+    
+    colourPickerWindow = [[[MAAttachedWindow alloc] initWithView:mdColourPicker.pickerView attachedToPoint:curPoint inWindow:self.window onSide:MAPositionAutomatic atDistance:5.0] retain];
+    
+    [colourPickerWindow makeKeyAndOrderFront:self];
 }
 
 @end

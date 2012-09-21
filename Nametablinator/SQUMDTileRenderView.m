@@ -82,8 +82,8 @@
         
         unsigned char *bitmapPointer;
         
-        const char *paletteByteArr;
-        paletteByteArr = (const char *)[paletteData bytes];
+        const unsigned char *paletteByteArr;
+        paletteByteArr = (const unsigned char *)[paletteData bytes];
         
         unsigned int palOffset = 0x0;
         

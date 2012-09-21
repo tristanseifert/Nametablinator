@@ -33,6 +33,8 @@
     IBOutlet NSPopUpButton *palViewer_actionBtn;
     
     IBOutlet BWTexturedSlider *zoomSlider;
+    
+    BOOL liveResizeInProgress;
 }
 
 - (IBAction) palViewer_shadowHighlight:(id) sender;

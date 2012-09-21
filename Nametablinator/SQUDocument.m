@@ -133,6 +133,8 @@
     
     [palette setNeedsDisplay:YES];
     [mainView setNeedsDisplay:YES];
+    
+    [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];
 }
 
 #pragma mark Resize inspector 
@@ -164,13 +166,39 @@
     return self.windowForSheet.frame.size.width - 250;    
 }
 
+- (void)splitViewWillResizeSubviews:(NSNotification *)aNotification {
+    [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];    
+}
+
+- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)subview {
+    NSView* rightView = [[splitView subviews] objectAtIndex:1];
+    
+    if([subview isEqual:rightView]) {
+        return !liveResizeInProgress;
+    }
+    
+    return YES;
+}
+
 #pragma mark Zoom support
 
-- (IBAction) doZoomSliderAction:(id) sender {
-    NSLog(@"Current zoom factor: %f", round(zoomSlider.floatValue));
-    
+- (IBAction) doZoomSliderAction:(id) sender {    
     [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];
     [mainView setZoomFactor:round(zoomSlider.floatValue)];
+}
+
+#pragma mark window delegate
+
+- (void)windowDidResize:(NSNotification *)notification {
+    [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];
+}
+
+- (void)windowWillStartLiveResize:(NSNotification *)notification {
+    liveResizeInProgress = YES;
+}
+
+- (void)windowDidEndLiveResize:(NSNotification *)notification {
+    liveResizeInProgress = NO;
 }
 
 @end

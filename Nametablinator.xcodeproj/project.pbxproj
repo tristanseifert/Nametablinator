@@ -36,6 +36,19 @@
 		DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848516093ED4003BAD1E /* SQUGradientBar.m */; };
 		DEB6DE87160A9EEC00D75298 /* SQUMapResizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */; };
 		DEB6DE8B160A9F1600D75298 /* SQUMapResizeManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */; };
+		DEE750C3160BE01100556DCE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C2160BE01000556DCE /* MAAttachedWindow.m */; };
+		DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */; };
+		DEE750C9160BEDAF00556DCE /* SQUMDColourPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */; };
+		DEE750CD160C1B5400556DCE /* BlueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE750CA160C1B5400556DCE /* BlueDot.png */; };
+		DEE750CE160C1B5400556DCE /* DisabledGrayDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE750CB160C1B5400556DCE /* DisabledGrayDot.png */; };
+		DEE750CF160C1B5400556DCE /* GrayDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE750CC160C1B5400556DCE /* GrayDot.png */; };
+		DEE750DD160C1B6000556DCE /* NSBundle+TEAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750D2160C1B5D00556DCE /* NSBundle+TEAdditions.m */; };
+		DEE750DE160C1B6000556DCE /* SetupAssistant.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750D3160C1B5D00556DCE /* SetupAssistant.xib */; };
+		DEE750DF160C1B6000556DCE /* SetupAssistantMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750D4160C1B5D00556DCE /* SetupAssistantMini.xib */; };
+		DEE750E0160C1B6000556DCE /* TEInstallStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750D6160C1B5E00556DCE /* TEInstallStepCell.m */; };
+		DEE750E1160C1B6000556DCE /* TEInstallStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750D8160C1B5F00556DCE /* TEInstallStepView.m */; };
+		DEE750E2160C1B6000556DCE /* TESetupAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750DA160C1B5F00556DCE /* TESetupAssistant.m */; };
+		DEE750E3160C1B6000556DCE /* TESetupAssistantBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750DC160C1B5F00556DCE /* TESetupAssistantBGView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +100,27 @@
 		DEB6DE85160A9EEC00D75298 /* SQUMapResizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMapResizeManager.h; sourceTree = "<group>"; };
 		DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMapResizeManager.m; sourceTree = "<group>"; };
 		DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMapResizeManager.xib; sourceTree = "<group>"; };
+		DEE750C1160BE01000556DCE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
+		DEE750C2160BE01000556DCE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
+		DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMDColourPicker.xib; sourceTree = "<group>"; };
+		DEE750C7160BEDAE00556DCE /* SQUMDColourPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMDColourPicker.h; sourceTree = "<group>"; };
+		DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMDColourPicker.m; sourceTree = "<group>"; };
+		DEE750CA160C1B5400556DCE /* BlueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDot.png; path = TESetupAssistant/TESetupAssistant/BlueDot.png; sourceTree = SOURCE_ROOT; };
+		DEE750CB160C1B5400556DCE /* DisabledGrayDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DisabledGrayDot.png; path = TESetupAssistant/TESetupAssistant/DisabledGrayDot.png; sourceTree = SOURCE_ROOT; };
+		DEE750CC160C1B5400556DCE /* GrayDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GrayDot.png; path = TESetupAssistant/TESetupAssistant/GrayDot.png; sourceTree = SOURCE_ROOT; };
+		DEE750D0160C1B5C00556DCE /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = TESetupAssistant/TESetupAssistant/Common.h; sourceTree = SOURCE_ROOT; };
+		DEE750D1160C1B5D00556DCE /* NSBundle+TEAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+TEAdditions.h"; path = "TESetupAssistant/TESetupAssistant/NSBundle+TEAdditions.h"; sourceTree = SOURCE_ROOT; };
+		DEE750D2160C1B5D00556DCE /* NSBundle+TEAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+TEAdditions.m"; path = "TESetupAssistant/TESetupAssistant/NSBundle+TEAdditions.m"; sourceTree = SOURCE_ROOT; };
+		DEE750D3160C1B5D00556DCE /* SetupAssistant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupAssistant.xib; path = TESetupAssistant/TESetupAssistant/SetupAssistant.xib; sourceTree = SOURCE_ROOT; };
+		DEE750D4160C1B5D00556DCE /* SetupAssistantMini.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetupAssistantMini.xib; path = TESetupAssistant/TESetupAssistant/SetupAssistantMini.xib; sourceTree = SOURCE_ROOT; };
+		DEE750D5160C1B5E00556DCE /* TEInstallStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEInstallStepCell.h; path = TESetupAssistant/TESetupAssistant/TEInstallStepCell.h; sourceTree = SOURCE_ROOT; };
+		DEE750D6160C1B5E00556DCE /* TEInstallStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEInstallStepCell.m; path = TESetupAssistant/TESetupAssistant/TEInstallStepCell.m; sourceTree = SOURCE_ROOT; };
+		DEE750D7160C1B5E00556DCE /* TEInstallStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEInstallStepView.h; path = TESetupAssistant/TESetupAssistant/TEInstallStepView.h; sourceTree = SOURCE_ROOT; };
+		DEE750D8160C1B5F00556DCE /* TEInstallStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEInstallStepView.m; path = TESetupAssistant/TESetupAssistant/TEInstallStepView.m; sourceTree = SOURCE_ROOT; };
+		DEE750D9160C1B5F00556DCE /* TESetupAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TESetupAssistant.h; path = TESetupAssistant/TESetupAssistant/TESetupAssistant.h; sourceTree = SOURCE_ROOT; };
+		DEE750DA160C1B5F00556DCE /* TESetupAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TESetupAssistant.m; path = TESetupAssistant/TESetupAssistant/TESetupAssistant.m; sourceTree = SOURCE_ROOT; };
+		DEE750DB160C1B5F00556DCE /* TESetupAssistantBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TESetupAssistantBGView.h; path = TESetupAssistant/TESetupAssistant/TESetupAssistantBGView.h; sourceTree = SOURCE_ROOT; };
+		DEE750DC160C1B5F00556DCE /* TESetupAssistantBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TESetupAssistantBGView.m; path = TESetupAssistant/TESetupAssistant/TESetupAssistantBGView.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +174,9 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
+				DEE750E4160C1B7200556DCE /* TESetupAssistant */,
+				DEE750C1160BE01000556DCE /* MAAttachedWindow.h */,
+				DEE750C2160BE01000556DCE /* MAAttachedWindow.m */,
 				DE420F6D160AB3A500C010F8 /* BWToolkit */,
 				DE3F9651160974EE009005C4 /* NSColor_CheckerboardColor.h */,
 				DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */,
@@ -160,6 +197,9 @@
 		DE332C8015FD17CA00096FF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DEE750CA160C1B5400556DCE /* BlueDot.png */,
+				DEE750CB160C1B5400556DCE /* DisabledGrayDot.png */,
+				DEE750CC160C1B5400556DCE /* GrayDot.png */,
 				DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */,
 				DE420F76160AB49300C010F8 /* TexturedSliderPhotoSmall.tif */,
 				DE420F77160AB49300C010F8 /* TexturedSliderSpeakerLoud.png */,
@@ -214,6 +254,9 @@
 				DE9D848216093931003BAD1E /* SQUPaletteRenderView.m */,
 				DE9D848416093ED4003BAD1E /* SQUGradientBar.h */,
 				DE9D848516093ED4003BAD1E /* SQUGradientBar.m */,
+				DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */,
+				DEE750C7160BEDAE00556DCE /* SQUMDColourPicker.h */,
+				DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */,
 			);
 			name = "MD Data Interpreters/Renderers";
 			sourceTree = "<group>";
@@ -226,6 +269,26 @@
 				DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */,
 			);
 			name = "Resizing Manager";
+			sourceTree = "<group>";
+		};
+		DEE750E4160C1B7200556DCE /* TESetupAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				DEE750D0160C1B5C00556DCE /* Common.h */,
+				DEE750D1160C1B5D00556DCE /* NSBundle+TEAdditions.h */,
+				DEE750D2160C1B5D00556DCE /* NSBundle+TEAdditions.m */,
+				DEE750D3160C1B5D00556DCE /* SetupAssistant.xib */,
+				DEE750D4160C1B5D00556DCE /* SetupAssistantMini.xib */,
+				DEE750D5160C1B5E00556DCE /* TEInstallStepCell.h */,
+				DEE750D6160C1B5E00556DCE /* TEInstallStepCell.m */,
+				DEE750D7160C1B5E00556DCE /* TEInstallStepView.h */,
+				DEE750D8160C1B5F00556DCE /* TEInstallStepView.m */,
+				DEE750D9160C1B5F00556DCE /* TESetupAssistant.h */,
+				DEE750DA160C1B5F00556DCE /* TESetupAssistant.m */,
+				DEE750DB160C1B5F00556DCE /* TESetupAssistantBGView.h */,
+				DEE750DC160C1B5F00556DCE /* TESetupAssistantBGView.m */,
+			);
+			name = TESetupAssistant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +357,12 @@
 				DE420F84160AB49300C010F8 /* TexturedSliderTrackFill.tiff in Resources */,
 				DE420F85160AB49300C010F8 /* TexturedSliderTrackLeft.tiff in Resources */,
 				DE420F86160AB49300C010F8 /* TexturedSliderTrackRight.tiff in Resources */,
+				DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */,
+				DEE750CD160C1B5400556DCE /* BlueDot.png in Resources */,
+				DEE750CE160C1B5400556DCE /* DisabledGrayDot.png in Resources */,
+				DEE750CF160C1B5400556DCE /* GrayDot.png in Resources */,
+				DEE750DE160C1B6000556DCE /* SetupAssistant.xib in Resources */,
+				DEE750DF160C1B6000556DCE /* SetupAssistantMini.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +387,13 @@
 				DEB6DE87160A9EEC00D75298 /* SQUMapResizeManager.m in Sources */,
 				DE420F73160AB3AE00C010F8 /* BWTexturedSlider.m in Sources */,
 				DE420F74160AB3AE00C010F8 /* BWTexturedSliderCell.m in Sources */,
+				DEE750C3160BE01100556DCE /* MAAttachedWindow.m in Sources */,
+				DEE750C9160BEDAF00556DCE /* SQUMDColourPicker.m in Sources */,
+				DEE750DD160C1B6000556DCE /* NSBundle+TEAdditions.m in Sources */,
+				DEE750E0160C1B6000556DCE /* TEInstallStepCell.m in Sources */,
+				DEE750E1160C1B6000556DCE /* TEInstallStepView.m in Sources */,
+				DEE750E2160C1B6000556DCE /* TESetupAssistant.m in Sources */,
+				DEE750E3160C1B6000556DCE /* TESetupAssistantBGView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
