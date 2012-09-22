@@ -47,4 +47,6 @@
 - (IBAction) prevView:(id)sender;
 - (IBAction) cancelNew:(id)sender;
 
+- (IBAction) pal_presetChanged:(id) sender;
+
 @end

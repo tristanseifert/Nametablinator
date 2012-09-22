@@ -23,9 +23,40 @@
     
     [pal_defaultChooser removeAllItems];
     
+    [pal_defaultChooser addItemWithTitle:NSLocalizedString(@"Default Palettes", nil)];
+    
     for (NSDictionary *defaultPal in pal_defaults) {
-        [pal_defaultChooser addItemWithTitle:[defaultPal objectForKey:@"name"]];
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        item.title = [defaultPal objectForKey:@"name"];
+        item.tag = [pal_defaults indexOfObject:defaultPal];
+        
+        [[pal_defaultChooser menu] addItem:item];
     }
+    
+    NSMenuItem *item;
+    
+    [[pal_defaultChooser menu] addItem:[NSMenuItem separatorItem]];
+    
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Shadow", nil);
+    item.tag = -2000;
+    [[pal_defaultChooser menu] addItem:item];
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Normal", nil);
+    item.tag = -2001;
+    item.state = NSOnState;
+    [[pal_defaultChooser menu] addItem:item];
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Highlight", nil);
+    item.tag = -2002;
+    [[pal_defaultChooser menu] addItem:item];
+    
+    [[pal_defaultChooser menu] addItem:[NSMenuItem separatorItem]];
+    
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Open File...", nil);
+    item.tag = -1000;
+    [[pal_defaultChooser menu] addItem:item];
 }
 
 - (void) openNewProjWindow {
@@ -34,6 +65,75 @@
     
     [window center];
     [window makeKeyAndOrderFront:self];
+}
+
+#pragma mark Palette view specific
+
+- (IBAction) pal_presetChanged:(id) sender {
+    NSInteger selectedPalette = [pal_defaultChooser selectedItem].tag;
+
+    if(selectedPalette >= 0) {
+        NSDictionary *palInfo = [pal_defaults objectAtIndex:selectedPalette];
+        
+        if([palInfo objectForKey:@"data"]) {
+            pal_palView.paletteData = (NSData *) [palInfo objectForKey:@"data"];
+            [pal_palView setNeedsDisplay:YES];
+        }
+        
+    } else if(selectedPalette <= -2000 && selectedPalette > - 2004) {
+        [[[pal_defaultChooser menu] itemWithTag:-2000] setState:NSOffState];
+        [[[pal_defaultChooser menu] itemWithTag:-2001] setState:NSOffState];
+        [[[pal_defaultChooser menu] itemWithTag:-2002] setState:NSOffState];
+        
+        
+        switch (selectedPalette) {
+            case -2000:
+                pal_palView.paletteState = kSQUMDShadow;
+                [[[pal_defaultChooser menu] itemWithTag:-2000] setState:NSOnState];
+                
+                break;
+                
+            case -2001:
+                pal_palView.paletteState = kSQUMDNormal;
+                [[[pal_defaultChooser menu] itemWithTag:-2001] setState:NSOnState];
+                
+                break;
+                
+            case -2002:
+                pal_palView.paletteState = kSQUMDHighlight;
+                [[[pal_defaultChooser menu] itemWithTag:-2002] setState:NSOnState];
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+        [pal_palView setNeedsDisplay:YES];
+    } else if(selectedPalette < 0 && selectedPalette >= -1000) {
+        NSOpenPanel *panel;
+        
+        switch (selectedPalette) {
+            case -1000:
+                panel = [NSOpenPanel openPanel];
+                
+                [panel beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
+                    if (result == NSFileHandlingPanelOKButton) {
+                        NSURL *urlOfFile = [panel URL];
+                        
+                        pal_palView.paletteData = [NSData dataWithContentsOfURL:urlOfFile];
+                        [pal_palView setNeedsDisplay:YES];
+                    }
+                }];
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    NSLog(@"ChooTse item: %li", selectedPalette);
 }
 
 #pragma mark View Exchanging
@@ -91,13 +191,16 @@
             break;
             
         default:
-            NSLog(@"Invalid view number %i", currentView);
+            NSLog(@"Invalid view number %li", currentView);
             break;
     }
 }
 
 - (IBAction) cancelNew:(id)sender {
+    [window orderOut:sender];
     
+    currentView = 0;
+    [self updateView];
 }
 
 @end
