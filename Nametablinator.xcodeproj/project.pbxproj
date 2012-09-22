@@ -39,6 +39,10 @@
 		DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848516093ED4003BAD1E /* SQUGradientBar.m */; };
 		DEB6DE87160A9EEC00D75298 /* SQUMapResizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */; };
 		DEB6DE8B160A9F1600D75298 /* SQUMapResizeManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */; };
+		DED87D20160D39ED00C86B8B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED87D1F160D39ED00C86B8B /* Sparkle.framework */; };
+		DED87D22160D3A2000C86B8B /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = DED87D21160D3A2000C86B8B /* Sparkle.framework */; };
+		DED87D24160D3AC700C86B8B /* prefs-update-toolbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */; };
+		DED87D26160D462B00C86B8B /* SQUProjectPaletteDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DED87D25160D462B00C86B8B /* SQUProjectPaletteDefaults.plist */; };
 		DEE750C3160BE01100556DCE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C2160BE01000556DCE /* MAAttachedWindow.m */; };
 		DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */; };
 		DEE750C9160BEDAF00556DCE /* SQUMDColourPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */; };
@@ -47,6 +51,20 @@
 		DEF5FA8A160D264000A0E0BE /* SQUPreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF5FA89160D264000A0E0BE /* SQUPreferenceController.m */; };
 		DEF5FA8C160D264B00A0E0BE /* SQUPreferenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF5FA8B160D264B00A0E0BE /* SQUPreferenceController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DED87D08160D381100C86B8B /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DED87D22160D3A2000C86B8B /* Sparkle.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DE08068B160CA02500013DED /* SQUNewProjectController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUNewProjectController.xib; sourceTree = "<group>"; };
@@ -101,6 +119,10 @@
 		DEB6DE85160A9EEC00D75298 /* SQUMapResizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMapResizeManager.h; sourceTree = "<group>"; };
 		DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMapResizeManager.m; sourceTree = "<group>"; };
 		DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMapResizeManager.xib; sourceTree = "<group>"; };
+		DED87D1F160D39ED00C86B8B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		DED87D21160D3A2000C86B8B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prefs-update-toolbar-icon.png"; sourceTree = "<group>"; };
+		DED87D25160D462B00C86B8B /* SQUProjectPaletteDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SQUProjectPaletteDefaults.plist; sourceTree = "<group>"; };
 		DEE750C1160BE01000556DCE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		DEE750C2160BE01000556DCE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMDColourPicker.xib; sourceTree = "<group>"; };
@@ -123,6 +145,7 @@
 			files = (
 				DE080691160CA13200013DED /* QuartzCore.framework in Frameworks */,
 				DE332C7A15FD17CA00096FF5 /* Cocoa.framework in Frameworks */,
+				DED87D20160D39ED00C86B8B /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +155,7 @@
 		DE332C6A15FD17CA00096FF5 = {
 			isa = PBXGroup;
 			children = (
+				DED87D21160D3A2000C86B8B /* Sparkle.framework */,
 				DE080690160CA13200013DED /* QuartzCore.framework */,
 				DE332C7F15FD17CA00096FF5 /* Nametablinator */,
 				DE332C7815FD17CA00096FF5 /* Frameworks */,
@@ -150,6 +174,7 @@
 		DE332C7815FD17CA00096FF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DED87D1F160D39ED00C86B8B /* Sparkle.framework */,
 				DE332C7915FD17CA00096FF5 /* Cocoa.framework */,
 				DE332C7B15FD17CA00096FF5 /* Other Frameworks */,
 			);
@@ -196,6 +221,7 @@
 		DE332C8015FD17CA00096FF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */,
 				DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */,
 				DE420F76160AB49300C010F8 /* TexturedSliderPhotoSmall.tif */,
 				DE420F77160AB49300C010F8 /* TexturedSliderSpeakerLoud.png */,
@@ -273,6 +299,7 @@
 				DE08068B160CA02500013DED /* SQUNewProjectController.xib */,
 				DE08068D160CA03400013DED /* SQUNewProjectController.h */,
 				DE08068E160CA03400013DED /* SQUNewProjectController.m */,
+				DED87D25160D462B00C86B8B /* SQUProjectPaletteDefaults.plist */,
 			);
 			name = "New Project assistant";
 			sourceTree = "<group>";
@@ -307,6 +334,7 @@
 				DE332C7115FD17CA00096FF5 /* Sources */,
 				DE332C7215FD17CA00096FF5 /* Frameworks */,
 				DE332C7315FD17CA00096FF5 /* Resources */,
+				DED87D08160D381100C86B8B /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,6 +394,8 @@
 				DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */,
 				DE08068C160CA02500013DED /* SQUNewProjectController.xib in Resources */,
 				DEF5FA8C160D264B00A0E0BE /* SQUPreferenceController.xib in Resources */,
+				DED87D24160D3AC700C86B8B /* prefs-update-toolbar-icon.png in Resources */,
+				DED87D26160D462B00C86B8B /* SQUProjectPaletteDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +519,10 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
@@ -504,6 +538,10 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";

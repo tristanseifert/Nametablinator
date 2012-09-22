@@ -551,6 +551,14 @@
 					</object>
 					<int key="connectionID">74</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">pal_defaultChooser</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="552474840"/>
+					</object>
+					<int key="connectionID">75</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -882,7 +890,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">74</int>
+			<int key="maxID">75</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -947,6 +955,7 @@
 							<string>map_scrollView</string>
 							<string>map_viewinator</string>
 							<string>nextBtn</string>
+							<string>pal_defaultChooser</string>
 							<string>pal_palView</string>
 							<string>prevBtn</string>
 							<string>view_art</string>
@@ -962,6 +971,7 @@
 							<string>NSScrollView</string>
 							<string>SQUMDTileRenderView</string>
 							<string>NSButton</string>
+							<string>NSPopUpButton</string>
 							<string>SQUPaletteRenderView</string>
 							<string>NSButton</string>
 							<string>NSView</string>
@@ -980,6 +990,7 @@
 							<string>map_scrollView</string>
 							<string>map_viewinator</string>
 							<string>nextBtn</string>
+							<string>pal_defaultChooser</string>
 							<string>pal_palView</string>
 							<string>prevBtn</string>
 							<string>view_art</string>
@@ -1012,6 +1023,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">nextBtn</string>
 								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">pal_defaultChooser</string>
+								<string key="candidateClassName">NSPopUpButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">pal_palView</string>

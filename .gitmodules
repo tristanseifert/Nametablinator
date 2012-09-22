@@ -4,6 +4,3 @@
 [submodule "JUInspectorView"]
 	path = JUInspectorView
 	url = git://github.com/JustSid/JUInspectorView.git
-[submodule "TESetupAssistant"]
-	path = TESetupAssistant
-	url = git://github.com/taoeffect/TESetupAssistant.git

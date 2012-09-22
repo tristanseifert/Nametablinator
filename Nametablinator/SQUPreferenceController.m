@@ -63,7 +63,7 @@
         [item setAutovalidates: NO];
     } else if ([ident isEqualToString:TOOLBAR_UPDATES]) {
         [item setLabel: NSLocalizedString(@"Updates", "Preferences -> toolbar item title")];
-        [item setImage: [NSImage imageNamed:@"prefs-update"]];
+        [item setImage: [NSImage imageNamed:@"prefs-update-toolbar-icon"]];
         [item setTarget: self];
         [item setAction: @selector(setPrefView:)];
         [item setAutovalidates: NO];

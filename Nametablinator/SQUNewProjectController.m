@@ -13,6 +13,19 @@
 
 - (void) awakeFromNib {
     [magicalContainer setWantsLayer:YES];
+
+    NSData *data = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachPal.bin"];
+    NSLog(@"Datas: %@", data);
+    
+    NSDictionary *defaultPalData = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SQUProjectPaletteDefaults" ofType:@"plist"]];
+    
+    pal_defaults = [[defaultPalData objectForKey:@"defaults"] retain];
+    
+    [pal_defaultChooser removeAllItems];
+    
+    for (NSDictionary *defaultPal in pal_defaults) {
+        [pal_defaultChooser addItemWithTitle:[defaultPal objectForKey:@"name"]];
+    }
 }
 
 - (void) openNewProjWindow {

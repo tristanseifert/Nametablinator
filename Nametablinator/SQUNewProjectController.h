@@ -31,9 +31,13 @@
     
     IBOutlet NSBox *magicalContainer;
     
+    IBOutlet NSPopUpButton *pal_defaultChooser;
     IBOutlet SQUPaletteRenderView *pal_palView;
+    
     IBOutlet SQUMDTileRenderView *map_viewinator;
     IBOutlet NSScrollView *map_scrollView;
+    
+    NSArray *pal_defaults;
 }
 
 - (void) openNewProjWindow;
