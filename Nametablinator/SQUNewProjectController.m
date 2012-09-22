@@ -64,6 +64,13 @@
             [[art_actionMenu menu] addItem:item];
         }
     }
+    
+    [[art_actionMenu menu] addItem:[NSMenuItem separatorItem]];
+    
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Open File...", nil);
+    item.tag = -1000;
+    [[art_actionMenu menu] addItem:item];
 }
 
 - (void) openNewProjWindow {
@@ -238,13 +245,12 @@
                 break;
         }
         
+        [art_tileViewer purgeCache];
         [art_tileViewer setNeedsDisplay:YES];
     } else if(selectedPalette >= 0) {
         NSDictionary *theArt = [[art_defaults objectAtIndex:selectedPalette] retain];
         
         NSData *dasData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:[theArt objectForKey:@"filename"] withExtension:@"mdart"]];
-        
-        NSLog(@"Data: %@", dasData);
         
         art_tileViewer.height = ceil([[theArt objectForKey:@"tiles"] intValue] / art_tileViewer.width) + 1;
         art_tileViewer.tileData = dasData;
@@ -255,6 +261,34 @@
         [art_tileViewer setZoomFactor:newZoomLevel];
         [art_tileViewer purgeCache];
         [art_tileViewer setNeedsDisplay:YES];
+    } else if(selectedPalette <= -1000 && selectedPalette > - 1999) {
+        NSOpenPanel *panel;
+        
+        switch (selectedPalette) {
+            case -1000:
+                panel = [NSOpenPanel openPanel];
+                
+                [panel beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
+                    if (result == NSFileHandlingPanelOKButton) {
+                        NSURL *urlOfFile = [panel URL];
+                        
+                        art_tileViewer.tileData = [[NSData dataWithContentsOfURL:urlOfFile] retain];
+                        NSUInteger numTiles = ceil(art_tileViewer.tileData.length / 0x20);
+                        
+                        art_tileViewer.height = ceil(numTiles / art_tileViewer.width) + 1;
+                        
+                        [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * 1, (art_tileViewer.height * 8) * 1)];
+                        [art_tileViewer setZoomFactor:1];
+                        [art_tileViewer purgeCache];
+                        [art_tileViewer setNeedsDisplay:YES];
+                    }
+                }];
+                
+                break;
+                
+            default:
+                break;
+        }        
     }
     
 }
