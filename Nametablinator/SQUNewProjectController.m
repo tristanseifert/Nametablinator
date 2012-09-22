@@ -242,11 +242,14 @@
     } else if(selectedPalette >= 0) {
         NSDictionary *theArt = [[art_defaults objectAtIndex:selectedPalette] retain];
         
-        art_tileViewer.height = ceil([[theArt objectForKey:@"tiles"] intValue] / art_tileViewer.width);
-        art_tileViewer.tileData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:[theArt objectForKey:@"name"] withExtension:@".mdart"]];
+        NSData *dasData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:[theArt objectForKey:@"filename"] withExtension:@"mdart"]];
+        
+        NSLog(@"Data: %@", dasData);
+        
+        art_tileViewer.height = ceil([[theArt objectForKey:@"tiles"] intValue] / art_tileViewer.width) + 1;
+        art_tileViewer.tileData = dasData;
         
         NSUInteger newZoomLevel = [art_zoomSlider integerValue];
-        NSLog(@"New tiles zoom level: %lu", newZoomLevel);
         
         [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * newZoomLevel, (art_tileViewer.height * 8) * newZoomLevel)];
         [art_tileViewer setZoomFactor:newZoomLevel];

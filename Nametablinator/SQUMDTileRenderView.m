@@ -119,7 +119,7 @@
                     
                     currentTileData = arses;
                     
-                    NSLog(@"Tile 0x%X is out of bounds (starting at 0x%X of 0x%X, map offset 0x%X, tile 0x%X)", tileIndex, (tileIndex << 5), tileData.length, mapOffset, currentTile);
+                    NSLog(@"Tile 0x%X is out of bounds (starting at 0x%X of 0x%lX, map offset 0x%X, tile 0x%X)", tileIndex, (tileIndex << 5), tileData.length, mapOffset, currentTile);
                     NSLog(@"It's map value is 0x%X %X", map[mapOffset], map[mapOffset+1]);
                 }
                 
