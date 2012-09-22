@@ -13,24 +13,37 @@
 
 - (void) awakeFromNib {
     [magicalContainer setWantsLayer:YES];
-
-    NSData *data = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachPal.bin"];
-    NSLog(@"Datas: %@", data);
     
     NSDictionary *defaultPalData = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SQUProjectPaletteDefaults" ofType:@"plist"]];
     
     pal_defaults = [[defaultPalData objectForKey:@"defaults"] retain];
-    
+}
+
+- (void) openNewProjWindow {
     [pal_defaultChooser removeAllItems];
     
     [pal_defaultChooser addItemWithTitle:NSLocalizedString(@"Default Palettes", nil)];
     
     for (NSDictionary *defaultPal in pal_defaults) {
-        NSMenuItem *item = [[NSMenuItem alloc] init];
-        item.title = [defaultPal objectForKey:@"name"];
-        item.tag = [pal_defaults indexOfObject:defaultPal];
-        
-        [[pal_defaultChooser menu] addItem:item];
+        if([[defaultPal objectForKey:@"name"] isEqualToString:@"%%sep%%"]) {
+            [[pal_defaultChooser menu] addItem:[NSMenuItem separatorItem]];
+        } else {
+            NSMenuItem *item = [[NSMenuItem alloc] init];
+            item.title = [defaultPal objectForKey:@"name"];
+            item.tag = [pal_defaults indexOfObject:defaultPal];
+            
+            [[pal_defaultChooser menu] addItem:item];
+            
+            if([[NSUserDefaults standardUserDefaults] boolForKey:@"showColourPreview"]) {
+                NSMenuItem *item2 = [[NSMenuItem alloc] init];
+                SQUPaletteRenderView *meeper = [[SQUPaletteRenderView alloc] initWithFrame:NSMakeRect(0, 0, 258, 18)];
+                meeper.paletteData = (NSData *)[defaultPal objectForKey:@"data"];
+                meeper.inMenuMode = YES;
+                [item2 setView:meeper];
+                
+                [[pal_defaultChooser  menu] addItem:item2];
+            }
+        }
     }
     
     NSMenuItem *item;
@@ -57,10 +70,8 @@
     item.title = NSLocalizedString(@"Open File...", nil);
     item.tag = -1000;
     [[pal_defaultChooser menu] addItem:item];
-}
-
-- (void) openNewProjWindow {
-    currentView = 0;
+    
+    currentView = 1;
     [self updateView];
     
     [window center];
@@ -133,7 +144,7 @@
         }
     }
     
-    NSLog(@"ChooTse item: %li", selectedPalette);
+    //NSLog(@"Chose item: %li", selectedPalette);
 }
 
 #pragma mark View Exchanging

@@ -32,11 +32,13 @@ typedef enum {
     SQUMDColourPicker *mdColourPicker;
     
     BOOL newFileMode;
+    BOOL inMenuMode;
 }
 
 @property (nonatomic, retain) NSData *paletteData;
 @property (nonatomic) SQUMDPaletteState paletteState;
 
+@property (nonatomic) BOOL inMenuMode;
 @property (nonatomic) BOOL newFileMode;
 @property (nonatomic) NSUInteger paletteLine;
 

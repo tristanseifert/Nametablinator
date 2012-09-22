@@ -9,7 +9,7 @@
 #import "SQUPaletteRenderView.h"
 
 @implementation SQUPaletteRenderView
-@synthesize paletteData, paletteState, paletteLine, newFileMode;
+@synthesize paletteData, paletteState, paletteLine, newFileMode, inMenuMode;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -24,6 +24,7 @@
         [self setUpTooltips];
         
         newFileMode = NO;
+        inMenuMode = NO;
     }
     
     return self;
@@ -39,6 +40,7 @@
     [self setUpTooltips];
     
     newFileMode = NO;
+    inMenuMode = NO;
 }
 
 - (void) setUpTooltips {
@@ -51,12 +53,14 @@
     [[NSColor colorWithDeviceWhite:0.25 alpha:1.0] set];
     [NSBezierPath setDefaultLineWidth:1.0];
     
-    NSRectFill(NSMakeRect(0, 0, self.frame.size.width, self.frame.size.height));
+    NSUInteger offset = (inMenuMode) ? 1 : 0;
     
-    [NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(0, 0)) toPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, 0))];
-    [NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(0, self.frame.size.height)) toPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, self.frame.size.height))];
-    [NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(0, 1)) toPoint:NSPointFromCGPoint(CGPointMake(0, self.frame.size.height))];
-    [NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, 1)) toPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, self.frame.size.height))];
+    NSRectFill(NSMakeRect(0 + offset, 0, self.frame.size.width, self.frame.size.height));
+    
+    //[NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(0 + offset, 0)) toPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, 0))];
+    //[NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(0 + offset, self.frame.size.height)) toPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, self.frame.size.height))];
+    //[NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(0 + offset, 1)) toPoint:NSPointFromCGPoint(CGPointMake(0 + offset, self.frame.size.height))];
+    //[NSBezierPath strokeLineFromPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, 1)) toPoint:NSPointFromCGPoint(CGPointMake(self.frame.size.width, self.frame.size.height))];
     
     [NSBezierPath setDefaultLineWidth:0.0];
     
@@ -78,7 +82,7 @@
         
         [[self colourForPaletteData:bytes withState:self.paletteState] set];
         
-        NSRectFill(NSRectFromCGRect(CGRectMake(i*16+1, 1, 15, 16)));
+        NSRectFill(NSRectFromCGRect(CGRectMake(i*16+1 + offset, 1, 15, 16)));
     }
 }
 
@@ -134,6 +138,8 @@
 #pragma mark Tooltip stuffsors
 
 - (NSString *)view:(NSView *)view stringForToolTip:(NSToolTipTag)tag point:(NSPoint)point userData:(void *)userData {
+    if(inMenuMode) return nil; // hide tooltips and ignore clicks in menu mode
+    
     NSNumber *dasNumber = (NSNumber *) userData;
     
     const char *data;
@@ -181,6 +187,8 @@
 #pragma mark Mouse/editing 
 
 - (void)mouseDown:(NSEvent *)theEvent {
+    if(inMenuMode) return; // hide tooltips and ignore clicks in menu mode
+    
     NSPoint curPoint;
     
     if(newFileMode) {

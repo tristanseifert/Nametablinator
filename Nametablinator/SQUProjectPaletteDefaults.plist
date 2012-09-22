@@ -8,7 +8,71 @@
 			<key>name</key>
 			<string>Scale of Greys</string>
 			<key>data</key>
-			<data></data>
+			<data>Dg4O7gzMCqoIiAZmBEQCIgAAAiIERAZmCIgKqgzMDu4=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Scale of Reds</string>
+			<key>data</key>
+			<data>Dg4ADgAMAAoACAAGAAQAAgAAAAIABAAGAAgACgAMAA4=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Scale of Violets</string>
+			<key>data</key>
+			<data>Dg4ODgwMCgoICAYGBAQCAgAAAgIEBAYGCAgKCgwMDg4=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Scale of Greens</string>
+			<key>data</key>
+			<data>Dg4A4ADAAKAAgABgAEAAIAAAACAAQABgAIAAoADAAOA=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Scale of Yellows</string>
+			<key>data</key>
+			<data>Dg4A7gDMAKoAiABmAEQAIgAAACIARABmAIgAqgDMAO4=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Scale of Blues</string>
+			<key>data</key>
+			<data>Dg4OAAwACgAIAAYABAACAAAAAgAEAAYACAAKAAwADgA=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Scale of Light Blues</string>
+			<key>data</key>
+			<data>Dg4O4AzACqAIgAZgBEACIAAAAiAEQAZgCIAKoAzADuA=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>%%sep%%</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Sonic 1 Sonic Palette</string>
+			<key>data</key>
+			<data>AAAAAAgiCkQMZg6IDu4KqgiIBEQIrgRqAA4ACAAEAO4=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Sonic 2 Sonic Palette</string>
+			<key>data</key>
+			<data>AAAAAAoiDEIORA5mDu4KqgiIBEQIrgRqAA4ACACuAI4=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Sonic 3 Sonic Palette</string>
+			<key>data</key>
+			<data>AAAO7g5mDEIIIgCAAA4ACACuAI4IrgRqDswMqghmAiI=</data>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Sonic 3 Knuckles Palette</string>
+			<key>data</key>
+			<data>AAAO7gZOAgwCBgCAAA4ACACuAI4IrgRqDswMqghmAiI=</data>
 		</dict>
 	</array>
 </dict>
