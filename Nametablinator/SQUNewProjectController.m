@@ -132,7 +132,7 @@
     [window makeKeyAndOrderFront:self];
     
     // re-set art panel
-    art_tileViewer.width = 18;
+    art_tileViewer.width = 22;
     art_tileViewer.height = ceil(0x20 / art_tileViewer.width);
     
     art_zoomSlider.intValue = 1;
@@ -253,6 +253,7 @@
         NSData *dasData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:[theArt objectForKey:@"filename"] withExtension:@"mdart"]];
         
         art_tileViewer.height = ceil([[theArt objectForKey:@"tiles"] intValue] / art_tileViewer.width) + 1;
+        art_origHeight = art_tileViewer.height;
         art_tileViewer.tileData = dasData;
         
         NSUInteger newZoomLevel = [art_zoomSlider integerValue];
@@ -276,6 +277,7 @@
                         NSUInteger numTiles = ceil(art_tileViewer.tileData.length / 0x20);
                         
                         art_tileViewer.height = ceil(numTiles / art_tileViewer.width) + 1;
+                        art_origHeight = art_tileViewer.height;
                         
                         [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * 1, (art_tileViewer.height * 8) * 1)];
                         [art_tileViewer setZoomFactor:1];
@@ -293,12 +295,25 @@
     
 }
 
-- (IBAction) art_zoomSliderChanged:(id) sender {
-    NSUInteger newZoomLevel = [art_zoomSlider integerValue];
-    NSLog(@"New tiles zoom level: %lu", newZoomLevel);
+- (IBAction) art_zoomSliderChanged:(id) sender {    
+    NSUInteger newZoomLevel = [art_zoomChooser selectedSegment];
+    NSLog(@"New tiles zoom level: %u", newZoomLevel);
     
-    [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * newZoomLevel, (art_tileViewer.height * 8) * newZoomLevel)];
-    [art_tileViewer setZoomFactor:newZoomLevel];
+    //144px viewable area
+    //float zoomFactorMap[0x08] = {1.0f, 2.0f, 3.0f, 4.1f, 5.1f, 6.0f, 7.2f, 8.1f};
+    float zoomFactorMap[0x08] = {1.0f, 2.0f, 4.0f};
+    unsigned short tilesPerLineForZoom[0x08] = {24, 12, 8};
+    float zoomFactor = zoomFactorMap[(newZoomLevel)];
+    
+    art_tileViewer.width = tilesPerLineForZoom[(newZoomLevel)];
+    NSUInteger newHeight = art_origHeight * zoomFactor;
+    NSLog(@"New height: %i", newHeight);
+    
+    art_tileViewer.height = newHeight;
+    
+    [art_scrollView.documentView setFrame:NSMakeRect(0, 0, [art_scrollView.documentView frame].size.width, (art_tileViewer.height * 8) * zoomFactor)];
+    [art_tileViewer purgeCache];
+    [art_tileViewer setZoomFactor:zoomFactor];
     [art_tileViewer setNeedsDisplay:YES];
 }
 
@@ -343,6 +358,9 @@
             break;
         case 1:
             art_tileViewer.paletteData = pal_palView.paletteData;
+            art_scrollView.backgroundColor = [pal_palView transparentColourForCurrentPaletteLine];
+            art_zoomChooser.selectedSegment = 0;
+            [self art_zoomSliderChanged:nil];
             
             currentPaneTitle.stringValue = NSLocalizedString(@"Art Tiles", nil);
             
@@ -350,6 +368,9 @@
             [magicalContainer addSubview:view_art];
             break;
         case 2:
+            map_viewinator.tileData = art_tileViewer.tileData;
+            map_viewinator.paletteData = art_tileViewer.paletteData;
+            
             currentPaneTitle.stringValue = NSLocalizedString(@"Nametable", nil);
             
             view_map.frame = NSMakeRect(0, 0, 560, 300);
@@ -359,7 +380,7 @@
             break;
             
         default:
-            NSLog(@"Invalid view number %li", currentView);
+            NSLog(@"Invalid view number %u", currentView);
             break;
     }
 }

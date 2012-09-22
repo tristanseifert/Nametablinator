@@ -35,10 +35,12 @@
     IBOutlet NSPopUpButton *pal_defaultChooser;
     IBOutlet SQUPaletteRenderView *pal_palView;
     
+    IBOutlet NSSegmentedControl *art_zoomChooser;
     IBOutlet NSSlider *art_zoomSlider;
     IBOutlet NSPopUpButton *art_actionMenu;
     IBOutlet NSScrollView *art_scrollView;
     IBOutlet SQUMDTileRenderView *art_tileViewer;
+    NSUInteger art_origHeight;
     
     IBOutlet SQUMDTileRenderView *map_viewinator;
     IBOutlet NSScrollView *map_scrollView;

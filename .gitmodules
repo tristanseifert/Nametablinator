@@ -4,3 +4,6 @@
 [submodule "JUInspectorView"]
 	path = JUInspectorView
 	url = git://github.com/JustSid/JUInspectorView.git
+[submodule "ESScrollView"]
+	path = ESScrollView
+	url = git://github.com/incbee/ESScrollView.git

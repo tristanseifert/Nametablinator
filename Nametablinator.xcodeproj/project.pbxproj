@@ -39,6 +39,8 @@
 		DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848516093ED4003BAD1E /* SQUGradientBar.m */; };
 		DEB6DE87160A9EEC00D75298 /* SQUMapResizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */; };
 		DEB6DE8B160A9F1600D75298 /* SQUMapResizeManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */; };
+		DEC722E6160E626300558DB5 /* ESiTunesScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC722E3160E626300558DB5 /* ESiTunesScroller.m */; };
+		DEC722E7160E626300558DB5 /* ESScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC722E5160E626300558DB5 /* ESScrollView.m */; };
 		DED87D20160D39ED00C86B8B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED87D1F160D39ED00C86B8B /* Sparkle.framework */; };
 		DED87D22160D3A2000C86B8B /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = DED87D21160D3A2000C86B8B /* Sparkle.framework */; };
 		DED87D24160D3AC700C86B8B /* prefs-update-toolbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */; };
@@ -123,6 +125,10 @@
 		DEB6DE85160A9EEC00D75298 /* SQUMapResizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMapResizeManager.h; sourceTree = "<group>"; };
 		DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMapResizeManager.m; sourceTree = "<group>"; };
 		DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMapResizeManager.xib; sourceTree = "<group>"; };
+		DEC722E2160E626300558DB5 /* ESiTunesScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESiTunesScroller.h; path = ESScrollView/ESiTunesScroller.h; sourceTree = SOURCE_ROOT; };
+		DEC722E3160E626300558DB5 /* ESiTunesScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESiTunesScroller.m; path = ESScrollView/ESiTunesScroller.m; sourceTree = SOURCE_ROOT; };
+		DEC722E4160E626300558DB5 /* ESScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESScrollView.h; path = ESScrollView/ESScrollView.h; sourceTree = SOURCE_ROOT; };
+		DEC722E5160E626300558DB5 /* ESScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESScrollView.m; path = ESScrollView/ESScrollView.m; sourceTree = SOURCE_ROOT; };
 		DED87D1F160D39ED00C86B8B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		DED87D21160D3A2000C86B8B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prefs-update-toolbar-icon.png"; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
+				DEC722E9160E626700558DB5 /* Custom UI */,
 				DEE8CDDC160E1EA100C71AA1 /* Miscellaneous */,
 				DEF5FA87160D263200A0E0BE /* Preferences */,
 				DEF5FA79160D1EB400A0E0BE /* CoreGraphics stuff */,
@@ -302,6 +309,17 @@
 				DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */,
 			);
 			name = "Resizing Manager";
+			sourceTree = "<group>";
+		};
+		DEC722E9160E626700558DB5 /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				DEC722E2160E626300558DB5 /* ESiTunesScroller.h */,
+				DEC722E3160E626300558DB5 /* ESiTunesScroller.m */,
+				DEC722E4160E626300558DB5 /* ESScrollView.h */,
+				DEC722E5160E626300558DB5 /* ESScrollView.m */,
+			);
+			name = "Custom UI";
 			sourceTree = "<group>";
 		};
 		DEE8CDDC160E1EA100C71AA1 /* Miscellaneous */ = {
@@ -460,6 +478,8 @@
 				DEF5FA7C160D1ED100A0E0BE /* NSWindow+NSWindow_SQUCGSPrivateEffects.m in Sources */,
 				DEF5FA8A160D264000A0E0BE /* SQUPreferenceController.m in Sources */,
 				DEE8CDDE160E1ECD00C71AA1 /* utils.c in Sources */,
+				DEC722E6160E626300558DB5 /* ESiTunesScroller.m in Sources */,
+				DEC722E7160E626300558DB5 /* ESScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +582,7 @@
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -581,7 +601,7 @@
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -31,6 +31,8 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {    
+	[[NSGraphicsContext currentContext] setShouldAntialias: NO];
+    
     if(!cacheValid) {
         if(prevBitmapContext != NULL) {
             CGContextRelease(prevBitmapContext); // free old bitmap context, as well as it's buffery thing
@@ -42,6 +44,8 @@
         CGContextRef bitmapContext = CGBitmapContextCreate(NULL, width * 8, height * 8, 8, bytesPerRow, CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB), kCGImageAlphaNoneSkipLast);
         bitmapContextData = CGBitmapContextGetData(bitmapContext);
         prevBitmapContext = bitmapContext;
+        
+        CGContextSetAllowsAntialiasing(bitmapContext, false);
         
         if(bitmapContextData == NULL) {
             NSLog(@"Bitmap context is NULL!");
@@ -347,8 +351,10 @@
                                                             CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB),
                                                             CGImageGetAlphaInfo(image));
             
+            
             CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
             CGContextSetShouldAntialias(prevScaledBitmapContext, false);
+            CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
             
             CGContextDrawImage(prevScaledBitmapContext, CGContextGetClipBoundingBox(prevScaledBitmapContext), image);
             CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
@@ -394,6 +400,7 @@
             
                 CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
                 CGContextSetShouldAntialias(prevScaledBitmapContext, false);
+                CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
                 
                 CGContextDrawImage(prevScaledBitmapContext, CGContextGetClipBoundingBox(prevScaledBitmapContext), image);
                 CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
