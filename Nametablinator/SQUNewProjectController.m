@@ -15,8 +15,55 @@
     [magicalContainer setWantsLayer:YES];
     
     NSDictionary *defaultPalData = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SQUProjectPaletteDefaults" ofType:@"plist"]];
-    
     pal_defaults = [[defaultPalData objectForKey:@"defaults"] retain];
+    
+    NSDictionary *defaultArtData = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SQUProjectArtTileDefaults" ofType:@"plist"]];
+    art_defaults = [[defaultArtData objectForKey:@"defaults"] retain];
+    
+    NSLog(@"%@", art_defaults);
+    
+    NSMutableData *artTileViewMap = [[NSMutableData alloc] initWithCapacity:0x800 * 0x2];
+    
+    unsigned short *array = NULL;
+    
+    for(int i = 0; i < 0x800; i++) {
+        unsigned short currentSphere[0x1] = {swap_uint16(i)};
+        
+        array = currentSphere;
+        
+        [artTileViewMap appendBytes:(const char*)array length:0x2];
+    }
+    
+    art_tileViewer.mappingData = [artTileViewMap retain];
+    
+    NSMenuItem *item = nil;
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Shadow", nil);
+    item.tag = -2000;
+    [[art_actionMenu menu] addItem:item];
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Normal", nil);
+    item.tag = -2001;
+    item.state = NSOnState;
+    [[art_actionMenu menu] addItem:item];
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Highlight", nil);
+    item.tag = -2002;
+    [[art_actionMenu menu] addItem:item];
+    
+    [[art_actionMenu menu] addItem:[NSMenuItem separatorItem]];
+    
+    for (NSDictionary *defaultArt in art_defaults) {
+        if([[defaultArt objectForKey:@"name"] isEqualToString:@"%%sep%%"]) {
+            [[art_actionMenu menu] addItem:[NSMenuItem separatorItem]];
+        } else {
+            NSMenuItem *item = [[NSMenuItem alloc] init];
+            item.title = [defaultArt objectForKey:@"name"];
+            item.tag = [art_defaults indexOfObject:defaultArt];
+            
+            [[art_actionMenu menu] addItem:item];
+        }
+    }
 }
 
 - (void) openNewProjWindow {
@@ -37,7 +84,7 @@
             if([[NSUserDefaults standardUserDefaults] boolForKey:@"showColourPreview"]) {
                 NSMenuItem *item2 = [[NSMenuItem alloc] init];
                 SQUPaletteRenderView *meeper = [[SQUPaletteRenderView alloc] initWithFrame:NSMakeRect(0, 0, 258, 18)];
-                meeper.paletteData = (NSData *)[defaultPal objectForKey:@"data"];
+                meeper.paletteData = [(NSData *)[defaultPal objectForKey:@"data"] retain];
                 meeper.inMenuMode = YES;
                 [item2 setView:meeper];
                 
@@ -71,11 +118,21 @@
     item.tag = -1000;
     [[pal_defaultChooser menu] addItem:item];
     
-    currentView = 1;
+    currentView = 0;
     [self updateView];
     
     [window center];
     [window makeKeyAndOrderFront:self];
+    
+    // re-set art panel
+    art_tileViewer.width = 18;
+    art_tileViewer.height = ceil(0x20 / art_tileViewer.width);
+    
+    art_zoomSlider.intValue = 1;
+    NSUInteger newZoomLevel = 0;
+    [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * newZoomLevel, (art_tileViewer.height * 8) * newZoomLevel)];
+    [art_tileViewer setZoomFactor:newZoomLevel];
+    [art_tileViewer setNeedsDisplay:YES];
 }
 
 #pragma mark Palette view specific
@@ -147,6 +204,66 @@
     //NSLog(@"Chose item: %li", selectedPalette);
 }
 
+#pragma mark art view specific
+
+- (IBAction) art_presetChanged:(id) sender {
+    NSInteger selectedPalette = [art_actionMenu selectedItem].tag;
+    
+    if(selectedPalette <= -2000 && selectedPalette > - 2004) {
+        [[[art_actionMenu menu] itemWithTag:-2000] setState:NSOffState];
+        [[[art_actionMenu menu] itemWithTag:-2001] setState:NSOffState];
+        [[[art_actionMenu menu] itemWithTag:-2002] setState:NSOffState];
+        
+        
+        switch (selectedPalette) {
+            case -2000:
+                art_tileViewer.paletteState = kSQUMDShadow;
+                [[[art_actionMenu menu] itemWithTag:-2000] setState:NSOnState];
+                
+                break;
+                
+            case -2001:
+                art_tileViewer.paletteState = kSQUMDNormal;
+                [[[art_actionMenu menu] itemWithTag:-2001] setState:NSOnState];
+                
+                break;
+                
+            case -2002:
+                art_tileViewer.paletteState = kSQUMDHighlight;
+                [[[art_actionMenu menu] itemWithTag:-2002] setState:NSOnState];
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+        [art_tileViewer setNeedsDisplay:YES];
+    } else if(selectedPalette >= 0) {
+        NSDictionary *theArt = [[art_defaults objectAtIndex:selectedPalette] retain];
+        
+        art_tileViewer.height = ceil([[theArt objectForKey:@"tiles"] intValue] / art_tileViewer.width);
+        art_tileViewer.tileData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:[theArt objectForKey:@"name"] withExtension:@".mdart"]];
+        
+        NSUInteger newZoomLevel = [art_zoomSlider integerValue];
+        NSLog(@"New tiles zoom level: %lu", newZoomLevel);
+        
+        [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * newZoomLevel, (art_tileViewer.height * 8) * newZoomLevel)];
+        [art_tileViewer setZoomFactor:newZoomLevel];
+        [art_tileViewer setNeedsDisplay:YES];
+    }
+    
+}
+
+- (IBAction) art_zoomSliderChanged:(id) sender {
+    NSUInteger newZoomLevel = [art_zoomSlider integerValue];
+    NSLog(@"New tiles zoom level: %lu", newZoomLevel);
+    
+    [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * newZoomLevel, (art_tileViewer.height * 8) * newZoomLevel)];
+    [art_tileViewer setZoomFactor:newZoomLevel];
+    [art_tileViewer setNeedsDisplay:YES];
+}
+
 #pragma mark View Exchanging
 
 - (IBAction) nextView:(id)sender {
@@ -187,6 +304,8 @@
             [prevBtn setEnabled:NO];
             break;
         case 1:
+            art_tileViewer.paletteData = pal_palView.paletteData;
+            
             currentPaneTitle.stringValue = NSLocalizedString(@"Art Tiles", nil);
             
             view_art.frame = NSMakeRect(0, 0, 560, 300);

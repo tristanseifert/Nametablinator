@@ -12,6 +12,7 @@
 #import "SQUPaletteRenderView.h"
 #import "SQUMDTileRenderView.h"
 #import "CGSPrivate.h"
+#import "utils.h"
 
 @interface SQUNewProjectController : NSObject {
     IBOutlet NSWindow *window;
@@ -34,10 +35,16 @@
     IBOutlet NSPopUpButton *pal_defaultChooser;
     IBOutlet SQUPaletteRenderView *pal_palView;
     
+    IBOutlet NSSlider *art_zoomSlider;
+    IBOutlet NSPopUpButton *art_actionMenu;
+    IBOutlet NSScrollView *art_scrollView;
+    IBOutlet SQUMDTileRenderView *art_tileViewer;
+    
     IBOutlet SQUMDTileRenderView *map_viewinator;
     IBOutlet NSScrollView *map_scrollView;
     
     NSArray *pal_defaults;
+    NSArray *art_defaults;
 }
 
 - (void) openNewProjWindow;
@@ -48,5 +55,8 @@
 - (IBAction) cancelNew:(id)sender;
 
 - (IBAction) pal_presetChanged:(id) sender;
+
+- (IBAction) art_presetChanged:(id) sender;
+- (IBAction) art_zoomSliderChanged:(id) sender;
 
 @end

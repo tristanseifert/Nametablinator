@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>defaults</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>ASCII Font</string>
+			<key>filename</key>
+			<string>ArtPreset_ASCIIFont</string>
+			<key>tiles</key>
+			<integer>64</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Sonic 1 Font</string>
+			<key>filename</key>
+			<string>ArtPreset_ASCIIFont 2</string>
+			<key>tiles</key>
+			<integer>41</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

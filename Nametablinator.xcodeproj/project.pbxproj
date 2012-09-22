@@ -46,6 +46,10 @@
 		DEE750C3160BE01100556DCE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C2160BE01000556DCE /* MAAttachedWindow.m */; };
 		DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */; };
 		DEE750C9160BEDAF00556DCE /* SQUMDColourPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */; };
+		DEE8CDDE160E1ECD00C71AA1 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = DEE8CDDD160E1ECD00C71AA1 /* utils.c */; };
+		DEE8CDE1160E24B400C71AA1 /* ArtPreset_ASCIIFont.mdart in Resources */ = {isa = PBXBuildFile; fileRef = DEE8CDE0160E24B400C71AA1 /* ArtPreset_ASCIIFont.mdart */; };
+		DEE8CDE4160E259200C71AA1 /* SQUProjectArtTileDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE8CDE3160E259200C71AA1 /* SQUProjectArtTileDefaults.plist */; };
+		DEE8CDE6160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart in Resources */ = {isa = PBXBuildFile; fileRef = DEE8CDE5160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart */; };
 		DEF1737C160C958500F9A413 /* SQUMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF1737B160C958500F9A413 /* SQUMainMenuController.m */; };
 		DEF5FA7C160D1ED100A0E0BE /* NSWindow+NSWindow_SQUCGSPrivateEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF5FA7B160D1ED100A0E0BE /* NSWindow+NSWindow_SQUCGSPrivateEffects.m */; };
 		DEF5FA8A160D264000A0E0BE /* SQUPreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF5FA89160D264000A0E0BE /* SQUPreferenceController.m */; };
@@ -128,6 +132,11 @@
 		DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMDColourPicker.xib; sourceTree = "<group>"; };
 		DEE750C7160BEDAE00556DCE /* SQUMDColourPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMDColourPicker.h; sourceTree = "<group>"; };
 		DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMDColourPicker.m; sourceTree = "<group>"; };
+		DEE8CDDD160E1ECD00C71AA1 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
+		DEE8CDDF160E1ED600C71AA1 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		DEE8CDE0160E24B400C71AA1 /* ArtPreset_ASCIIFont.mdart */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArtPreset_ASCIIFont.mdart; sourceTree = "<group>"; };
+		DEE8CDE3160E259200C71AA1 /* SQUProjectArtTileDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SQUProjectArtTileDefaults.plist; sourceTree = "<group>"; };
+		DEE8CDE5160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArtPreset_ASCIIFont2.mdart; sourceTree = "<group>"; };
 		DEF1737A160C958500F9A413 /* SQUMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMainMenuController.h; sourceTree = "<group>"; };
 		DEF1737B160C958500F9A413 /* SQUMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMainMenuController.m; sourceTree = "<group>"; };
 		DEF5FA77160D1E3C00A0E0BE /* CGSPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGSPrivate.h; sourceTree = "<group>"; };
@@ -194,6 +203,7 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
+				DEE8CDDC160E1EA100C71AA1 /* Miscellaneous */,
 				DEF5FA87160D263200A0E0BE /* Preferences */,
 				DEF5FA79160D1EB400A0E0BE /* CoreGraphics stuff */,
 				DEF17373160C925A00F9A413 /* New Project assistant */,
@@ -221,6 +231,7 @@
 		DE332C8015FD17CA00096FF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DEE8CDE2160E24B800C71AA1 /* Preset Art Files */,
 				DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */,
 				DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */,
 				DE420F76160AB49300C010F8 /* TexturedSliderPhotoSmall.tif */,
@@ -293,6 +304,24 @@
 			name = "Resizing Manager";
 			sourceTree = "<group>";
 		};
+		DEE8CDDC160E1EA100C71AA1 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				DEE8CDDD160E1ECD00C71AA1 /* utils.c */,
+				DEE8CDDF160E1ED600C71AA1 /* utils.h */,
+			);
+			name = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		DEE8CDE2160E24B800C71AA1 /* Preset Art Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEE8CDE5160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart */,
+				DEE8CDE0160E24B400C71AA1 /* ArtPreset_ASCIIFont.mdart */,
+			);
+			name = "Preset Art Files";
+			sourceTree = "<group>";
+		};
 		DEF17373160C925A00F9A413 /* New Project assistant */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +329,7 @@
 				DE08068D160CA03400013DED /* SQUNewProjectController.h */,
 				DE08068E160CA03400013DED /* SQUNewProjectController.m */,
 				DED87D25160D462B00C86B8B /* SQUProjectPaletteDefaults.plist */,
+				DEE8CDE3160E259200C71AA1 /* SQUProjectArtTileDefaults.plist */,
 			);
 			name = "New Project assistant";
 			sourceTree = "<group>";
@@ -396,6 +426,9 @@
 				DEF5FA8C160D264B00A0E0BE /* SQUPreferenceController.xib in Resources */,
 				DED87D24160D3AC700C86B8B /* prefs-update-toolbar-icon.png in Resources */,
 				DED87D26160D462B00C86B8B /* SQUProjectPaletteDefaults.plist in Resources */,
+				DEE8CDE1160E24B400C71AA1 /* ArtPreset_ASCIIFont.mdart in Resources */,
+				DEE8CDE4160E259200C71AA1 /* SQUProjectArtTileDefaults.plist in Resources */,
+				DEE8CDE6160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +459,7 @@
 				DE08068F160CA03400013DED /* SQUNewProjectController.m in Sources */,
 				DEF5FA7C160D1ED100A0E0BE /* NSWindow+NSWindow_SQUCGSPrivateEffects.m in Sources */,
 				DEF5FA8A160D264000A0E0BE /* SQUPreferenceController.m in Sources */,
+				DEE8CDDE160E1ECD00C71AA1 /* utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

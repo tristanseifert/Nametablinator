@@ -55,16 +55,6 @@ static NSImage *trackLeftImage, *trackFillImage, *trackRightImage, *thumbPImage,
 	
 }
 
-- (NSInteger)numberOfTickMarks
-{
-	return 0;
-}
-
-- (void)setNumberOfTickMarks:(NSInteger)numberOfTickMarks
-{
-	
-}
-
 - (void)drawBarInside:(NSRect)cellFrame flipped:(BOOL)flipped
 {	
 	NSRect slideRect = cellFrame;
@@ -74,7 +64,12 @@ static NSImage *trackLeftImage, *trackFillImage, *trackRightImage, *thumbPImage,
 	else
 		slideRect.size.height = trackFillImage.size.height + 1;
 	
-	slideRect.origin.y += roundf((cellFrame.size.height - slideRect.size.height) / 2);
+    if(self.numberOfTickMarks > 0) {
+        slideRect.origin.y += roundf((cellFrame.size.height - slideRect.size.height) / 2) + 2;
+    } else {
+       	slideRect.origin.y += roundf((cellFrame.size.height - slideRect.size.height) / 2);
+    }
+    
 
 	// Inset the bar so the knob goes all the way to both ends
 	slideRect.size.width -= 9;

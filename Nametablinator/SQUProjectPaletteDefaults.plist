@@ -6,6 +6,12 @@
 	<array>
 		<dict>
 			<key>name</key>
+			<string>ASCII Font</string>
+			<key>data</key>
+			<data>Dg4O7giIDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4=</data>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Scale of Greys</string>
 			<key>data</key>
 			<data>Dg4O7gzMCqoIiAZmBEQCIgAAAiIERAZmCIgKqgzMDu4=</data>
