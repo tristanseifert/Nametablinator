@@ -253,6 +253,7 @@
         
         [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * newZoomLevel, (art_tileViewer.height * 8) * newZoomLevel)];
         [art_tileViewer setZoomFactor:newZoomLevel];
+        [art_tileViewer purgeCache];
         [art_tileViewer setNeedsDisplay:YES];
     }
     
