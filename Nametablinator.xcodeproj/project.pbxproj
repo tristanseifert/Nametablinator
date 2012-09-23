@@ -41,6 +41,7 @@
 		DEB6DE8B160A9F1600D75298 /* SQUMapResizeManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */; };
 		DEC722E6160E626300558DB5 /* ESiTunesScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC722E3160E626300558DB5 /* ESiTunesScroller.m */; };
 		DEC722E7160E626300558DB5 /* ESScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC722E5160E626300558DB5 /* ESScrollView.m */; };
+		DEC722EB160E83EA00558DB5 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC722EA160E83EA00558DB5 /* ApplicationServices.framework */; };
 		DED87D20160D39ED00C86B8B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED87D1F160D39ED00C86B8B /* Sparkle.framework */; };
 		DED87D22160D3A2000C86B8B /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = DED87D21160D3A2000C86B8B /* Sparkle.framework */; };
 		DED87D24160D3AC700C86B8B /* prefs-update-toolbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */; };
@@ -129,6 +130,7 @@
 		DEC722E3160E626300558DB5 /* ESiTunesScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESiTunesScroller.m; path = ESScrollView/ESiTunesScroller.m; sourceTree = SOURCE_ROOT; };
 		DEC722E4160E626300558DB5 /* ESScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESScrollView.h; path = ESScrollView/ESScrollView.h; sourceTree = SOURCE_ROOT; };
 		DEC722E5160E626300558DB5 /* ESScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESScrollView.m; path = ESScrollView/ESScrollView.m; sourceTree = SOURCE_ROOT; };
+		DEC722EA160E83EA00558DB5 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		DED87D1F160D39ED00C86B8B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		DED87D21160D3A2000C86B8B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prefs-update-toolbar-icon.png"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEC722EB160E83EA00558DB5 /* ApplicationServices.framework in Frameworks */,
 				DE080691160CA13200013DED /* QuartzCore.framework in Frameworks */,
 				DE332C7A15FD17CA00096FF5 /* Cocoa.framework in Frameworks */,
 				DED87D20160D39ED00C86B8B /* Sparkle.framework in Frameworks */,
@@ -170,6 +173,7 @@
 		DE332C6A15FD17CA00096FF5 = {
 			isa = PBXGroup;
 			children = (
+				DEC722EA160E83EA00558DB5 /* ApplicationServices.framework */,
 				DED87D21160D3A2000C86B8B /* Sparkle.framework */,
 				DE080690160CA13200013DED /* QuartzCore.framework */,
 				DE332C7F15FD17CA00096FF5 /* Nametablinator */,

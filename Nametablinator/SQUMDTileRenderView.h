@@ -49,6 +49,9 @@
 
 @property (nonatomic) SQUMDPaletteState paletteState;
 
+@property (nonatomic, readonly) CGContextRef prevBitmapContext;
+@property (nonatomic, readonly) CGContextRef prevScaledBitmapContext;
+
 
 - (NSImage *) renderImageForTile:(NSUInteger) tileIndex;
 - (void) drawTileData:(const char*) data atPoint:(CGPoint) point;

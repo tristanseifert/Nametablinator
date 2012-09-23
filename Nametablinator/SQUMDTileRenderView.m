@@ -9,7 +9,7 @@
 #import "SQUMDTileRenderView.h"
 
 @implementation SQUMDTileRenderView
-@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState;
+@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState, prevScaledBitmapContext, prevBitmapContext;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];

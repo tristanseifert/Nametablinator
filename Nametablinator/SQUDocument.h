@@ -35,6 +35,13 @@
     IBOutlet BWTexturedSlider *zoomSlider;
     
     BOOL liveResizeInProgress;
+    
+    IBOutlet NSView *export_accessory;
+    IBOutlet NSPopUpButton *export_type;
+    IBOutlet NSSlider *export_quality;
+    IBOutlet NSMatrix *export_size;
+    
+    NSSavePanel *exportPanel;
 }
 
 - (IBAction) palViewer_shadowHighlight:(id) sender;
@@ -43,5 +50,8 @@
 - (IBAction) inspector_resize_resizeMap:(id) sender;
 
 - (IBAction) doZoomSliderAction:(id) sender;
+
+- (IBAction) exportDocument:(id) sender;
+- (IBAction) export_typeChanged:(id) sender;
 
 @end
