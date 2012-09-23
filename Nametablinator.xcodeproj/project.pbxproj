@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE00C8C8160FB96C00945603 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = DE00C8C7160FB96C00945603 /* dsa_pub.pem */; };
 		DE08068C160CA02500013DED /* SQUNewProjectController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE08068B160CA02500013DED /* SQUNewProjectController.xib */; };
 		DE08068F160CA03400013DED /* SQUNewProjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE08068E160CA03400013DED /* SQUNewProjectController.m */; };
 		DE080691160CA13200013DED /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE080690160CA13200013DED /* QuartzCore.framework */; };
@@ -74,6 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DE00C8C7160FB96C00945603 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		DE08068B160CA02500013DED /* SQUNewProjectController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUNewProjectController.xib; sourceTree = "<group>"; };
 		DE08068D160CA03400013DED /* SQUNewProjectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUNewProjectController.h; sourceTree = "<group>"; };
 		DE08068E160CA03400013DED /* SQUNewProjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUNewProjectController.m; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		DE332C8015FD17CA00096FF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DE00C8C7160FB96C00945603 /* dsa_pub.pem */,
 				DEE8CDE2160E24B800C71AA1 /* Preset Art Files */,
 				DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */,
 				DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */,
@@ -451,6 +454,7 @@
 				DEE8CDE1160E24B400C71AA1 /* ArtPreset_ASCIIFont.mdart in Resources */,
 				DEE8CDE4160E259200C71AA1 /* SQUProjectArtTileDefaults.plist in Resources */,
 				DEE8CDE6160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart in Resources */,
+				DE00C8C8160FB96C00945603 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
