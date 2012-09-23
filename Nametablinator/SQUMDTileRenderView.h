@@ -35,6 +35,8 @@
     
     float renderedZoomFactor;
     float zoomFactor;
+    
+    NSUInteger currentlyPlacingTile;
 }
 
 @property (nonatomic, retain, readwrite) NSData *paletteData;
@@ -51,6 +53,8 @@
 
 @property (nonatomic, readonly) CGContextRef prevBitmapContext;
 @property (nonatomic, readonly) CGContextRef prevScaledBitmapContext;
+
+@property (nonatomic) NSUInteger currentlyPlacingTile;
 
 
 - (NSImage *) renderImageForTile:(NSUInteger) tileIndex;

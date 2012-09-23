@@ -9,7 +9,7 @@
 #import "SQUMDTileRenderView.h"
 
 @implementation SQUMDTileRenderView
-@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState, prevScaledBitmapContext, prevBitmapContext;
+@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState, prevScaledBitmapContext, prevBitmapContext, currentlyPlacingTile;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -353,7 +353,6 @@
                                                             CGImageGetAlphaInfo(image));
             
             
-            CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
             CGContextSetShouldAntialias(prevScaledBitmapContext, false);
             CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
             CGContextSetAllowsFontSubpixelPositioning(prevScaledBitmapContext, false);
@@ -401,7 +400,6 @@
                                                          CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB),
                                                          CGImageGetAlphaInfo(image));
             
-                CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
                 CGContextSetShouldAntialias(prevScaledBitmapContext, false);
                 CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
                 CGContextSetAllowsFontSubpixelPositioning(prevScaledBitmapContext, false);
