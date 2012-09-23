@@ -430,12 +430,33 @@
         [saveProjectPanel beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
             if(result == NSFileHandlingPanelOKButton) {
                 NSURL *urlOfFile = [saveProjectPanel URL];
-                NSString *path = [urlOfFile path];
                 
-                NSLog(@"%@", path);
+                NSError *err = nil;
                 
+                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+            
+                [dict setObject:[NSNumber numberWithInteger:map_width.integerValue] forKey:@"width"];
+                [dict setObject:[NSNumber numberWithInteger:map_height.integerValue] forKey:@"height"];
+                [dict setObject:[NSDate new] forKey:@"date"];
                 
-                [[NSWorkspace sharedWorkspace] openURL:urlOfFile];
+                NSMutableData *data = [[NSMutableData alloc]init];
+                NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
+                [archiver encodeObject:[NSNumber numberWithFloat:1.0] forKey:@"format"];
+                [archiver encodeObject:dict forKey: @"infoDict"];
+                [archiver encodeObject:map_viewinator.paletteData forKey:@"palette"];
+                [archiver encodeObject:map_viewinator.tileData forKey:@"art"];
+                [archiver encodeObject:map_viewinator.mappingData forKey:@"map"];
+                [archiver finishEncoding];
+                
+                [data writeToURL:urlOfFile atomically:YES];
+                
+                if(err) {
+                    [[NSAlert alertWithError:err] beginSheetModalForWindow:window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+                } else {
+                    [self cancelNew:sender];
+                    
+                    [[NSWorkspace sharedWorkspace] openURL:urlOfFile];
+                }
             }
         }];
         

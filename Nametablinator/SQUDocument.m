@@ -48,8 +48,6 @@
     
     [mainScroller setRulersVisible:YES];
     
-    NSLog(@"%@", mainScroller.horizontalRulerView);
-    
     NSPoint zero = [mainScroller.documentView convertPoint:[mainView bounds].origin fromView:mainView];
     [mainScroller.horizontalRulerView setOriginOffset:zero.x - [mainScroller.documentView bounds].origin.x];
 }
@@ -59,20 +57,54 @@
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
-    // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    //@throw exception;
-    return nil;
+    NSMutableDictionary *dict2 = [[NSMutableDictionary alloc] init];
+    
+    [dict2 setObject:[NSNumber numberWithInteger:mainView.width] forKey:@"width"];
+    [dict2 setObject:[NSNumber numberWithInteger:mainView.height] forKey:@"height"];
+    [dict2 setObject:[NSDate new] forKey:@"lastModified"];
+    
+    NSMutableData *data = [[NSMutableData alloc]init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
+    [archiver encodeObject:[NSNumber numberWithFloat:1.0] forKey:@"format"];
+    [archiver encodeObject:dict2 forKey: @"infoDict"];
+    [archiver encodeObject:mainView.paletteData forKey:@"palette"];
+    [archiver encodeObject:mainView.tileData forKey:@"art"];
+    [archiver encodeObject:mainView.mappingData forKey:@"map"];
+    [archiver finishEncoding];
+    
+    return data;
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-    // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    //@throw exception;
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+
+    dict = [[unarchiver decodeObjectForKey:@"infoDict"] retain];
+    
+    doc_art = [[unarchiver decodeObjectForKey:@"art"] retain];
+    doc_map = [[unarchiver decodeObjectForKey:@"map"] retain];
+    doc_palDat = [[unarchiver decodeObjectForKey:@"palette"] retain];
+    
+    [unarchiver finishDecoding];
+    [unarchiver release];
+    
+    [self performSelector:@selector(loadMeeper) withObject:nil afterDelay:0.1];
+    
     return YES;
+}
+
+- (void) loadMeeper {    
+    mainView.tileData = [doc_art retain];
+    mainView.mappingData = [doc_map retain];
+    mainView.paletteData = [doc_palDat retain];
+    palette.paletteData = mainView.paletteData;
+    
+    mainView.width = [[dict objectForKey:@"width"] integerValue];
+    mainView.height = [[dict objectForKey:@"height"] integerValue];
+    
+    [mainView purgeCache];
+    [palette setNeedsDisplay:YES];
+    [mainView setNeedsDisplay:YES];
+    [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];    
 }
 
 - (IBAction) palViewer_shadowHighlight:(id) sender {
@@ -116,32 +148,6 @@
     [mainView purgeCache];
     
 //    [mainView renderImageForTile:0xB020]; // Tile 0x20, priority, palette 0x01, vertical flip
-}
-
-- (void) awakeFromNib {
-    mainView.tileData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachArt.bin"];
-    mainView.mappingData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachMap.bin"];
-    mainView.paletteData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/BeachPal.bin"];
-    //mainView.tileData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/Test2_Art.bin"];
-//    mainView.mappingData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/Test2_Map.bin"];
-//    mainView.paletteData = [NSData dataWithContentsOfFile:@"/Users/tristanseifert/Nametablinator/Test Files/Test2_Pal.bin"];
-    
-    //unsigned char defaultPalette[0x20] = SQUDefaultMDPalette;
-    //mainView.paletteData = [[NSData dataWithBytes:defaultPalette length:0x20] retain];
-    
-    //mainView.height = 0x18;
-    //mainView.width = 0x20;
-//    mainView.tileOffset = 0x00ED;
-    
-    mainView.height = 22;
-    mainView.width = 64;
-    
-    palette.paletteData = [mainView.paletteData copy];
-    
-    [palette setNeedsDisplay:YES];
-    [mainView setNeedsDisplay:YES];
-    
-    [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];
 }
 
 #pragma mark Resize inspector 

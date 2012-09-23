@@ -42,6 +42,13 @@
     IBOutlet NSMatrix *export_size;
     
     NSSavePanel *exportPanel;
+    
+    NSURL *originalURL;
+    NSMutableDictionary *dict;
+    
+    NSData *doc_art;
+    NSData *doc_map;
+    NSData *doc_palDat;
 }
 
 - (IBAction) palViewer_shadowHighlight:(id) sender;

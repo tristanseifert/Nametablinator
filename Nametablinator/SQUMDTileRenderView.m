@@ -417,7 +417,7 @@
                 
                 renderedZoomFactor = zoomFactor;
             } else {
-                NSLog(@"Scaled image being drawn from cache.");
+                //NSLog(@"Scaled image being drawn from cache.");
                 
                 CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
                 

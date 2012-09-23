@@ -12,23 +12,26 @@
 				<string>nameproj</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string></string>
+			<string>nameproj.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>Nametablinator Project</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>????</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSIsAppleDefaultForType</key>
+			<true/>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>co.squee.nametablinator.project</string>
 			</array>
-			<key>LSTypeIsPackage</key>
-			<true/>
 			<key>NSDocumentClass</key>
 			<string>SQUDocument</string>
+			<key>NSExportableTypes</key>
+			<array>
+				<string>public.png</string>
+				<string>public.jpg</string>
+				<string>public.gif</string>
+				<string>public.tiff</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -57,5 +60,27 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Nametablinator Project</string>
+			<key>UTTypeIconFile</key>
+			<string>nameproj.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>co.squee.nametablinator.project</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>nameproj</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
