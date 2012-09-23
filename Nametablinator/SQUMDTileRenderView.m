@@ -32,6 +32,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect {    
 	[[NSGraphicsContext currentContext] setShouldAntialias: NO];
+    [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationNone];
     
     if(!cacheValid) {
         if(prevBitmapContext != NULL) {
@@ -355,6 +356,8 @@
             CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
             CGContextSetShouldAntialias(prevScaledBitmapContext, false);
             CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
+            CGContextSetAllowsFontSubpixelPositioning(prevScaledBitmapContext, false);
+            CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationNone);
             
             CGContextDrawImage(prevScaledBitmapContext, CGContextGetClipBoundingBox(prevScaledBitmapContext), image);
             CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
@@ -401,6 +404,8 @@
                 CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationMedium);
                 CGContextSetShouldAntialias(prevScaledBitmapContext, false);
                 CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
+                CGContextSetAllowsFontSubpixelPositioning(prevScaledBitmapContext, false);
+                CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationNone);
                 
                 CGContextDrawImage(prevScaledBitmapContext, CGContextGetClipBoundingBox(prevScaledBitmapContext), image);
                 CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);

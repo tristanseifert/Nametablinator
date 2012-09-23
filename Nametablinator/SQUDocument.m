@@ -34,8 +34,6 @@
     SQUHexadecimalFormatter *formatter = [[SQUHexadecimalFormatter alloc] init];
     [info_tileOffset setFormatter:formatter];
     
-    mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
-    
     [zoomSlider setIndicatorIndex:2];
     
     [NSRulerView registerUnitWithName:@"pixels" abbreviation:@"px" unitToPointsConversionFactor:1.0 stepUpCycle:[NSArray arrayWithObject:[NSNumber numberWithFloat:2.0f]] stepDownCycle:[NSArray arrayWithObject:[NSNumber numberWithFloat:0.1f]]];
@@ -53,7 +51,7 @@
 }
 
 + (BOOL)autosavesInPlace {
-    return NO;
+    return YES;
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
@@ -104,7 +102,11 @@
     [mainView purgeCache];
     [palette setNeedsDisplay:YES];
     [mainView setNeedsDisplay:YES];
-    [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];    
+    [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];
+    mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
+    
+    info_width.stringValue = [NSString stringWithFormat:@"%li tiles", mainView.width];
+    info_height.stringValue = [NSString stringWithFormat:@"%li tiles", mainView.height];
 }
 
 - (IBAction) palViewer_shadowHighlight:(id) sender {
