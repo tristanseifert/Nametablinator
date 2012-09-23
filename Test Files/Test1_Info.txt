@@ -1,2 +1,0 @@
-Columns: 40
-Rows: 28
