@@ -44,6 +44,11 @@
     
     IBOutlet SQUMDTileRenderView *map_viewinator;
     IBOutlet NSScrollView *map_scrollView;
+    IBOutlet NSStepper *map_width;
+    IBOutlet NSStepper *map_height;
+    IBOutlet NSTextField *map_width2;
+    IBOutlet NSTextField *map_height2;
+    IBOutlet NSPopUpButton *map_options;
     
     NSArray *pal_defaults;
     NSArray *art_defaults;
@@ -60,5 +65,9 @@
 
 - (IBAction) art_presetChanged:(id) sender;
 - (IBAction) art_zoomSliderChanged:(id) sender;
+
+
+- (IBAction) map_sizeChanged:(id) sender;
+- (IBAction) map_optionSelected:(id) sender;
 
 @end

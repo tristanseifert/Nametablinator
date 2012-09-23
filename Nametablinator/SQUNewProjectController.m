@@ -71,6 +71,27 @@
     item.title = NSLocalizedString(@"Open File...", nil);
     item.tag = -1000;
     [[art_actionMenu menu] addItem:item];
+    
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Shadow", nil);
+    item.tag = -2000;
+    [[map_options menu] addItem:item];
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Normal", nil);
+    item.tag = -2001;
+    item.state = NSOnState;
+    [[map_options menu] addItem:item];
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Highlight", nil);
+    item.tag = -2002;
+    [[map_options menu] addItem:item];
+    
+    [[map_options menu] addItem:[NSMenuItem separatorItem]];
+    
+    item = [[NSMenuItem alloc] init];
+    item.title = NSLocalizedString(@"Open File...", nil);
+    item.tag = -1000;
+    [[map_options menu] addItem:item];
 }
 
 - (void) openNewProjWindow {
@@ -292,7 +313,6 @@
                 break;
         }        
     }
-    
 }
 
 - (IBAction) art_zoomSliderChanged:(id) sender {    
@@ -317,6 +337,85 @@
     [art_tileViewer setNeedsDisplay:YES];
 }
 
+#pragma mark Map pane
+
+- (IBAction) map_sizeChanged:(id) sender {
+    NSLog(@"Changing to width %i, height %i", map_width.integerValue, map_height.integerValue);
+    
+    map_viewinator.width = map_width.integerValue;
+    map_viewinator.height = map_height.integerValue;
+    
+    map_height2.integerValue = map_height.integerValue;
+    map_width2.integerValue = map_width.integerValue;
+    
+    
+    [map_scrollView.documentView setFrame:NSMakeRect(0, 0, (map_viewinator.width * 8), (map_viewinator.height * 8))];
+    [map_viewinator purgeCache];
+    [map_viewinator setNeedsDisplay:YES];
+}
+
+- (IBAction) map_optionSelected:(id) sender {
+    NSInteger selectedPalette = [map_options selectedItem].tag;
+    
+    if(selectedPalette >= 0) {
+        
+    } else if(selectedPalette <= -2000 && selectedPalette > - 2004) {
+        [[[map_options menu] itemWithTag:-2000] setState:NSOffState];
+        [[[map_options menu] itemWithTag:-2001] setState:NSOffState];
+        [[[map_options menu] itemWithTag:-2002] setState:NSOffState];
+        
+        
+        switch (selectedPalette) {
+            case -2000:
+                map_viewinator.paletteState = kSQUMDShadow;
+                [[[map_options menu] itemWithTag:-2000] setState:NSOnState];
+                
+                break;
+                
+            case -2001:
+                map_viewinator.paletteState = kSQUMDNormal;
+                [[[map_options menu] itemWithTag:-2001] setState:NSOnState];
+                
+                break;
+                
+            case -2002:
+                map_viewinator.paletteState = kSQUMDHighlight;
+                [[[map_options menu] itemWithTag:-2002] setState:NSOnState];
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+        [map_viewinator purgeCache];
+        [map_viewinator setNeedsDisplay:YES];
+    } else if(selectedPalette < 0 && selectedPalette >= -1000) {
+        NSOpenPanel *panel;
+        
+        switch (selectedPalette) {
+            case -1000:
+                panel = [NSOpenPanel openPanel];
+                
+                [panel beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
+                    if (result == NSFileHandlingPanelOKButton) {
+                        NSURL *urlOfFile = [panel URL];
+                        
+                        map_viewinator.mappingData = [NSData dataWithContentsOfURL:urlOfFile];
+                        
+                        [map_viewinator purgeCache];
+                        [map_viewinator setNeedsDisplay:YES];
+                    }
+                }];
+                
+                break;
+                
+            default:
+                break;
+        }
+    }    
+}
+
 #pragma mark View Exchanging
 
 - (IBAction) nextView:(id)sender {
@@ -324,6 +423,22 @@
         currentView++;
         [self updateView];
         [window doCGAnimation:CGSCube andOption:0x01 withDuration:1.0 fullScreen:NO];
+    } else {
+        NSSavePanel *saveProjectPanel = [NSSavePanel savePanel];
+        saveProjectPanel.allowedFileTypes = [NSArray arrayWithObject:@"nameproj"];
+        
+        [saveProjectPanel beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
+            if(result == NSFileHandlingPanelOKButton) {
+                NSURL *urlOfFile = [saveProjectPanel URL];
+                NSString *path = [urlOfFile path];
+                
+                NSLog(@"%@", path);
+                
+                
+                [[NSWorkspace sharedWorkspace] openURL:urlOfFile];
+            }
+        }];
+        
     }
 }
 
@@ -370,6 +485,19 @@
         case 2:
             map_viewinator.tileData = art_tileViewer.tileData;
             map_viewinator.paletteData = art_tileViewer.paletteData;
+            map_viewinator.mappingData = art_tileViewer.mappingData;
+            map_scrollView.backgroundColor = [pal_palView transparentColourForCurrentPaletteLine];
+            
+            map_viewinator.width = 8;
+            map_viewinator.height = 8;
+            map_height.integerValue = 8;
+            map_height2.integerValue = 8;
+            map_width.integerValue = 8;
+            map_width2.integerValue = 8;
+            
+            [map_scrollView.documentView setFrame:NSMakeRect(0, 0, (map_viewinator.width * 8), (map_viewinator.height * 8))];
+            [map_viewinator purgeCache];
+            [map_viewinator setNeedsDisplay:YES];
             
             currentPaneTitle.stringValue = NSLocalizedString(@"Nametable", nil);
             

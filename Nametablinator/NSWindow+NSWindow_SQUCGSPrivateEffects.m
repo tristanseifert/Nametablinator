@@ -25,7 +25,7 @@
     
     CGSTransitionSpec spec;
     CGSTransitionHandle transitionHandle;
-    CGSConnection cid = CGSDefaultConnection;
+    CGSConnection cid = _CGSDefaultConnection();
     
     spec.type = anim;
     spec.option = 0x80 | opts;
@@ -34,6 +34,9 @@
     
     transitionHandle = -1;
     CGSNewTransition(cid, &spec, &transitionHandle);
+    
+    [self display];
+    
     CGSInvokeTransition(cid, transitionHandle, duration);
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow: duration]];
     CGSReleaseTransition(cid, transitionHandle);
