@@ -37,6 +37,11 @@
     float zoomFactor;
     
     NSUInteger currentlyPlacingTile;
+    BOOL editingModeDisable;
+    
+    NSPoint pointToHighlight;
+    
+    NSTrackingRectTag mainTrackingRect;
 }
 
 @property (nonatomic, retain, readwrite) NSData *paletteData;
@@ -55,6 +60,7 @@
 @property (nonatomic, readonly) CGContextRef prevScaledBitmapContext;
 
 @property (nonatomic) NSUInteger currentlyPlacingTile;
+@property (nonatomic) BOOL editingModeDisable;
 
 
 - (NSImage *) renderImageForTile:(NSUInteger) tileIndex;

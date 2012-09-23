@@ -9,7 +9,7 @@
 #import "SQUMDTileRenderView.h"
 
 @implementation SQUMDTileRenderView
-@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState, prevScaledBitmapContext, prevBitmapContext, currentlyPlacingTile;
+@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState, prevScaledBitmapContext, prevBitmapContext, currentlyPlacingTile, editingModeDisable;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -18,6 +18,11 @@
         paletteState = kSQUMDNormal;
         cacheValid = NO;
         zoomFactor = 1.0f;
+        
+        [self.window setAcceptsMouseMovedEvents:YES];
+        
+        mainTrackingRect = [self addTrackingRect:self.frame owner:self userData:nil assumeInside:NO];
+        pointToHighlight.y = -1;
     }
     
     return self;
@@ -28,6 +33,59 @@
     paletteState = kSQUMDNormal;
     cacheValid = NO;
     zoomFactor = 1.0f;
+    
+    [self.window setAcceptsMouseMovedEvents:YES];
+    
+    mainTrackingRect = [self addTrackingRect:self.frame owner:self userData:nil assumeInside:NO];
+    pointToHighlight.y = -1;
+}
+
+- (NSImage *)rotateIndividualImage: (NSImage *)image clockwise: (BOOL)clockwise {
+    NSImage *existingImage = image;
+    NSSize existingSize;
+    
+    /**
+     * Get the size of the original image in its raw bitmap format.
+     * The bestRepresentationForDevice: nil tells the NSImage to just
+     * give us the raw image instead of it's wacky DPI-translated version.
+     */
+    existingSize.width = [[existingImage bestRepresentationForDevice: nil] pixelsWide];
+    existingSize.height = [[existingImage bestRepresentationForDevice: nil] pixelsHigh];
+    
+    NSSize newSize = NSMakeSize(existingSize.height, existingSize.width);
+    NSImage *rotatedImage = [[NSImage alloc] initWithSize:newSize];
+    
+    [rotatedImage lockFocus];
+    
+    /**
+     * Apply the following transformations:
+     *
+     * - bring the rotation point to the centre of the image instead of
+     *   the default lower, left corner (0,0).
+     * - rotate it by 90 degrees, either clock or counter clockwise.
+     * - re-translate the rotated image back down to the lower left corner
+     *   so that it appears in the right place.
+     */
+    NSAffineTransform *rotateTF = [NSAffineTransform transform];
+    NSPoint centerPoint = NSMakePoint(newSize.width / 2, newSize.height / 2);
+    
+    [rotateTF translateXBy: centerPoint.x yBy: centerPoint.y];
+    [rotateTF rotateByDegrees:180];
+    [rotateTF scaleXBy:-1.0f yBy:1.0f];
+    [rotateTF translateXBy: -centerPoint.y yBy: -centerPoint.x];
+    [rotateTF concat];
+    
+    /**
+     * We have to get the image representation to do its drawing directly,
+     * because otherwise the stupid NSImage DPI thingie bites us in the butt
+     * again.
+     */
+    NSRect r1 = NSMakeRect(0, 0, newSize.height, newSize.width);
+    [[existingImage bestRepresentationForDevice: nil] drawInRect: r1];
+    
+    [rotatedImage unlockFocus];
+    
+    return rotatedImage;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {    
@@ -337,7 +395,7 @@
         if(zoomFactor == 1.0f) {
             NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);
         
-            NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
+            NSImage *nsimage = [self rotateIndividualImage:[[NSImage alloc] initWithCGImage:image size:self.frame.size] clockwise:NO];
             [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];
         } else {
             if(prevScaledBitmapContext) {
@@ -357,6 +415,9 @@
             CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
             CGContextSetAllowsFontSubpixelPositioning(prevScaledBitmapContext, false);
             CGContextSetInterpolationQuality(prevScaledBitmapContext, kCGInterpolationNone);
+            
+            CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, ((height * 8) * zoomFactor));
+            CGContextConcatCTM(prevScaledBitmapContext, flipVertical);
             
             CGContextDrawImage(prevScaledBitmapContext, CGContextGetClipBoundingBox(prevScaledBitmapContext), image);
             CGImageRef imgRef = CGBitmapContextCreateImage(prevScaledBitmapContext);
@@ -382,7 +443,7 @@
         if(zoomFactor == 1.0f) {
             NSRect imageRect = NSMakeRect(0, 0, width * 8, height * 8);        
             
-            NSImage *nsimage = [[NSImage alloc] initWithCGImage:image size:self.frame.size];
+            NSImage *nsimage = [self rotateIndividualImage:[[NSImage alloc] initWithCGImage:image size:self.frame.size] clockwise:NO];
             [nsimage drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeCopy fraction:1.0];     
             
             [nsimage release];
@@ -398,7 +459,16 @@
                                                          8,
                                                          4 * ((width * 8) * zoomFactor), // Changed this
                                                          CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB),
-                                                         CGImageGetAlphaInfo(image));
+                                                                CGImageGetAlphaInfo(image));
+                
+                //CGContextTranslateCTM(prevScaledBitmapContext, -90, -90);
+                /*CGContextRotateCTM (prevScaledBitmapContext, M_PI_2);
+                CGContextTranslateCTM(prevScaledBitmapContext, ((width * 8) * zoomFactor) / 2, ((height * 8) * zoomFactor) / 2);
+                CGContextRotateCTM (prevScaledBitmapContext, M_PI_2);
+                CGContextTranslateCTM(prevScaledBitmapContext, ((width * 8) * zoomFactor) / 2, ((height * 8) * zoomFactor) / 2);*/
+                
+                CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, ((height * 8) * zoomFactor));
+                CGContextConcatCTM(prevScaledBitmapContext, flipVertical);
             
                 CGContextSetShouldAntialias(prevScaledBitmapContext, false);
                 CGContextSetAllowsAntialiasing(prevScaledBitmapContext, false);
@@ -437,6 +507,38 @@
         
         CGImageRelease(image);
     }
+    
+    if(pointToHighlight.y != -99999999) {
+        NSUInteger xTile = floor(pointToHighlight.x / (8 * zoomFactor));
+        NSUInteger yTile = floor(pointToHighlight.y / (8 * zoomFactor));
+        NSUInteger hoveredTileOffset = (xTile << 1) + (yTile * width);
+        NSLog(@"Tile offset: 0x%X", hoveredTileOffset);
+        
+        NSRect highlightRect = NSMakeRect(xTile * (8 * zoomFactor), yTile * (8 * zoomFactor), 8 * zoomFactor, 8 * zoomFactor);
+        
+        [[NSColor colorWithCalibratedRed:1.0 green:0.0 blue:0.0 alpha:0.5] set];
+        [NSBezierPath fillRect: highlightRect];
+    }
+}
+
+- (BOOL) isFlipped {
+    return YES;
+}
+
+#pragma mark Mouse shenanigans
+
+- (BOOL) acceptsFirstResponder {
+    return YES;
+}
+
+- (void) mouseMoved:(NSEvent *)theEvent {    
+    pointToHighlight = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    
+    if(pointToHighlight.y < 0 || pointToHighlight.x < 0 || pointToHighlight.y > self.frame.size.height || pointToHighlight.x > self.frame.size.width) {
+        pointToHighlight.y = -99999999;
+    }
+    
+    [self setNeedsDisplay:YES];
 }
 
 #pragma mark rendering
@@ -465,6 +567,9 @@
 - (void) setZoomFactor:(float) factor {
     zoomFactor = factor;
     [self setNeedsDisplay:YES];
+    
+    [self removeTrackingRect:mainTrackingRect];
+    mainTrackingRect = [self addTrackingRect:NSMakeRect(0, 0, self.frame.size.width * factor, self.frame.size.height * factor) owner:self userData:nil assumeInside:NO];
 }
 
 @end
