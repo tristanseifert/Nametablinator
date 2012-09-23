@@ -9,7 +9,7 @@
 #import "SQUPaletteRenderView.h"
 
 @implementation SQUPaletteRenderView
-@synthesize paletteData, paletteState, paletteLine, newFileMode, inMenuMode;
+@synthesize paletteData, paletteState, paletteLine, newFileMode, inMenuMode, delegate;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];

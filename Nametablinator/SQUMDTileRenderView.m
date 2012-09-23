@@ -9,7 +9,7 @@
 #import "SQUMDTileRenderView.h"
 
 @implementation SQUMDTileRenderView
-@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState, prevScaledBitmapContext, prevBitmapContext, currentlyPlacingTile, editingModeDisable;
+@synthesize paletteData, tileData, mappingData, tileOffset, markPriority, height, width, paletteState, prevScaledBitmapContext, prevBitmapContext, currentlyPlacingTile, editingModeDisable, delegate;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -511,8 +511,6 @@
     if(pointToHighlight.y != -99999999) {
         NSUInteger xTile = floor(pointToHighlight.x / (8 * zoomFactor));
         NSUInteger yTile = floor(pointToHighlight.y / (8 * zoomFactor));
-        NSUInteger hoveredTileOffset = (xTile << 1) + (yTile * width);
-        NSLog(@"Tile offset: 0x%X", hoveredTileOffset);
         
         NSRect highlightRect = NSMakeRect(xTile * (8 * zoomFactor), yTile * (8 * zoomFactor), 8 * zoomFactor, 8 * zoomFactor);
         
@@ -538,6 +536,95 @@
         pointToHighlight.y = -99999999;
     }
     
+    [self setNeedsDisplay:YES];
+}
+
+- (void) rightMouseDown:(NSEvent *)theEvent {
+    pointToHighlight = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    
+    if(pointToHighlight.y < 0 || pointToHighlight.x < 0 || pointToHighlight.y > self.frame.size.height || pointToHighlight.x > self.frame.size.width) {
+        pointToHighlight.y = -99999999;
+    }
+    
+    [self setNeedsDisplay:YES];
+    
+    const unsigned char *map;
+    map = (const unsigned char *)[mappingData bytes];
+    
+    NSPoint derPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    
+    NSUInteger xTile = floor(derPoint.x / (8 * zoomFactor));
+    NSUInteger yTile = floor(derPoint.y / (8 * zoomFactor));
+    NSUInteger currentTileOffset = (xTile << 1) + ((yTile * width) << 1);
+    NSUInteger theTile = (map[currentTileOffset] << 0x08) + map[currentTileOffset + 1];
+    unsigned int tileIndex = theTile & 0x7FF;
+    unsigned int isMirrored = (theTile & 0x800) >> 0xB;
+    unsigned int isFlipped = (theTile & 0x1000) >> 0xC;
+    unsigned int palOffset = (theTile & 0x6000) >> 0xD;
+    unsigned int priority = (theTile & 0x8000) >> 0xF;
+    
+    NSMenu *contextMenu = [[NSMenu alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Offset 0x%X", nil), currentTileOffset]];
+    NSMenuItem *item = nil;
+    
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Priority", nil) action:@selector(contextMenuDidSomething:) keyEquivalent:@""];
+    [item setState:(priority == 1) ? NSOnState : NSOffState];
+    item.tag = 1 | (currentTileOffset << 2);
+    [contextMenu addItem:item];
+    [contextMenu addItem:[NSMenuItem separatorItem]];
+    
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Flipped", nil) action:@selector(contextMenuDidSomething:) keyEquivalent:@""];
+    [item setState:(isFlipped == 1) ? NSOnState : NSOffState];
+    item.tag = 2 | (currentTileOffset << 2);
+    [contextMenu addItem:item];
+    
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Mirrored", nil) action:@selector(contextMenuDidSomething:) keyEquivalent:@""];
+    [item setState:(isMirrored == 1) ? NSOnState : NSOffState];
+    item.tag = 3 | (currentTileOffset << 2);
+    [contextMenu addItem:item];
+    
+    [NSMenu popUpContextMenu:contextMenu withEvent:theEvent forView:self];
+}
+
+- (void) contextMenuDidSomething:(id) sender {
+    NSMenuItem *item = (NSMenuItem *) sender;
+    NSUInteger tag = (item.tag & 0x03);
+    
+    NSUInteger currentTileOffset = (item.tag >> 0x02);    
+    
+    unsigned char *map;
+    map = (unsigned char *)[mappingData bytes];
+    NSUInteger theTile = (map[currentTileOffset] << 0x08) + map[currentTileOffset + 1];
+    
+    switch (tag) {
+        // Priority
+        case 1:
+            theTile = theTile ^ 0x8000;
+            break;
+            
+        // Flip
+        case 2:
+            theTile = theTile ^ 0x1000;            
+            break;
+            
+        // Mirror
+        case 3:
+            theTile = theTile ^ 0x800;            
+            break;
+            
+        default:
+            break;
+    }
+    
+    map[currentTileOffset] = (theTile >> 0x08) & 0xFF;
+    map[currentTileOffset + 1] = (theTile) & 0xFF;
+    
+    mappingData = [[NSData dataWithBytes:map length:mappingData.length] retain];
+    
+    if([delegate respondsToSelector:@selector(tileRenderViewMapDidChange:)]) {
+        [delegate tileRenderViewMapDidChange:self];
+    }
+    
+    [self purgeCache];
     [self setNeedsDisplay:YES];
 }
 

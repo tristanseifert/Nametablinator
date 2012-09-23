@@ -70,6 +70,8 @@
     [archiver encodeObject:mainView.mappingData forKey:@"map"];
     [archiver finishEncoding];
     
+    hasChanged = NO;
+    
     return data;
 }
 
@@ -86,6 +88,8 @@
     [unarchiver release];
     
     [self performSelector:@selector(loadMeeper) withObject:nil afterDelay:0.1];
+    
+    hasChanged = NO;
     
     return YES;
 }
@@ -108,6 +112,10 @@
     info_width.stringValue = [NSString stringWithFormat:@"%li tiles", mainView.width];
     info_height.stringValue = [NSString stringWithFormat:@"%li tiles", mainView.height];
 }
+
+/*- (BOOL)isDocumentEdited {
+    return hasChanged;
+}*/
 
 - (IBAction) palViewer_shadowHighlight:(id) sender {
     NSInteger selectedItem = [palViewer_actionBtn selectedItem].tag;
@@ -294,6 +302,22 @@
     
     NSArray *extensions = [NSArray arrayWithObjects:@"png", @"jpg", @"tiff", @"gif", nil];
     [exportPanel setRequiredFileType:[extensions objectAtIndex:[export_type indexOfSelectedItem]]];
+}
+
+#pragma mark Tile view delegate 
+
+- (void) tileRenderViewMapDidChange:(SQUMDTileRenderView *)renderView {
+    hasChanged = YES;
+    [self updateChangeCount:NSChangeDone]; // increment change count, mark document dirty
+}
+
+#pragma mark Palette view delegate
+
+- (void) paletteViewPaletteDidChange:(SQUPaletteRenderView *) view {
+    hasChanged = YES;
+    [self updateChangeCount:NSChangeDone]; // increment change count, mark document dirty
+    
+    mainView.paletteData = palette.paletteData;
 }
 
 @end

@@ -12,6 +12,13 @@
 
 #import "SQUPaletteRenderView.h"
 
+@class SQUMDTileRenderView;
+@protocol SQUMDTileRenderViewDelegate <NSObject>
+
+- (void) tileRenderViewMapDidChange:(SQUMDTileRenderView *)renderView;
+
+@end
+
 @interface SQUMDTileRenderView : NSView {
     NSData *paletteData;
     NSData *tileData;
@@ -42,6 +49,8 @@
     NSPoint pointToHighlight;
     
     NSTrackingRectTag mainTrackingRect;
+    
+    IBOutlet id<SQUMDTileRenderViewDelegate> delegate;
 }
 
 @property (nonatomic, retain, readwrite) NSData *paletteData;
@@ -61,7 +70,7 @@
 
 @property (nonatomic) NSUInteger currentlyPlacingTile;
 @property (nonatomic) BOOL editingModeDisable;
-
+@property (nonatomic) id<SQUMDTileRenderViewDelegate> delegate;
 
 - (NSImage *) renderImageForTile:(NSUInteger) tileIndex;
 - (void) drawTileData:(const char*) data atPoint:(CGPoint) point;

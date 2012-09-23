@@ -21,6 +21,14 @@ typedef enum {
     kSQUMDNormal
 } SQUMDPaletteState;
 
+@class SQUPaletteRenderView;
+
+@protocol SQUPaletteRenderViewDelegate <NSObject>
+
+- (void) paletteViewPaletteDidChange:(SQUPaletteRenderView *) view;
+
+@end
+
 @interface SQUPaletteRenderView : NSView {
     NSData *paletteData;
     
@@ -33,6 +41,8 @@ typedef enum {
     
     BOOL newFileMode;
     BOOL inMenuMode;
+    
+    IBOutlet id<SQUPaletteRenderViewDelegate> delegate;
 }
 
 @property (nonatomic, retain) NSData *paletteData;
@@ -41,6 +51,8 @@ typedef enum {
 @property (nonatomic) BOOL inMenuMode;
 @property (nonatomic) BOOL newFileMode;
 @property (nonatomic) NSUInteger paletteLine;
+
+@property (nonatomic) id<SQUPaletteRenderViewDelegate> delegate;
 
 - (NSColor *) colourForPaletteData:(const unsigned char*) data withState:(SQUMDPaletteState) state;
 - (NSColor *) transparentColourForCurrentPaletteLine;

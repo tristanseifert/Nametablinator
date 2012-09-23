@@ -14,7 +14,7 @@
 #import "SQUMDTileRenderView.h"
 #import "SQUPaletteRenderView.h"
 
-@interface SQUDocument : NSDocument <NSSplitViewDelegate> {
+@interface SQUDocument : NSDocument <NSSplitViewDelegate, SQUMDTileRenderViewDelegate, SQUPaletteRenderViewDelegate> {
     IBOutlet JUInspectorViewContainer *inspectorContainer;
     IBOutlet JUInspectorView *sizeInspector;
     IBOutlet JUInspectorView *listOfTilesInspector;
@@ -49,6 +49,8 @@
     NSData *doc_art;
     NSData *doc_map;
     NSData *doc_palDat;
+    
+    BOOL hasChanged;
 }
 
 - (IBAction) palViewer_shadowHighlight:(id) sender;
