@@ -289,8 +289,6 @@
             CFRelease(dest);
         }
     }];
-    
-    NSLog(@"SquelchSack™");
 }
 
 - (IBAction) export_typeChanged:(id) sender {
@@ -318,6 +316,8 @@
     [self updateChangeCount:NSChangeDone]; // increment change count, mark document dirty
     
     mainView.paletteData = palette.paletteData;
+    [mainView purgeCache];
+    [mainView setNeedsDisplay:YES];
 }
 
 @end
