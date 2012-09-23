@@ -36,6 +36,7 @@
     
     [self.window setAcceptsMouseMovedEvents:YES];
     
+    if(editingModeDisable) return;
     mainTrackingRect = [self addTrackingRect:self.frame owner:self userData:nil assumeInside:NO];
     pointToHighlight.y = -1;
 }
@@ -156,6 +157,36 @@
             unsigned char emptyPalette[0x20] = {0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E};
             
             paletteByteArr = (const unsigned char *)emptyPalette;
+        }
+        
+        for(int i = 0; i < ((width * 8) * (height * 8)); i++) {
+            redComponent = paletteByteArr[1] & 0x0F;
+            greenComponent = (paletteByteArr[1] & 0xF0) >> 4;
+            blueComponent = paletteByteArr[0] & 0x0F;
+            
+            if(self.paletteState == kSQUMDShadow) {
+                redComponent = redComponent >> 1;
+                greenComponent = greenComponent >> 1;
+                blueComponent = blueComponent >> 1;
+            } else if(self.paletteState == kSQUMDHighlight) {
+                redComponent = redComponent >> 1;
+                greenComponent = greenComponent >> 1;
+                blueComponent = blueComponent >> 1;
+                
+                redComponent += 0x7;
+                greenComponent += 0x7;
+                blueComponent += 0x7;
+            }
+            
+            redComponentProc = ((redComponent >> 1) * 36) & 0xFF;
+            greenComponentProc = ((greenComponent >> 1) * 36) & 0xFF;
+            blueComponentProc = ((blueComponent >> 1) * 36) & 0xFF;
+            
+            bitmapPointer = bitmapContextData + (i << 0x2);
+            
+            bitmapPointer[0] = redComponentProc;
+            bitmapPointer[1] = greenComponentProc;
+            bitmapPointer[2] = blueComponentProc;
         }
         
         for (int row = 0; row < height; row++) {
@@ -529,7 +560,9 @@
     return YES;
 }
 
-- (void) mouseMoved:(NSEvent *)theEvent {    
+- (void) mouseMoved:(NSEvent *)theEvent {
+    if(editingModeDisable) return;
+    
     pointToHighlight = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     
     if(pointToHighlight.y < 0 || pointToHighlight.x < 0 || pointToHighlight.y > self.frame.size.height || pointToHighlight.x > self.frame.size.width) {
@@ -539,7 +572,32 @@
     [self setNeedsDisplay:YES];
 }
 
+- (void) mouseDown:(NSEvent *)theEvent {
+    unsigned char *map;
+    map = (unsigned char *)[mappingData bytes];
+    
+    NSPoint derPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    NSUInteger xTile = floor(derPoint.x / (8 * zoomFactor));
+    NSUInteger yTile = floor(derPoint.y / (8 * zoomFactor));
+    NSUInteger currentTileOffset = (xTile << 1) + ((yTile * width) << 1);
+    NSUInteger theTile = (map[currentTileOffset] << 0x08) + map[currentTileOffset + 1];
+    
+    if(editingModeDisable && [delegate respondsToSelector:@selector(tileRenderView:tileIndexWasSelected:)]) {
+        [delegate tileRenderView:self tileIndexWasSelected:theTile];
+    } else {        
+        map[currentTileOffset] = (currentlyPlacingTile >> 0x08) & 0xFF;
+        map[currentTileOffset + 1] = (currentlyPlacingTile) & 0xFF;
+        
+        mappingData = [[NSData dataWithBytes:map length:mappingData.length] retain];
+        
+        [self purgeCache];
+        [self setNeedsDisplay:YES];
+    }
+}
+
 - (void) rightMouseDown:(NSEvent *)theEvent {
+    if(editingModeDisable) return;
+    
     pointToHighlight = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     
     if(pointToHighlight.y < 0 || pointToHighlight.x < 0 || pointToHighlight.y > self.frame.size.height || pointToHighlight.x > self.frame.size.width) {
@@ -557,6 +615,7 @@
     NSUInteger yTile = floor(derPoint.y / (8 * zoomFactor));
     NSUInteger currentTileOffset = (xTile << 1) + ((yTile * width) << 1);
     NSUInteger theTile = (map[currentTileOffset] << 0x08) + map[currentTileOffset + 1];
+    
     unsigned int tileIndex = theTile & 0x7FF;
     unsigned int isMirrored = (theTile & 0x800) >> 0xB;
     unsigned int isFlipped = (theTile & 0x1000) >> 0xC;
@@ -568,18 +627,25 @@
     
     item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Priority", nil) action:@selector(contextMenuDidSomething:) keyEquivalent:@""];
     [item setState:(priority == 1) ? NSOnState : NSOffState];
-    item.tag = 1 | (currentTileOffset << 2);
+    item.tag = 1 | (currentTileOffset << 3);
     [contextMenu addItem:item];
+    
     [contextMenu addItem:[NSMenuItem separatorItem]];
     
     item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Flipped", nil) action:@selector(contextMenuDidSomething:) keyEquivalent:@""];
     [item setState:(isFlipped == 1) ? NSOnState : NSOffState];
-    item.tag = 2 | (currentTileOffset << 2);
+    item.tag = 2 | (currentTileOffset << 3);
     [contextMenu addItem:item];
     
     item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Mirrored", nil) action:@selector(contextMenuDidSomething:) keyEquivalent:@""];
     [item setState:(isMirrored == 1) ? NSOnState : NSOffState];
-    item.tag = 3 | (currentTileOffset << 2);
+    item.tag = 3 | (currentTileOffset << 3);
+    [contextMenu addItem:item];
+    
+    [contextMenu addItem:[NSMenuItem separatorItem]];
+    
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Copy Tile", nil) action:@selector(contextMenuDidSomething:) keyEquivalent:@""];
+    item.tag = 4 | (currentTileOffset << 3);
     [contextMenu addItem:item];
     
     [NSMenu popUpContextMenu:contextMenu withEvent:theEvent forView:self];
@@ -587,9 +653,9 @@
 
 - (void) contextMenuDidSomething:(id) sender {
     NSMenuItem *item = (NSMenuItem *) sender;
-    NSUInteger tag = (item.tag & 0x03);
+    NSUInteger tag = (item.tag & 0x07);
     
-    NSUInteger currentTileOffset = (item.tag >> 0x02);    
+    NSUInteger currentTileOffset = (item.tag >> 0x03);
     
     unsigned char *map;
     map = (unsigned char *)[mappingData bytes];
@@ -609,6 +675,11 @@
         // Mirror
         case 3:
             theTile = theTile ^ 0x800;            
+            break;
+            
+        // Copy
+        case 4:
+            currentlyPlacingTile = theTile;
             break;
             
         default:
@@ -655,6 +726,7 @@
     zoomFactor = factor;
     [self setNeedsDisplay:YES];
     
+    if(editingModeDisable) return;
     [self removeTrackingRect:mainTrackingRect];
     mainTrackingRect = [self addTrackingRect:NSMakeRect(0, 0, self.frame.size.width * factor, self.frame.size.height * factor) owner:self userData:nil assumeInside:NO];
 }

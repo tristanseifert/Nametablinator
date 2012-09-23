@@ -16,6 +16,7 @@
 @protocol SQUMDTileRenderViewDelegate <NSObject>
 
 - (void) tileRenderViewMapDidChange:(SQUMDTileRenderView *)renderView;
+- (void) tileRenderView:(SQUMDTileRenderView *) view tileIndexWasSelected:(NSUInteger) idx;
 
 @end
 

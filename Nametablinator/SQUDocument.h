@@ -13,6 +13,7 @@
 #import "SQUHexadecimalFormatter.h"
 #import "SQUMDTileRenderView.h"
 #import "SQUPaletteRenderView.h"
+#import "utils.h"
 
 @interface SQUDocument : NSDocument <NSSplitViewDelegate, SQUMDTileRenderViewDelegate, SQUPaletteRenderViewDelegate> {
     IBOutlet JUInspectorViewContainer *inspectorContainer;
@@ -20,6 +21,8 @@
     IBOutlet JUInspectorView *listOfTilesInspector;
     IBOutlet JUInspectorView *mapInspector;
     
+    IBOutlet NSScrollView *info_tileListScroll;
+    IBOutlet SQUMDTileRenderView *info_tileList;
     IBOutlet NSTextField *info_width;
     IBOutlet NSTextField *info_height;
     IBOutlet NSTextField *info_tileOffset;
@@ -34,13 +37,14 @@
     
     IBOutlet BWTexturedSlider *zoomSlider;
     
-    BOOL liveResizeInProgress;
-    
     IBOutlet NSView *export_accessory;
     IBOutlet NSPopUpButton *export_type;
     IBOutlet NSSlider *export_quality;
     IBOutlet NSMatrix *export_size;
     
+    IBOutlet NSSplitView *mainSplitView;
+    
+    BOOL liveResizeInProgress;
     NSSavePanel *exportPanel;
     
     NSURL *originalURL;

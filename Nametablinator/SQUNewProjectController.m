@@ -92,6 +92,8 @@
     item.title = NSLocalizedString(@"Open File...", nil);
     item.tag = -1000;
     [[map_options menu] addItem:item];
+    
+    art_tileViewer.editingModeDisable = YES;
 }
 
 - (void) openNewProjWindow {

@@ -27,9 +27,6 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
-    [inspectorContainer addInspectorView:sizeInspector expanded:YES];
-    [inspectorContainer addInspectorView:mapInspector expanded:YES];
-    [inspectorContainer addInspectorView:listOfTilesInspector expanded:YES];
     
     SQUHexadecimalFormatter *formatter = [[SQUHexadecimalFormatter alloc] init];
     [info_tileOffset setFormatter:formatter];
@@ -48,6 +45,29 @@
     
     NSPoint zero = [mainScroller.documentView convertPoint:[mainView bounds].origin fromView:mainView];
     [mainScroller.horizontalRulerView setOriginOffset:zero.x - [mainScroller.documentView bounds].origin.x];
+    
+    info_tileListScroll.backgroundColor = [palette transparentColourForCurrentPaletteLine];
+    info_tileList.tileData = palette.paletteData;
+    info_tileList.paletteData = palette.paletteData;
+    
+    NSMutableData *artTileViewMap = [[NSMutableData alloc] initWithCapacity:0x800 * 0x2];
+    
+    unsigned short *array = NULL;
+    
+    for(int i = 0; i < 0x800; i++) {
+        unsigned short currentSphere[0x1] = {swap_uint16(i)};
+        array = currentSphere;
+        [artTileViewMap appendBytes:(const char*)array length:0x2];
+    }
+    
+    info_tileList.editingModeDisable = YES;
+    info_tileList.mappingData = [artTileViewMap retain];
+    info_tileList.width = 23;
+    info_tileList.height = ceil(0x7FF / info_tileList.width);
+    
+    [inspectorContainer addInspectorView:sizeInspector expanded:YES];
+    [inspectorContainer addInspectorView:mapInspector expanded:YES];
+    [inspectorContainer addInspectorView:listOfTilesInspector expanded:YES];
 }
 
 + (BOOL)autosavesInPlace {
@@ -98,7 +118,20 @@
     mainView.tileData = [doc_art retain];
     mainView.mappingData = [doc_map retain];
     mainView.paletteData = [doc_palDat retain];
+    
     palette.paletteData = mainView.paletteData;
+    
+    info_tileList.paletteData = [mainView.paletteData retain];
+    info_tileList.tileData = [mainView.tileData retain];
+    
+    [info_tileList purgeCache];
+    [info_tileList setNeedsDisplay:YES];
+    [info_tileList setZoomFactor:2.0f];
+    [info_tileListScroll.documentView setFrame:NSMakeRect(0, 0, (info_tileList.width * 16), (info_tileList.height * 16))];
+    info_tileListScroll.backgroundColor = [palette transparentColourForCurrentPaletteLine];
+    
+    info_tileList.width = 10;
+    info_tileList.height = ceil(0x7FF / info_tileList.width);
     
     mainView.width = [[dict objectForKey:@"width"] integerValue];
     mainView.height = [[dict objectForKey:@"height"] integerValue];
@@ -151,11 +184,14 @@
     }
     
     mainView.paletteState = palette.paletteState;
+    info_tileList.paletteState = palette.paletteState;
     
     mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
+    info_tileListScroll.backgroundColor = [palette transparentColourForCurrentPaletteLine];
     
     [palette setNeedsDisplay:YES];
     [mainView purgeCache];
+    [info_tileList purgeCache];
     
 //    [mainView renderImageForTile:0xB020]; // Tile 0x20, priority, palette 0x01, vertical flip
 }
@@ -201,6 +237,17 @@
     }
     
     return YES;
+}
+
+- (void) splitViewDidResizeSubviews:(NSNotification *)notification {
+    NSView* rightView = [[mainSplitView subviews] objectAtIndex:1];
+    NSUInteger width = rightView.frame.size.width;
+    
+    info_tileList.width = floor((width - 15) / 16.0f);
+    info_tileList.height = ceil(0x7FF / info_tileList.width);
+    
+    [info_tileList purgeCache];
+    [info_tileList setNeedsDisplay:YES];
 }
 
 #pragma mark Zoom support
@@ -307,6 +354,12 @@
 - (void) tileRenderViewMapDidChange:(SQUMDTileRenderView *)renderView {
     hasChanged = YES;
     [self updateChangeCount:NSChangeDone]; // increment change count, mark document dirty
+}
+
+- (void) tileRenderView:(SQUMDTileRenderView *)view tileIndexWasSelected:(NSUInteger)idx {
+    mainView.currentlyPlacingTile = idx;
+    
+    [self.windowForSheet makeFirstResponder:mainView];
 }
 
 #pragma mark Palette view delegate
