@@ -37,4 +37,17 @@
     [prefCtrlr showPreferences:sender];
 }
 
+- (IBAction) showImportController:(id) sender {
+    if(!importController) {
+        importController = [[[SQUImportImageController alloc] initWithWindowNibName:@"SQUImportImageController"] retain];
+        
+        if(!importController) {
+            [[NSAlert alertWithMessageText:NSLocalizedString(@"Can't Load Image Importing UI", nil) defaultButton:NSLocalizedString(@"OK", nil) alternateButton:nil otherButton:nil informativeTextWithFormat:NSLocalizedString(@"The NIB file could not be loaded for some reason. Please re-install the application.", nil)] runModal];
+            return;
+        }
+    }
+    
+    [importController showImageImporter];
+}
+
 @end

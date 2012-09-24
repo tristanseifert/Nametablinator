@@ -14,7 +14,7 @@
 #import "CGSPrivate.h"
 #import "utils.h"
 
-@interface SQUNewProjectController : NSObject {
+@interface SQUNewProjectController : NSObject <NSWindowDelegate> {
     IBOutlet NSWindow *window;
     
     CATransition *transition;

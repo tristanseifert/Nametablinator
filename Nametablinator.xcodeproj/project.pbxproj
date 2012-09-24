@@ -49,6 +49,8 @@
 		DED87D22160D3A2000C86B8B /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = DED87D21160D3A2000C86B8B /* Sparkle.framework */; };
 		DED87D24160D3AC700C86B8B /* prefs-update-toolbar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */; };
 		DED87D26160D462B00C86B8B /* SQUProjectPaletteDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = DED87D25160D462B00C86B8B /* SQUProjectPaletteDefaults.plist */; };
+		DEDF26AF1610E772003D57DC /* SQUImportImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEDF26AE1610E772003D57DC /* SQUImportImageController.m */; };
+		DEDF26B11610E782003D57DC /* SQUImportImageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDF26B01610E782003D57DC /* SQUImportImageController.xib */; };
 		DEE750C3160BE01100556DCE /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C2160BE01000556DCE /* MAAttachedWindow.m */; };
 		DEE750C6160BED3600556DCE /* SQUMDColourPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */; };
 		DEE750C9160BEDAF00556DCE /* SQUMDColourPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE750C8160BEDAE00556DCE /* SQUMDColourPicker.m */; };
@@ -153,6 +155,9 @@
 		DED87D21160D3A2000C86B8B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		DED87D23160D3AC700C86B8B /* prefs-update-toolbar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prefs-update-toolbar-icon.png"; sourceTree = "<group>"; };
 		DED87D25160D462B00C86B8B /* SQUProjectPaletteDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SQUProjectPaletteDefaults.plist; sourceTree = "<group>"; };
+		DEDF26AD1610E772003D57DC /* SQUImportImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUImportImageController.h; sourceTree = "<group>"; };
+		DEDF26AE1610E772003D57DC /* SQUImportImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUImportImageController.m; sourceTree = "<group>"; };
+		DEDF26B01610E782003D57DC /* SQUImportImageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUImportImageController.xib; sourceTree = "<group>"; };
 		DEE750C1160BE01000556DCE /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAAttachedWindow.h; sourceTree = "<group>"; };
 		DEE750C2160BE01000556DCE /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAAttachedWindow.m; sourceTree = "<group>"; };
 		DEE750C5160BED3600556DCE /* SQUMDColourPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMDColourPicker.xib; sourceTree = "<group>"; };
@@ -252,6 +257,7 @@
 				DEB6DE89160A9EF500D75298 /* Resizing Manager */,
 				DE332CC115FD2CD700096FF5 /* SQUHexadecimalFormatter.h */,
 				DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */,
+				DEDF26AB1610E60E003D57DC /* Image Importing */,
 				DE332C8B15FD17CA00096FF5 /* SQUDocument.h */,
 				DE332C8C15FD17CA00096FF5 /* SQUDocument.m */,
 				DE332C8E15FD17CA00096FF5 /* SQUDocument.xib */,
@@ -356,6 +362,16 @@
 				DEC722E5160E626300558DB5 /* ESScrollView.m */,
 			);
 			name = "Custom UI";
+			sourceTree = "<group>";
+		};
+		DEDF26AB1610E60E003D57DC /* Image Importing */ = {
+			isa = PBXGroup;
+			children = (
+				DEDF26AD1610E772003D57DC /* SQUImportImageController.h */,
+				DEDF26AE1610E772003D57DC /* SQUImportImageController.m */,
+				DEDF26B01610E782003D57DC /* SQUImportImageController.xib */,
+			);
+			name = "Image Importing";
 			sourceTree = "<group>";
 		};
 		DEE8CDDC160E1EA100C71AA1 /* Miscellaneous */ = {
@@ -491,6 +507,7 @@
 				DEE8CDE4160E259200C71AA1 /* SQUProjectArtTileDefaults.plist in Resources */,
 				DEE8CDE6160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart in Resources */,
 				DE00C8C8160FB96C00945603 /* dsa_pub.pem in Resources */,
+				DEDF26B11610E782003D57DC /* SQUImportImageController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +541,7 @@
 				DEE8CDDE160E1ECD00C71AA1 /* utils.c in Sources */,
 				DEC722E6160E626300558DB5 /* ESiTunesScroller.m in Sources */,
 				DEC722E7160E626300558DB5 /* ESScrollView.m in Sources */,
+				DEDF26AF1610E772003D57DC /* SQUImportImageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +649,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libAfterImage-1.20\"/**";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,6 +673,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/libAfterImage-1.20\"/**";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

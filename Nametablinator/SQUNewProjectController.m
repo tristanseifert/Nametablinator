@@ -12,15 +12,13 @@
 @implementation SQUNewProjectController
 
 - (void) awakeFromNib {
-    [magicalContainer setWantsLayer:YES];
+    window.delegate = self;
     
     NSDictionary *defaultPalData = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SQUProjectPaletteDefaults" ofType:@"plist"]];
     pal_defaults = [[defaultPalData objectForKey:@"defaults"] retain];
     
     NSDictionary *defaultArtData = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SQUProjectArtTileDefaults" ofType:@"plist"]];
     art_defaults = [[defaultArtData objectForKey:@"defaults"] retain];
-    
-    NSLog(@"%@", art_defaults);
     
     NSMutableData *artTileViewMap = [[NSMutableData alloc] initWithCapacity:0x800 * 0x2];
     
@@ -151,9 +149,6 @@
     currentView = 0;
     [self updateView];
     
-    [window center];
-    [window makeKeyAndOrderFront:self];
-    
     // re-set art panel
     art_tileViewer.width = 22;
     art_tileViewer.height = ceil(0x20 / art_tileViewer.width);
@@ -163,6 +158,9 @@
     [art_scrollView.documentView setFrame:NSMakeRect(0, 0, (art_tileViewer.width * 8) * newZoomLevel, (art_tileViewer.height * 8) * newZoomLevel)];
     [art_tileViewer setZoomFactor:newZoomLevel];
     [art_tileViewer setNeedsDisplay:YES];
+    
+    [window center];
+    [[NSApplication sharedApplication] runModalForWindow:window];
 }
 
 #pragma mark Palette view specific
@@ -541,6 +539,12 @@
     
     currentView = 0;
     [self updateView];
+    
+    [[NSApplication sharedApplication] abortModal];
+}
+
+- (void) windowWillClose:(NSNotification *)notification {
+    [[NSApplication sharedApplication] abortModal];
 }
 
 @end

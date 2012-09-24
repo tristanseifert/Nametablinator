@@ -10,13 +10,16 @@
 
 #import "SQUNewProjectController.h"
 #import "SQUPreferenceController.h"
+#import "SQUImportImageController.h"
 
 @interface SQUMainMenuController : NSObject {
     SQUNewProjectController *newProjCtrlr;
     SQUPreferenceController *prefCtrlr;
+    SQUImportImageController *importController;
 }
 
 - (IBAction) createNewFile:(id) sender;
 - (IBAction) showPrefCtrlr:(id) sender;
+- (IBAction) showImportController:(id) sender;
 
 @end
