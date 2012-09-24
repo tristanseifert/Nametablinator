@@ -24,6 +24,8 @@
 		DE332CA515FD1C9500096FF5 /* JUInspectorViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CA115FD1C9500096FF5 /* JUInspectorViewHeader.m */; };
 		DE332CC315FD2CD700096FF5 /* SQUHexadecimalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */; };
 		DE3F9653160974EE009005C4 /* NSColor_CheckerboardColor.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */; };
+		DE408416161087B900B80E6A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE408415161087B900B80E6A /* libz.dylib */; };
+		DE408481161088D600B80E6A /* libAfterImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE408480161088D600B80E6A /* libAfterImage.a */; };
 		DE420F73160AB3AE00C010F8 /* BWTexturedSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE420F70160AB3AE00C010F8 /* BWTexturedSlider.m */; };
 		DE420F74160AB3AE00C010F8 /* BWTexturedSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE420F72160AB3AE00C010F8 /* BWTexturedSliderCell.m */; };
 		DE420F7E160AB49300C010F8 /* TexturedSliderPhotoLarge.tif in Resources */ = {isa = PBXBuildFile; fileRef = DE420F75160AB49300C010F8 /* TexturedSliderPhotoLarge.tif */; };
@@ -59,6 +61,16 @@
 		DEF5FA8A160D264000A0E0BE /* SQUPreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF5FA89160D264000A0E0BE /* SQUPreferenceController.m */; };
 		DEF5FA8C160D264B00A0E0BE /* SQUPreferenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF5FA8B160D264B00A0E0BE /* SQUPreferenceController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE40846E1610882B00B80E6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE40846A1610881B00B80E6A /* libAfterImage-1.20.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DE40841E1610881B00B80E6A;
+			remoteInfo = "libAfterImage-1.20";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DED87D08160D381100C86B8B /* Copy Frameworks */ = {
@@ -106,6 +118,10 @@
 		DE332CC215FD2CD700096FF5 /* SQUHexadecimalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUHexadecimalFormatter.m; sourceTree = "<group>"; };
 		DE3F9651160974EE009005C4 /* NSColor_CheckerboardColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSColor_CheckerboardColor.h; sourceTree = "<group>"; };
 		DE3F9652160974EE009005C4 /* NSColor_CheckerboardColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSColor_CheckerboardColor.m; sourceTree = "<group>"; };
+		DE408413161087A800B80E6A /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
+		DE408415161087B900B80E6A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DE40846A1610881B00B80E6A /* libAfterImage-1.20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libAfterImage-1.20.xcodeproj"; path = "libAfterImage-1.20/libAfterImage-1.20.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		DE408480161088D600B80E6A /* libAfterImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAfterImage.a; path = "libAfterImage-1.20/libAfterImage.a"; sourceTree = "<group>"; };
 		DE420F6F160AB3AE00C010F8 /* BWTexturedSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTexturedSlider.h; sourceTree = "<group>"; };
 		DE420F70160AB3AE00C010F8 /* BWTexturedSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTexturedSlider.m; sourceTree = "<group>"; };
 		DE420F71160AB3AE00C010F8 /* BWTexturedSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTexturedSliderCell.h; sourceTree = "<group>"; };
@@ -162,10 +178,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE408416161087B900B80E6A /* libz.dylib in Frameworks */,
 				DEC722EB160E83EA00558DB5 /* ApplicationServices.framework in Frameworks */,
 				DE080691160CA13200013DED /* QuartzCore.framework in Frameworks */,
 				DE332C7A15FD17CA00096FF5 /* Cocoa.framework in Frameworks */,
 				DED87D20160D39ED00C86B8B /* Sparkle.framework in Frameworks */,
+				DE408481161088D600B80E6A /* libAfterImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +193,9 @@
 		DE332C6A15FD17CA00096FF5 = {
 			isa = PBXGroup;
 			children = (
+				DE408480161088D600B80E6A /* libAfterImage.a */,
+				DE408415161087B900B80E6A /* libz.dylib */,
+				DE408413161087A800B80E6A /* AppleScriptObjC.framework */,
 				DEC722EA160E83EA00558DB5 /* ApplicationServices.framework */,
 				DED87D21160D3A2000C86B8B /* Sparkle.framework */,
 				DE080690160CA13200013DED /* QuartzCore.framework */,
@@ -215,6 +236,7 @@
 		DE332C7F15FD17CA00096FF5 /* Nametablinator */ = {
 			isa = PBXGroup;
 			children = (
+				DE40846A1610881B00B80E6A /* libAfterImage-1.20.xcodeproj */,
 				DEC722E9160E626700558DB5 /* Custom UI */,
 				DEE8CDDC160E1EA100C71AA1 /* Miscellaneous */,
 				DEF5FA87160D263200A0E0BE /* Preferences */,
@@ -280,6 +302,13 @@
 			name = JUInspectorView;
 			path = JUInspectorView/Source;
 			sourceTree = SOURCE_ROOT;
+		};
+		DE40846B1610881B00B80E6A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
 		};
 		DE420F6D160AB3A500C010F8 /* BWToolkit */ = {
 			isa = PBXGroup;
@@ -394,6 +423,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DE40846F1610882B00B80E6A /* PBXTargetDependency */,
 			);
 			name = Nametablinator;
 			productName = Nametablinator;
@@ -420,6 +450,12 @@
 			mainGroup = DE332C6A15FD17CA00096FF5;
 			productRefGroup = DE332C7615FD17CA00096FF5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DE40846B1610881B00B80E6A /* Products */;
+					ProjectRef = DE40846A1610881B00B80E6A /* libAfterImage-1.20.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DE332C7415FD17CA00096FF5 /* Nametablinator */,
@@ -492,6 +528,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE40846F1610882B00B80E6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libAfterImage-1.20";
+			targetProxy = DE40846E1610882B00B80E6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DE332C8215FD17CA00096FF5 /* InfoPlist.strings */ = {
@@ -588,9 +632,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libAfterImage-1.20\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -607,9 +655,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nametablinator/Nametablinator-Prefix.pch";
 				INFOPLIST_FILE = "Nametablinator/Nametablinator-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libAfterImage-1.20\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
