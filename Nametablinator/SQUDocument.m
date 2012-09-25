@@ -46,7 +46,7 @@
     NSPoint zero = [mainScroller.documentView convertPoint:[mainView bounds].origin fromView:mainView];
     [mainScroller.horizontalRulerView setOriginOffset:zero.x - [mainScroller.documentView bounds].origin.x];
     
-    info_tileListScroll.backgroundColor = [palette transparentColourForCurrentPaletteLine];
+    info_tileListScroll.backgroundColor = [palette transparentColourForCurrentPaletteLineRegardlessOfCheckerboardUserUIOption];
     info_tileList.tileData = palette.paletteData;
     info_tileList.paletteData = palette.paletteData;
     
@@ -128,7 +128,7 @@
     [info_tileList setNeedsDisplay:YES];
     [info_tileList setZoomFactor:2.0f];
     [info_tileListScroll.documentView setFrame:NSMakeRect(0, 0, (info_tileList.width * 16), (info_tileList.height * 16))];
-    info_tileListScroll.backgroundColor = [palette transparentColourForCurrentPaletteLine];
+    info_tileListScroll.backgroundColor = [palette transparentColourForCurrentPaletteLineRegardlessOfCheckerboardUserUIOption];
     
     info_tileList.width = 10;
     info_tileList.height = ceil(0x7FF / info_tileList.width);
@@ -259,6 +259,9 @@
     
     [mainScroller.documentView setFrame:NSMakeRect(0, 0, (mainView.width * 8) * round(zoomSlider.floatValue), (mainView.height * 8) * round(zoomSlider.floatValue))];
     [mainView setZoomFactor:round(zoomSlider.floatValue)];
+    
+    palette.zoomFactor = round(zoomSlider.floatValue);
+    mainScroller.backgroundColor = [palette transparentColourForCurrentPaletteLine];
 }
 
 #pragma mark window delegate

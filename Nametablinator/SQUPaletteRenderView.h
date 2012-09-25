@@ -43,6 +43,8 @@ typedef enum {
     BOOL inMenuMode;
     
     IBOutlet id<SQUPaletteRenderViewDelegate> delegate;
+    
+    float zoomFactor;
 }
 
 @property (nonatomic, retain) NSData *paletteData;
@@ -52,10 +54,13 @@ typedef enum {
 @property (nonatomic) BOOL newFileMode;
 @property (nonatomic) NSUInteger paletteLine;
 
-@property (nonatomic) id<SQUPaletteRenderViewDelegate> delegate;
+@property (nonatomic, retain) id<SQUPaletteRenderViewDelegate> delegate;
+
+@property (nonatomic) float zoomFactor;
 
 - (NSColor *) colourForPaletteData:(const unsigned char*) data withState:(SQUMDPaletteState) state;
 - (NSColor *) transparentColourForCurrentPaletteLine;
+- (NSColor *) transparentColourForCurrentPaletteLineRegardlessOfCheckerboardUserUIOption; // this has to win the title for longest method name ever or something.
 
 - (void) setUpTooltips;
 

@@ -32,4 +32,6 @@ static const unsigned char SQUBayer165_matrix[8][8] = {{1, 49, 13, 61, 4, 52, 16
 
 - (CGImageRef) ditherImageTo16Colours:(CGImageRef)image withDitheringMatrixType:(SQUBayerDitheringMatrix) matrix;
 
+uint32_t find_closest_palette_colour(unsigned int rgbPixel);
+
 @end

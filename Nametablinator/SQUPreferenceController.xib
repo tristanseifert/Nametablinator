@@ -109,6 +109,7 @@
 						<string key="NSFrame">{{18, 35}, {268, 18}}</string>
 						<reference key="NSSuperview" ref="188557476"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="291680966">
 							<int key="NSCellFlags">67108864</int>
@@ -508,6 +509,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<string key="NSFrame">{{28, 18}, {287, 18}}</string>
 						<reference key="NSSuperview" ref="617398959"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="990823838">
 							<int key="NSCellFlags">67239424</int>

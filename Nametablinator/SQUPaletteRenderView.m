@@ -7,9 +7,10 @@
 //
 
 #import "SQUPaletteRenderView.h"
+#import "NSColor_CheckerboardColor.h"
 
 @implementation SQUPaletteRenderView
-@synthesize paletteData, paletteState, paletteLine, newFileMode, inMenuMode, delegate;
+@synthesize paletteData, paletteState, paletteLine, newFileMode, inMenuMode, delegate, zoomFactor;
 
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -119,6 +120,31 @@
 }
 
 - (NSColor *) transparentColourForCurrentPaletteLine {
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"transparentRender"] == 1) {
+        const unsigned char *bytes;
+        bytes = (const unsigned char *)[paletteData bytes];
+        
+        unsigned int palOffset = paletteLine * 0x20;
+        
+        if(palOffset >= paletteData.length) {
+            palOffset = 0;
+            
+            unsigned char emptyPalette[0x20] = {0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E, 0x0E};
+            
+            bytes = (const unsigned char *)emptyPalette;
+        }
+        
+        return [self colourForPaletteData:bytes withState:self.paletteState];
+    } else {
+        if(zoomFactor < 1) {
+            zoomFactor = 1.0f;
+        }
+        
+        return [NSColor checkerboardColorWithFirstColor:[NSColor whiteColor] secondColor:[NSColor lightGrayColor] squareWidth:8.0 * zoomFactor];
+    }
+}
+
+- (NSColor *) transparentColourForCurrentPaletteLineRegardlessOfCheckerboardUserUIOption {
     const unsigned char *bytes;
     bytes = (const unsigned char *)[paletteData bytes];
     
