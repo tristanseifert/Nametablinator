@@ -494,7 +494,7 @@
             break;
         case 1:
             art_tileViewer.paletteData = pal_palView.paletteData;
-            art_scrollView.backgroundColor = [pal_palView transparentColourForCurrentPaletteLine];
+            art_scrollView.backgroundColor = [pal_palView transparentColourForCurrentPaletteLineRegardlessOfCheckerboardUserUIOption];
             art_zoomChooser.selectedSegment = 0;
             [self art_zoomSliderChanged:nil];
             
@@ -507,7 +507,7 @@
             map_viewinator.tileData = art_tileViewer.tileData;
             map_viewinator.paletteData = art_tileViewer.paletteData;
             map_viewinator.mappingData = art_tileViewer.mappingData;
-            map_scrollView.backgroundColor = [pal_palView transparentColourForCurrentPaletteLine];
+            map_scrollView.backgroundColor = [pal_palView transparentColourForCurrentPaletteLineRegardlessOfCheckerboardUserUIOption];
             
             map_viewinator.width = 8;
             map_viewinator.height = 8;
