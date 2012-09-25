@@ -7,3 +7,6 @@
 [submodule "ESScrollView"]
 	path = ESScrollView
 	url = git://github.com/incbee/ESScrollView.git
+[submodule "SQUPluginSystem"]
+	path = SQUPluginSystem
+	url = git://github.com/tristanseifert/SQUPluginSystem.git
