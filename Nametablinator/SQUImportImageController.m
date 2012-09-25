@@ -25,6 +25,8 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     self.window.delegate = self;
     processingQueue = dispatch_queue_create("co.squee.nametablinator.importQueue", NULL);
+    
+    defaultDitherer = [[[SQUImageDitherer alloc] init] retain];
 }
 
 - (void) showImageImporter {

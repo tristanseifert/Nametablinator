@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "SQUImageDitherer.h"
 #import "SQUPaletteRenderView.h"
 #import "SQUMDTileRenderView.h"
 #import "CGSPrivate.h"
@@ -26,6 +27,8 @@
     IBOutlet SQUPaletteRenderView *palView;
     
     dispatch_queue_t processingQueue;
+    
+    SQUImageDitherer *defaultDitherer;
 }
 
 - (void) showImageImporter;

@@ -40,6 +40,7 @@
 		DE9D848316093931003BAD1E /* SQUPaletteRenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848216093931003BAD1E /* SQUPaletteRenderView.m */; };
 		DE9D848616093ED4003BAD1E /* SQUGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D848516093ED4003BAD1E /* SQUGradientBar.m */; };
 		DE9EB1F81611DC280023CF1E /* SQUImageDitherer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EB1F71611DC280023CF1E /* SQUImageDitherer.m */; };
+		DE9EB1FB1611DFFA0023CF1E /* SQUImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EB1FA1611DFFA0023CF1E /* SQUImageConverter.m */; };
 		DEB6DE87160A9EEC00D75298 /* SQUMapResizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */; };
 		DEB6DE8B160A9F1600D75298 /* SQUMapResizeManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */; };
 		DEC722E6160E626300558DB5 /* ESiTunesScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC722E3160E626300558DB5 /* ESiTunesScroller.m */; };
@@ -133,6 +134,8 @@
 		DE9D848516093ED4003BAD1E /* SQUGradientBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUGradientBar.m; sourceTree = "<group>"; };
 		DE9EB1F61611DC280023CF1E /* SQUImageDitherer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUImageDitherer.h; sourceTree = "<group>"; };
 		DE9EB1F71611DC280023CF1E /* SQUImageDitherer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUImageDitherer.m; sourceTree = "<group>"; };
+		DE9EB1F91611DFFA0023CF1E /* SQUImageConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUImageConverter.h; sourceTree = "<group>"; };
+		DE9EB1FA1611DFFA0023CF1E /* SQUImageConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUImageConverter.m; sourceTree = "<group>"; };
 		DEB6DE85160A9EEC00D75298 /* SQUMapResizeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMapResizeManager.h; sourceTree = "<group>"; };
 		DEB6DE86160A9EEC00D75298 /* SQUMapResizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMapResizeManager.m; sourceTree = "<group>"; };
 		DEB6DE8A160A9F1600D75298 /* SQUMapResizeManager.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQUMapResizeManager.xib; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 			children = (
 				DE9EB1F61611DC280023CF1E /* SQUImageDitherer.h */,
 				DE9EB1F71611DC280023CF1E /* SQUImageDitherer.m */,
+				DE9EB1F91611DFFA0023CF1E /* SQUImageConverter.h */,
+				DE9EB1FA1611DFFA0023CF1E /* SQUImageConverter.m */,
 			);
 			name = "Image Processing";
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 				DEC722E7160E626300558DB5 /* ESScrollView.m in Sources */,
 				DEDF26AF1610E772003D57DC /* SQUImportImageController.m in Sources */,
 				DE9EB1F81611DC280023CF1E /* SQUImageDitherer.m in Sources */,
+				DE9EB1FB1611DFFA0023CF1E /* SQUImageConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
