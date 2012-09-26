@@ -26,6 +26,8 @@
     IBOutlet SQUMDTileRenderView *mainView;
     IBOutlet SQUPaletteRenderView *palView;
     
+    IBOutlet NSImageView *imgView;
+    
     dispatch_queue_t processingQueue;
     
     SQUImageDitherer *defaultDitherer;
@@ -38,5 +40,7 @@
 - (IBAction) cancelImport:(id) sender;
 - (IBAction) goImport:(id) sender;
 - (IBAction) selectDifferentImage:(id) sender;
+
+CGImageRef SQU_CGImageCreateWithNSImage(NSImage *image);
 
 @end
