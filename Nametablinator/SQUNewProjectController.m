@@ -321,8 +321,8 @@
     
     //144px viewable area
     //float zoomFactorMap[0x08] = {1.0f, 2.0f, 3.0f, 4.1f, 5.1f, 6.0f, 7.2f, 8.1f};
-    float zoomFactorMap[0x08] = {1.0f, 2.0f, 4.0f};
-    unsigned short tilesPerLineForZoom[0x08] = {24, 12, 8};
+    float zoomFactorMap[0x03] = {1.0f, 2.0f, 4.0f};
+    unsigned short tilesPerLineForZoom[0x03] = {24, 12, 8};
     float zoomFactor = zoomFactorMap[(newZoomLevel)];
     
     art_tileViewer.width = tilesPerLineForZoom[(newZoomLevel)];
@@ -332,8 +332,8 @@
     art_tileViewer.height = newHeight;
     
     [art_scrollView.documentView setFrame:NSMakeRect(0, 0, [art_scrollView.documentView frame].size.width, (art_tileViewer.height * 8) * zoomFactor)];
-    [art_tileViewer purgeCache];
     [art_tileViewer setZoomFactor:zoomFactor];
+    [art_tileViewer purgeCache];
     [art_tileViewer setNeedsDisplay:YES];
 }
 

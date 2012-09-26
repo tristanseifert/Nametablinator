@@ -77,6 +77,16 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DEEA01AE16138B5E009CF4D4 /* Copy Executables */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+			);
+			name = "Copy Executables";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +171,16 @@
 		DEE8CDE0160E24B400C71AA1 /* ArtPreset_ASCIIFont.mdart */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArtPreset_ASCIIFont.mdart; sourceTree = "<group>"; };
 		DEE8CDE3160E259200C71AA1 /* SQUProjectArtTileDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SQUProjectArtTileDefaults.plist; sourceTree = "<group>"; };
 		DEE8CDE5160E27AC00C71AA1 /* ArtPreset_ASCIIFont2.mdart */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArtPreset_ASCIIFont2.mdart; sourceTree = "<group>"; };
+		DEEA019916138B1D009CF4D4 /* pngq.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = pngq.1; sourceTree = "<group>"; };
+		DEEA019E16138B3A009CF4D4 /* colorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = colorspace.c; sourceTree = "<group>"; };
+		DEEA019F16138B3A009CF4D4 /* colorspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colorspace.h; sourceTree = "<group>"; };
+		DEEA01A016138B3A009CF4D4 /* errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errors.h; sourceTree = "<group>"; };
+		DEEA01A116138B3A009CF4D4 /* neuquant32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = neuquant32.c; sourceTree = "<group>"; };
+		DEEA01A216138B3A009CF4D4 /* neuquant32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neuquant32.h; sourceTree = "<group>"; };
+		DEEA01A316138B3A009CF4D4 /* pngcomp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngcomp.c; sourceTree = "<group>"; };
+		DEEA01A416138B3A009CF4D4 /* pngnq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngnq.c; sourceTree = "<group>"; };
+		DEEA01A516138B3A009CF4D4 /* rwpng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rwpng.c; sourceTree = "<group>"; };
+		DEEA01A616138B3A009CF4D4 /* rwpng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwpng.h; sourceTree = "<group>"; };
 		DEF1737A160C958500F9A413 /* SQUMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQUMainMenuController.h; sourceTree = "<group>"; };
 		DEF1737B160C958500F9A413 /* SQUMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQUMainMenuController.m; sourceTree = "<group>"; };
 		DEF5FA77160D1E3C00A0E0BE /* CGSPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGSPrivate.h; sourceTree = "<group>"; };
@@ -196,6 +216,7 @@
 				DED87D21160D3A2000C86B8B /* Sparkle.framework */,
 				DE080690160CA13200013DED /* QuartzCore.framework */,
 				DE332C7F15FD17CA00096FF5 /* Nametablinator */,
+				DEEA019616138B1D009CF4D4 /* pngq */,
 				DE332C7815FD17CA00096FF5 /* Frameworks */,
 				DE332C7615FD17CA00096FF5 /* Products */,
 			);
@@ -387,6 +408,23 @@
 			name = "Preset Art Files";
 			sourceTree = "<group>";
 		};
+		DEEA019616138B1D009CF4D4 /* pngq */ = {
+			isa = PBXGroup;
+			children = (
+				DEEA019E16138B3A009CF4D4 /* colorspace.c */,
+				DEEA019F16138B3A009CF4D4 /* colorspace.h */,
+				DEEA01A016138B3A009CF4D4 /* errors.h */,
+				DEEA01A116138B3A009CF4D4 /* neuquant32.c */,
+				DEEA01A216138B3A009CF4D4 /* neuquant32.h */,
+				DEEA01A316138B3A009CF4D4 /* pngcomp.c */,
+				DEEA01A416138B3A009CF4D4 /* pngnq.c */,
+				DEEA01A516138B3A009CF4D4 /* rwpng.c */,
+				DEEA01A616138B3A009CF4D4 /* rwpng.h */,
+				DEEA019916138B1D009CF4D4 /* pngq.1 */,
+			);
+			path = pngq;
+			sourceTree = "<group>";
+		};
 		DEF17373160C925A00F9A413 /* New Project assistant */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +467,7 @@
 				DE332C7115FD17CA00096FF5 /* Sources */,
 				DE332C7215FD17CA00096FF5 /* Frameworks */,
 				DE332C7315FD17CA00096FF5 /* Resources */,
+				DEEA01AE16138B5E009CF4D4 /* Copy Executables */,
 				DED87D08160D381100C86B8B /* Copy Frameworks */,
 			);
 			buildRules = (
