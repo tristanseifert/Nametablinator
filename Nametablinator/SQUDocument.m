@@ -168,15 +168,35 @@
             
         case 10:
             palette.paletteLine = 0;
+            mainView.paletteData = [palette.paletteData subdataWithRange:NSMakeRange(0x00, 0x20)];
             break;
-        case 11:
-            palette.paletteLine = 1;            
+        case 11:            
+            if(palette.paletteData.length <= 0x20) {
+                NSBeep();
+            } else {
+                palette.paletteLine = 1;
+                mainView.paletteData = [palette.paletteData subdataWithRange:NSMakeRange(0x20, 0x20)];                
+            }
+            
             break;
-        case 12:
-            palette.paletteLine = 2;            
+        case 12:   
+            
+            if(palette.paletteData.length <= 0x40) {
+                NSBeep();
+            } else {
+                palette.paletteLine = 2;
+                mainView.paletteData = [palette.paletteData subdataWithRange:NSMakeRange(0x40, 0x20)];                
+            }
+            
             break;
-        case 13:
-            palette.paletteLine = 3;
+        case 13:            
+            if(palette.paletteData.length <= 0x60) {
+                NSBeep();
+            } else {
+                palette.paletteLine = 3;
+                mainView.paletteData = [palette.paletteData subdataWithRange:NSMakeRange(0x60, 0x20)];                
+            }
+            
             break;
             
         default:
